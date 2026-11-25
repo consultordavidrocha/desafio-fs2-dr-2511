@@ -40,6 +40,9 @@
 | Tipagens `any` em testes e transformações | ESLint (`no-unsafe-*`) | Funções nomeadas e tipadas |
 | Code splitting das rotas quebrou o dev server ("React duplicado": o Vite reotimizou dependências no meio da sessão) | Screenshot automatizado mostrou a tela de erro em vez do login | `optimizeDeps.include` com as dependências das páginas lazy |
 | Cadastro mostrava "Mínimo de 8 caracteres" junto com "As senhas não coincidem" | Comparação lado a lado do screenshot com o render do Figma | Texto de apoio some no estado de senhas diferentes, como no Figma |
+| Cards 2px mais altos que no Figma (borda do Figma é interna; no CSS soma ao padding) | Comparação lado a lado da tela de Comunicações | Padding de 23px nos cards (1px de borda + 23px = 24px) |
+| Breakpoints responsivos "chutados" (filtros em linha a partir de 768px) | Extração das regras dos frames "Responsivos" do Figma | Filtros em linha só ≥1024px, card em 2 colunas ≥768px, celular sem logo/sidebar |
+| Regex de frases quebrava em "art. 4º" (lookbehind sem o ponto) | Teste unitário do resumidor falhou | Lookbehind incluindo o ponto da abreviação |
 
 ## Como validei
 
