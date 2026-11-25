@@ -14,13 +14,16 @@ interface FiltersBarProps {
 const fieldBox =
   'flex h-9 items-center gap-2 rounded-lg border border-border bg-surface focus-within:outline-2 focus-within:outline-offset-1 focus-within:outline-primary/40'
 
-/** Card de filtros: número do processo, tribunal e período (Figma: 3 campos em linha). */
+/**
+ * Card de filtros: número do processo, tribunal e período.
+ * Figma: em linha a partir de 1024px; empilhados (largura total) abaixo disso.
+ */
 export function FiltersBar({ filters, courts, onChange }: FiltersBarProps) {
   return (
-    <Card className="flex flex-col gap-4 md:flex-row md:items-start">
+    <Card className="flex flex-col gap-4 lg:flex-row lg:items-start">
       <LawsuitSearch value={filters.numeroProcesso ?? ''} onSearch={(numero) => onChange({ numeroProcesso: numero })} />
-      <div className="flex flex-col gap-4 sm:flex-row md:contents">
-        <label className={`${fieldBox} relative pr-2 pl-3 sm:w-[177px] sm:shrink-0`}>
+      <div className="contents">
+        <label className={`${fieldBox} relative pr-2 pl-3 lg:w-[177px] lg:shrink-0`}>
           <span className="sr-only">Tribunal</span>
           <select
             value={filters.tribunal ?? ''}
@@ -36,7 +39,7 @@ export function FiltersBar({ filters, courts, onChange }: FiltersBarProps) {
           </select>
           <ChevronsUpDown className="pointer-events-none relative ml-auto size-4" strokeWidth={1.75} aria-hidden />
         </label>
-        <div className="sm:flex-1 md:flex-none">
+        <div className="lg:shrink-0">
           <DateRangePicker
             value={{ start: filters.dataInicio, end: filters.dataFim }}
             onChange={({ start, end }) => onChange({ dataInicio: start, dataFim: end })}

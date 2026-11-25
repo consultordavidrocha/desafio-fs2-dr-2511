@@ -27,7 +27,7 @@ export function CommunicationsPage() {
 
   return (
     <AppShell>
-      <div className="flex flex-col gap-4 p-4 sm:p-6">
+      <div className="flex flex-col gap-4 p-6">
         {firstLoad ? (
           <PageSkeleton />
         ) : (

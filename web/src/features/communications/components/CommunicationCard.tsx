@@ -26,8 +26,9 @@ export function CommunicationCard({ communication: c, onSummarize }: Communicati
   return (
     <Card className="transition-shadow hover:shadow-md">
       <article className="flex flex-col gap-4" aria-labelledby={`communication-${c.id}`}>
-        <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-start">
-          <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
+        {/* Figma: no celular o "Resumir" vem primeiro (topo, à esquerda) e os campos em 1 coluna. */}
+        <div className="flex flex-col-reverse gap-4 md:flex-row md:items-start">
+          <div className="grid flex-1 grid-cols-1 gap-4 md:grid-cols-2">
             <Field icon={Scale} label="Processo" id={`communication-${c.id}`}>
               <span className="break-words">{lawsuit}</span>
             </Field>
@@ -41,7 +42,7 @@ export function CommunicationCard({ communication: c, onSummarize }: Communicati
             <button
               type="button"
               onClick={() => onSummarize(c)}
-              className="flex h-8 items-center gap-1 self-end rounded-lg border border-border px-3 hover:bg-page focus-visible:outline-2 focus-visible:outline-primary sm:self-start"
+              className="flex h-8 items-center gap-1 self-start rounded-lg border border-border px-3 hover:bg-page focus-visible:outline-2 focus-visible:outline-primary"
             >
               <Sparkles className="size-3" strokeWidth={1.75} aria-hidden />
               Resumir

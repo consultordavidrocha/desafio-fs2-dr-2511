@@ -27,7 +27,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-dvh flex-col bg-page">
-      <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center justify-between border-b border-border bg-surface p-4">
+      <header className="sticky top-0 z-30 flex h-16 shrink-0 items-center justify-between border-b border-border bg-surface px-2 py-4 md:px-4">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -39,7 +39,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           >
             <PanelLeft className="size-4" strokeWidth={1.75} aria-hidden />
           </button>
-          <img src={logoDark} alt="JusCash" width={124} height={19} />
+          {/* Figma: no celular a barra mostra só o botão do menu, sem o logo. */}
+          <img src={logoDark} alt="JusCash" width={124} height={19} className="hidden md:block" />
         </div>
         <UserMenu />
       </header>
@@ -62,6 +63,15 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </ul>
         </nav>
+
+        {expanded && (
+          // Celular: a sidebar abre por cima do conteúdo; clicar fora fecha.
+          <div
+            aria-hidden
+            onClick={() => setExpanded(false)}
+            className="fixed inset-0 top-16 z-10 bg-black/20 md:hidden"
+          />
+        )}
 
         <main className="min-w-0 flex-1">{children}</main>
       </div>
