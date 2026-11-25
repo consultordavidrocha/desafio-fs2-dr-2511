@@ -1,5 +1,7 @@
-# Sobe o banco (e, mais adiante, a API com os dados carregados).
-# Uso: docker compose up -d
+# Sobe o banco e a API com os dados carregados.
+# Uso: docker compose up -d --build
+#   API:     http://localhost:8888  (Swagger em /docs)
+#   Postgres: localhost:5434
 services:
   db:
     image: postgres:16-alpine
@@ -20,6 +22,26 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  api:
+    build: ./api
+    container_name: juscash-api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://juscash:juscash@db:5432/juscash?schema=public
+      # Segredo só para rodar localmente; em produção vem do ambiente de deploy.
+      JWT_SECRET: ${JWT_SECRET:-segredo-local-do-docker-compose-nao-usar-em-producao}
+      JWT_EXPIRES_IN: 1d
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3099}
+      PORT: 8888
+      SEED_DATA_DIR: /app/dados
+    ports:
+      - "${API_HOST_PORT:-8888}:8888"
+    volumes:
+      # Dados do case (comunicacoes.json, tribunais.json) lidos pelo seed.
+      - ./dados:/app/dados:ro
 
 volumes:
   db-data:
