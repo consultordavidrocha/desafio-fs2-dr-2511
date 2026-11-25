@@ -38,6 +38,8 @@
 | Usou `@Validate` com uma função (API inexistente no class-validator) | Revisão do código antes de rodar | Regra `dataInicio <= dataFim` movida para o serviço, com teste |
 | Exemplo errado de "máscara parcial" num teste de CNJ | O próprio teste falharia; revisado antes de rodar | Exemplo corrigido |
 | Tipagens `any` em testes e transformações | ESLint (`no-unsafe-*`) | Funções nomeadas e tipadas |
+| Code splitting das rotas quebrou o dev server ("React duplicado": o Vite reotimizou dependências no meio da sessão) | Screenshot automatizado mostrou a tela de erro em vez do login | `optimizeDeps.include` com as dependências das páginas lazy |
+| Cadastro mostrava "Mínimo de 8 caracteres" junto com "As senhas não coincidem" | Comparação lado a lado do screenshot com o render do Figma | Texto de apoio some no estado de senhas diferentes, como no Figma |
 
 ## Como validei
 
@@ -47,6 +49,10 @@
 - **Lint e build** a cada etapa, sem avisos.
 - **Execução real**: `docker compose up` do zero, com cadastro, login e consultas via `curl`,
   e o seed rodado duas vezes para comprovar a idempotência.
+- **Fidelidade ao Figma**: telas renderizadas pela API do Figma e comparadas lado a lado com
+  screenshots do front (Playwright + Chrome) nos 5 tamanhos do protótipo.
+- **Fluxo do front contra a API real**: script automatizado cobrindo rota protegida, cadastro,
+  sessão após recarregar, logout, e-mail duplicado, senha errada e mostrar/ocultar senha.
 - **Leitura do código** gerado antes de cada commit; o que eu não conseguia explicar não entrava.
 
 ## O que eu ensinaria ao time
