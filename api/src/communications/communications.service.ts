@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { parseDateOnly } from '../common/validators/is-date-only.validator';
 import { PrismaService } from '../prisma/prisma.service';
@@ -6,7 +10,11 @@ import {
   communicationSelect,
   toCommunicationDto,
 } from './communication.mapper';
-import type { CommunicationPageDto } from './dto/communication.dto';
+import type {
+  CommunicationPageDto,
+  CommunicationSummaryDto,
+} from './dto/communication.dto';
+import { summarize } from './summary/summarizer';
 import type { ListCommunicationsQuery } from './dto/list-communications.query';
 
 @Injectable()
@@ -42,6 +50,18 @@ export class CommunicationsService {
         totalPages: Math.ceil(total / pageSize),
       },
     };
+  }
+
+  /** Resumo do conteúdo de uma comunicação (bônus). Inexistente → 404. */
+  async summarize(id: number): Promise<CommunicationSummaryDto> {
+    const communication = await this.prisma.communication.findUnique({
+      where: { id },
+      select: { content: true },
+    });
+    if (!communication) {
+      throw new NotFoundException('Comunicação não encontrada.');
+    }
+    return summarize(communication.content);
   }
 
   private buildWhere(

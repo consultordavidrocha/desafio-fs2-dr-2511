@@ -182,4 +182,35 @@ describe('Comunicações e tribunais (e2e)', () => {
       expect((await list(query)).status).toBe(400);
     });
   });
+
+  describe('POST /comunicacoes/:id/resumo (bônus)', () => {
+    const summarize = (id: string | number, auth = true) => {
+      const req = request(app.getHttpServer()).post(
+        `/comunicacoes/${id}/resumo`,
+      );
+      return auth ? req.set('Authorization', `Bearer ${token}`) : req;
+    };
+
+    it('devolve o resumo e os destaques (200)', async () => {
+      const res = await summarize(1);
+
+      expect(res.status).toBe(200);
+      expect(res.body).toEqual({
+        highlights: [],
+        summary: 'Conteúdo de teste.',
+      });
+    });
+
+    it('responde 404 para comunicação inexistente', async () => {
+      expect((await summarize(999999)).status).toBe(404);
+    });
+
+    it('responde 400 para id não numérico', async () => {
+      expect((await summarize('abc')).status).toBe(400);
+    });
+
+    it('responde 401 sem token', async () => {
+      expect((await summarize(1, false)).status).toBe(401);
+    });
+  });
 });

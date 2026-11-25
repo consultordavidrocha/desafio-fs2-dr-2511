@@ -74,3 +74,16 @@ export class CommunicationPageDto {
   @ApiProperty({ type: PaginationMetaDto })
   meta!: PaginationMetaDto;
 }
+
+export class CommunicationSummaryDto {
+  @ApiProperty({
+    example: ['Prazo: 15 dias'],
+    description: 'Destaques objetivos encontrados no texto',
+  })
+  highlights!: string[];
+
+  @ApiProperty({
+    description: 'Frases mais relevantes da comunicação (resumo extrativo)',
+  })
+  summary!: string;
+}
