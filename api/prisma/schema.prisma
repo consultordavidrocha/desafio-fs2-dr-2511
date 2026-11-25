@@ -1,0 +1,89 @@
+// JusCash Comunicações — modelo de dados.
+//
+// Os dados de origem (dados/comunicacoes.json) seguem o formato da API pública
+// de comunicações processuais do CNJ. O mapeamento desse formato para este
+// modelo fica em prisma/seed.
+//
+// Nomenclatura: modelos/campos em inglês (camelCase), tabelas/colunas em snake_case.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String   @db.VarChar(120)
+  /// Sempre em minúsculas (normalizado pela API antes de gravar).
+  email        String   @unique @db.VarChar(254)
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@map("users")
+}
+
+/// Tribunal, identificado pela sigla (ex.: TJSP).
+model Court {
+  acronym        String          @id @db.VarChar(20)
+  name           String          @db.VarChar(200)
+  lawsuits       Lawsuit[]
+  communications Communication[]
+
+  @@map("courts")
+}
+
+/// Processo, identificado pelo número CNJ sem máscara (20 dígitos).
+model Lawsuit {
+  number         String          @id @db.Char(20)
+  /// Classe processual (ex.: "Procedimento comum").
+  className      String?         @map("class_name") @db.VarChar(200)
+  courtAcronym   String          @map("court_acronym") @db.VarChar(20)
+  court          Court           @relation(fields: [courtAcronym], references: [acronym])
+  communications Communication[]
+
+  @@index([courtAcronym])
+  @@map("lawsuits")
+}
+
+/// Comunicação processual: intimação, citação, edital...
+model Communication {
+  /// Mantém o id de origem: o seed fica idempotente (upsert por id).
+  id               Int         @id
+  lawsuitNumber    String      @map("lawsuit_number") @db.Char(20)
+  lawsuit          Lawsuit     @relation(fields: [lawsuitNumber], references: [number])
+  courtAcronym     String      @map("court_acronym") @db.VarChar(20)
+  court            Court       @relation(fields: [courtAcronym], references: [acronym])
+  /// Data de disponibilização no Diário de Justiça Eletrônico Nacional (DJEN).
+  availabilityDate DateTime    @map("availability_date") @db.Date
+  /// Tipo da comunicação (ex.: "Intimação", "Citação", "Edital").
+  type             String      @db.VarChar(100)
+  documentType     String?     @map("document_type") @db.VarChar(100)
+  /// Órgão emissor (ex.: "1ª Vara Cível de Campinas").
+  courtUnit        String?     @map("court_unit") @db.VarChar(300)
+  content          String
+  link             String?
+  recipients       Recipient[]
+
+  // Cobrem os filtros de GET /comunicacoes já na ordem da listagem (mais recente primeiro).
+  @@index([availabilityDate(sort: Desc), id(sort: Desc)])
+  @@index([courtAcronym, availabilityDate(sort: Desc)])
+  @@index([lawsuitNumber, availabilityDate(sort: Desc)])
+  @@map("communications")
+}
+
+/// Destinatário da comunicação.
+model Recipient {
+  id              Int           @id @default(autoincrement())
+  communicationId Int           @map("communication_id")
+  communication   Communication @relation(fields: [communicationId], references: [id], onDelete: Cascade)
+  name            String        @db.VarChar(300)
+  /// Polo processual (ex.: "A" ativo / "P" passivo).
+  side            String?       @db.VarChar(20)
+
+  @@index([communicationId])
+  @@map("recipients")
+}

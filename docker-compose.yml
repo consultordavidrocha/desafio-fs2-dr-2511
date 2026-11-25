@@ -1,0 +1,25 @@
+# Sobe o banco (e, mais adiante, a API com os dados carregados).
+# Uso: docker compose up -d
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: juscash-db
+    environment:
+      POSTGRES_USER: juscash
+      POSTGRES_PASSWORD: juscash
+      POSTGRES_DB: juscash
+    ports:
+      # Porta do host configurável (padrão 5434) para não conflitar com outro Postgres local.
+      - "${DB_HOST_PORT:-5434}:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      # Cria o banco usado pelos testes e2e (só roda na primeira inicialização).
+      - ./api/docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U juscash -d juscash"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  db-data:
