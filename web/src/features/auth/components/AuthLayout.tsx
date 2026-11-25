@@ -38,7 +38,8 @@ export function AuthLayout({ children }: { children: ReactNode }) {
         </header>
 
         <div className="flex w-full flex-col items-center gap-12 px-6 lg:px-0">
-          <section className="w-full rounded-lg border border-border bg-surface p-6 shadow-card lg:max-w-[460px]">
+          {/* p-[23px]: borda interna do Figma (1px de borda + 23px = 24px). */}
+          <section className="w-full rounded-lg border border-border bg-surface p-[23px] shadow-card lg:max-w-[460px]">
             {children}
           </section>
           <footer className="w-full text-center text-muted lg:max-w-[460px]">
