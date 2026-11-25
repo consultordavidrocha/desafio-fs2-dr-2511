@@ -31,3 +31,6 @@ venv/
 Thumbs.db
 *.log
 !.env.test
+
+# Notas pessoais de preparação para a entrevista (não versionar)
+NOTAS-DEFESA.md
