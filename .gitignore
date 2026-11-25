@@ -1,0 +1,32 @@
+# Material do case (não versionar)
+Case Juscash*.pdf
+
+# Node
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+.vite/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.log
