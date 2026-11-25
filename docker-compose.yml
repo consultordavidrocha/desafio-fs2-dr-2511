@@ -9,8 +9,8 @@ services:
       POSTGRES_PASSWORD: juscash
       POSTGRES_DB: juscash
     ports:
-      # Porta do host configurável (padrão 8888) para não conflitar com outro Postgres local.
-      - "${DB_HOST_PORT:-8888}:5432"
+      # Porta do host configurável (padrão 5434) para não conflitar com outro Postgres local.
+      - "${DB_HOST_PORT:-5434}:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
       # Cria o banco usado pelos testes e2e (só roda na primeira inicialização).
