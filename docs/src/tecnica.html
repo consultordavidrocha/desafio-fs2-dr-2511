@@ -297,6 +297,19 @@ npm run start:dev</pre>
   <p>Front: <code>VITE_API_URL</code> (URL da API, sem barra no final).</p>
   <h3>Portas</h3>
   <p>API 8888 (<code>API_HOST_PORT</code>), front 3099, Postgres 5434 (<code>DB_HOST_PORT</code>).</p>
+
+  <h3>Produção</h3>
+  <table>
+    <tr><th>Peça</th><th>Plataforma</th><th>URL / região</th></tr>
+    <tr><td>Front</td><td>Vercel (build do Vite, SPA com rewrite para <code>index.html</code> — <code>web/vercel.json</code>)</td><td><code>https://desafio-fs2-dr-2511.vercel.app</code></td></tr>
+    <tr><td>API</td><td>Render (Docker, <code>render.yaml</code>; <code>JWT_SECRET</code> gerado pelo Render; health check <code>/health</code>)</td><td><code>https://juscash-api-3xep.onrender.com</code> · Virginia</td></tr>
+    <tr><td>Banco</td><td>Neon (Postgres 16 serverless, conexão direta, branch <code>production</code>)</td><td>AWS us-east-1 (Virginia)</td></tr>
+  </table>
+  <p>API e banco ficam na mesma região: cada requisição faz várias consultas em sequência, e a
+    distância entre API e banco é o que mais pesa na latência. No plano gratuito, a API "dorme"
+    após ~15 min sem uso (primeiro acesso em ~50 s) e o banco suspende o processamento quando
+    ocioso (religa na primeira consulta). Migrations foram validadas antes num branch temporário
+    do Neon; a cada deploy, o container aplica migrations pendentes e roda o seed idempotente.</p>
 </section>
 
 <section class="chapter">
