@@ -9,6 +9,12 @@ services:
     plan: free
     region: virginia # mesma região do banco no Neon (AWS us-east-1)
     healthCheckPath: /health
+    # Só reconstrói quando a API ou os dados mudam (commits de docs/front não reiniciam a API).
+    buildFilter:
+      paths:
+        - api/**
+        - dados/**
+        - .dockerignore
     envVars:
       - key: DATABASE_URL
         sync: false # postgresql://...neon.tech/...?sslmode=require
