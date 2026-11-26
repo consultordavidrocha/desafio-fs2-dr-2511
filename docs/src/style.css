@@ -1,0 +1,64 @@
+/* Estilo de impressão dos documentos (gerados em PDF pelo Chrome headless). */
+@page {
+  size: A4;
+  margin: 18mm 16mm 18mm 16mm;
+}
+
+:root {
+  --ink: #262626;
+  --muted: #6d6d6e;
+  --primary: #0d4897;
+  --border: #d4d4d4;
+  --surface: #fafafa;
+  --danger: #d2190b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cover {
+  height: 240mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  page-break-after: always;
+}
+.cover .brand { color: var(--primary); font-weight: 700; font-size: 14pt; letter-spacing: .02em; }
+.cover h1 { font-size: 30pt; margin: 8mm 0 4mm; line-height: 1.1; }
+.cover p { color: var(--muted); font-size: 12pt; margin: 0; }
+.cover .meta { margin-top: 16mm; font-size: 10pt; }
+
+h1 { font-size: 18pt; color: var(--primary); margin: 0 0 4mm; page-break-after: avoid; }
+h2 { font-size: 14pt; margin: 8mm 0 3mm; border-bottom: 1px solid var(--border); padding-bottom: 1.5mm; page-break-after: avoid; }
+h3 { font-size: 11.5pt; margin: 5mm 0 2mm; page-break-after: avoid; }
+p, li { margin: 0 0 2mm; }
+ul, ol { padding-left: 6mm; margin: 0 0 3mm; }
+
+.chapter { page-break-before: always; }
+
+figure { margin: 3mm 0 5mm; page-break-inside: avoid; }
+figure img { width: 100%; border: 1px solid var(--border); border-radius: 6px; }
+figure.narrow img { width: 55mm; }
+figcaption { color: var(--muted); font-size: 9pt; margin-top: 1.5mm; }
+
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 5mm; font-size: 9.5pt; page-break-inside: auto; }
+tr { page-break-inside: avoid; }
+th, td { border: 1px solid var(--border); padding: 1.6mm 2.2mm; text-align: left; vertical-align: top; }
+th { background: var(--surface); }
+
+code, pre { font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 8.8pt; }
+code { background: #f2f2f2; padding: 0 1mm; border-radius: 3px; }
+pre { background: #f6f6f6; border: 1px solid var(--border); border-radius: 6px; padding: 3mm; white-space: pre-wrap; page-break-inside: avoid; }
+
+.tip { border-left: 3px solid var(--primary); background: #f1f5fb; padding: 2.5mm 3.5mm; margin: 3mm 0 4mm; border-radius: 0 6px 6px 0; }
+.warn { border-left: 3px solid var(--danger); background: #fdf3f2; padding: 2.5mm 3.5mm; margin: 3mm 0 4mm; border-radius: 0 6px 6px 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; align-items: start; }
+.toc li { margin-bottom: 1mm; }
+.diagram { width: 100%; page-break-inside: avoid; }

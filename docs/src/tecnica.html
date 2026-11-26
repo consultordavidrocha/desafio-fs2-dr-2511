@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>JusCash Comunicações — Documentação técnica</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<section class="cover">
+  <div class="brand">JusCash</div>
+  <h1>Comunicações<br />Documentação técnica</h1>
+  <p>Arquitetura, rotas da API, estrutura do banco de dados, dependências e configuração.</p>
+  <div class="meta">Versão 1.0 · novembro de 2026 · Case FS2</div>
+</section>
+
+<section>
+  <h1>Sumário</h1>
+  <ol class="toc">
+    <li>Visão geral e arquitetura</li>
+    <li>Rotas da API</li>
+    <li>Estrutura do banco de dados</li>
+    <li>Importação dos dados (seed)</li>
+    <li>Dependências</li>
+    <li>Configuração e execução</li>
+    <li>Testes</li>
+    <li>Segurança</li>
+  </ol>
+
+  <h2>1. Visão geral e arquitetura</h2>
+  <p>Monorepo com duas aplicações independentes que conversam por HTTP/JSON:</p>
+  <table>
+    <tr><th>Aplicação</th><th>Responsabilidade</th><th>Stack</th></tr>
+    <tr><td><code>api/</code></td><td>Autenticação, consulta de comunicações, processos e resumo</td>
+      <td>Node.js 24, NestJS 11, TypeScript, Prisma 6, PostgreSQL 16</td></tr>
+    <tr><td><code>web/</code></td><td>Interface (login, cadastro, comunicações, processo)</td>
+      <td>React 19, TypeScript, Vite 8, Tailwind CSS 4, React Router 8, TanStack Query</td></tr>
+  </table>
+
+  <svg class="diagram" viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Segoe UI, sans-serif" font-size="12">
+    <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0d4897" /></marker></defs>
+    <rect x="10" y="30" width="150" height="60" rx="8" fill="#f1f5fb" stroke="#0d4897" />
+    <text x="85" y="56" text-anchor="middle" font-weight="700">Navegador</text>
+    <text x="85" y="74" text-anchor="middle" fill="#6d6d6e">web (React) · :3099</text>
+    <rect x="270" y="30" width="160" height="60" rx="8" fill="#f1f5fb" stroke="#0d4897" />
+    <text x="350" y="56" text-anchor="middle" font-weight="700">API (NestJS)</text>
+    <text x="350" y="74" text-anchor="middle" fill="#6d6d6e">:8888 · Swagger /docs</text>
+    <rect x="540" y="30" width="150" height="60" rx="8" fill="#f1f5fb" stroke="#0d4897" />
+    <text x="615" y="56" text-anchor="middle" font-weight="700">PostgreSQL 16</text>
+    <text x="615" y="74" text-anchor="middle" fill="#6d6d6e">via Prisma · :5434</text>
+    <line x1="160" y1="60" x2="266" y2="60" stroke="#0d4897" stroke-width="1.5" marker-end="url(#arrow)" />
+    <text x="213" y="50" text-anchor="middle" fill="#6d6d6e" font-size="10">JSON · JWT</text>
+    <line x1="430" y1="60" x2="536" y2="60" stroke="#0d4897" stroke-width="1.5" marker-end="url(#arrow)" />
+    <text x="483" y="50" text-anchor="middle" fill="#6d6d6e" font-size="10">SQL</text>
+  </svg>
+
+  <h3>Módulos da API</h3>
+  <table>
+    <tr><th>Módulo</th><th>Conteúdo</th></tr>
+    <tr><td><code>auth</code></td><td>Cadastro, login, guard JWT global, <code>GET /auth/me</code></td></tr>
+    <tr><td><code>courts</code></td><td><code>GET /tribunais</code></td></tr>
+    <tr><td><code>communications</code></td><td><code>GET /comunicacoes</code> (filtros e paginação), resumo (<code>summary/</code>)</td></tr>
+    <tr><td><code>lawsuits</code></td><td><code>GET /processos/:numero</code>, detecção de trânsito em julgado</td></tr>
+    <tr><td><code>database/seed</code></td><td>Importação dos JSONs (mapper do formato CNJ)</td></tr>
+    <tr><td><code>common</code>, <code>config</code></td><td>Utilitários CNJ, validadores, validação de variáveis de ambiente</td></tr>
+  </table>
+</section>
+
+<section class="chapter">
+  <h2>2. Rotas da API</h2>
+  <p>A especificação OpenAPI completa está disponível em <strong><code>/docs</code></strong> (Swagger UI
+    interativo) e em <code>/docs-json</code>; uma cópia acompanha este documento em
+    <code>docs/openapi.json</code>. Rotas marcadas <em>Bearer</em> exigem o cabeçalho
+    <code>Authorization: Bearer &lt;accessToken&gt;</code>.</p>
+  <table>
+    <tr><th>Método e rota</th><th>Auth</th><th>Descrição</th><th>Status</th></tr>
+    <tr><td><code>POST /auth/cadastro</code></td><td>pública</td><td>Cria a conta</td><td>201 · 400 · 409</td></tr>
+    <tr><td><code>POST /auth/login</code></td><td>pública</td><td>Devolve <code>{ accessToken }</code></td><td>200 · 400 · 401</td></tr>
+    <tr><td><code>GET /auth/me</code></td><td>Bearer</td><td>Usuário logado</td><td>200 · 401</td></tr>
+    <tr><td><code>GET /tribunais</code></td><td>Bearer</td><td>Tribunais em ordem de sigla</td><td>200 · 401</td></tr>
+    <tr><td><code>GET /comunicacoes</code></td><td>Bearer</td><td>Lista paginada com filtros</td><td>200 · 400 · 401</td></tr>
+    <tr><td><code>GET /processos/:numero</code></td><td>Bearer</td><td>Processo e comunicações (bônus)</td><td>200 · 400 · 401 · 404</td></tr>
+    <tr><td><code>POST /comunicacoes/:id/resumo</code></td><td>Bearer</td><td>Resumo do conteúdo (bônus)</td><td>200 · 400 · 401 · 404</td></tr>
+    <tr><td><code>GET /health</code></td><td>pública</td><td>API e banco no ar</td><td>200</td></tr>
+  </table>
+
+  <h3>POST /auth/cadastro</h3>
+  <pre>{ "name": "Amélia Macedo", "email": "amelia@exemplo.com", "password": "senhaSegura123" }
+→ 201 { "id": "uuid", "name": "Amélia Macedo", "email": "amelia@exemplo.com" }</pre>
+  <p>Nome de 2 a 120 caracteres; e-mail válido, único e gravado em minúsculas; senha de 8 a 72
+    caracteres, guardada com hash bcrypt. E-mail já existente → 409.</p>
+
+  <h3>POST /auth/login</h3>
+  <pre>{ "email": "amelia@exemplo.com", "password": "senhaSegura123" }
+→ 200 { "accessToken": "&lt;JWT&gt;" }</pre>
+  <p>Credenciais erradas → 401 com a mesma mensagem para e-mail inexistente e senha errada. O JWT
+    (HS256) contém <code>sub</code>, <code>name</code> e <code>email</code> e expira em
+    <code>JWT_EXPIRES_IN</code> (padrão 1 dia).</p>
+
+  <h3>GET /comunicacoes</h3>
+  <table>
+    <tr><th>Parâmetro</th><th>Regra</th></tr>
+    <tr><td><code>numeroProcesso</code></td><td>Número CNJ com ou sem máscara; normalizado para 20 dígitos; inválido → 400</td></tr>
+    <tr><td><code>tribunal</code></td><td>Sigla, sem diferenciar maiúsculas</td></tr>
+    <tr><td><code>dataInicio</code>, <code>dataFim</code></td><td><code>YYYY-MM-DD</code>, inclusivos; data inexistente ou início &gt; fim → 400</td></tr>
+    <tr><td><code>page</code>, <code>pageSize</code></td><td>Padrão 1 e 10; <code>pageSize</code> máximo 50 (acima → 400)</td></tr>
+  </table>
+  <p>Ordem <code>availability_date DESC, id DESC</code>: o <code>id</code> desempata comunicações do
+    mesmo dia e mantém a paginação estável. Parâmetro vazio equivale a ausente; parâmetro
+    desconhecido → 400.</p>
+  <pre>→ 200 {
+  "data": [{
+    "id": 101, "lawsuitNumber": "1234567-89.2024.8.26.0100", "lawsuitClass": "Procedimento comum",
+    "court": "TJSP", "availabilityDate": "2025-08-15", "type": "Intimação",
+    "documentType": null, "courtUnit": "1ª Vara Cível", "content": "…", "link": null,
+    "recipients": [{ "name": "Amélia Macedo", "side": "A" }]
+  }],
+  "meta": { "page": 1, "pageSize": 10, "total": 1, "totalPages": 1 }
+}</pre>
+
+  <h3>GET /processos/:numero (bônus)</h3>
+  <p>Aceita o número com ou sem máscara e a mesma paginação de <code>/comunicacoes</code>. Devolve o
+    processo (classe, tribunal, destinatários sem repetição, total de comunicações e
+    <code>finalJudgment</code>) e as comunicações, cada uma com <code>mentionsFinalJudgment</code>.
+    <code>finalJudgment</code> considera <em>todas</em> as comunicações do processo, não apenas a página.</p>
+
+  <h3>POST /comunicacoes/:id/resumo (bônus)</h3>
+  <pre>→ 200 { "highlights": ["Prazo: 15 dias"], "summary": "Fica a parte intimada para, no prazo de 15 …" }</pre>
+  <p>Resumo <strong>extrativo</strong>, sem LLM: divide o texto em frases (sem quebrar em abreviações
+    como “art.”), pontua por termos jurídicos (prazo, audiência, sentença, intimação…) e devolve as
+    três mais relevantes na ordem original, mais destaques extraídos por expressões regulares (prazo,
+    audiência, trânsito em julgado). Motivos: não envia dados de processos a terceiros, não depende
+    de chave ou custo externo e é determinístico.</p>
+
+  <h3>Formato de erro</h3>
+  <pre>{ "statusCode": 400, "message": "pageSize deve ser no máximo 50.", "error": "Bad Request" }</pre>
+  <p>Erros de validação podem trazer <code>message</code> como lista de mensagens. Todas em pt-BR.</p>
+</section>
+
+<section class="chapter">
+  <h2>3. Estrutura do banco de dados</h2>
+  <p>PostgreSQL 16, esquema gerenciado pelo Prisma (<code>api/prisma/schema.prisma</code>) com
+    migrations versionadas em <code>api/prisma/migrations/</code>. Tabelas e colunas em
+    <code>snake_case</code>; modelos do Prisma em inglês.</p>
+
+  <svg class="diagram" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Segoe UI, sans-serif" font-size="11">
+    <style>.t{font-weight:700;fill:#fff}.k{fill:#0d4897;font-weight:700}.c{fill:#262626}.m{fill:#6d6d6e}</style>
+    <!-- courts -->
+    <rect x="20" y="20" width="200" height="80" rx="6" fill="#fff" stroke="#d4d4d4" />
+    <rect x="20" y="20" width="200" height="24" rx="6" fill="#0d4897" /><text x="32" y="36" class="t">courts</text>
+    <text x="32" y="62" class="k">PK acronym</text><text x="210" y="62" text-anchor="end" class="m">varchar(20)</text>
+    <text x="32" y="84" class="c">name</text><text x="210" y="84" text-anchor="end" class="m">varchar(200)</text>
+    <!-- lawsuits -->
+    <rect x="20" y="170" width="200" height="104" rx="6" fill="#fff" stroke="#d4d4d4" />
+    <rect x="20" y="170" width="200" height="24" rx="6" fill="#0d4897" /><text x="32" y="186" class="t">lawsuits</text>
+    <text x="32" y="212" class="k">PK number</text><text x="210" y="212" text-anchor="end" class="m">char(20)</text>
+    <text x="32" y="234" class="c">class_name</text><text x="210" y="234" text-anchor="end" class="m">varchar(200)?</text>
+    <text x="32" y="256" class="c">FK court_acronym</text><text x="210" y="256" text-anchor="end" class="m">varchar(20)</text>
+    <!-- communications -->
+    <rect x="290" y="110" width="220" height="236" rx="6" fill="#fff" stroke="#d4d4d4" />
+    <rect x="290" y="110" width="220" height="24" rx="6" fill="#0d4897" /><text x="302" y="126" class="t">communications</text>
+    <text x="302" y="152" class="k">PK id</text><text x="500" y="152" text-anchor="end" class="m">integer</text>
+    <text x="302" y="174" class="c">FK lawsuit_number</text><text x="500" y="174" text-anchor="end" class="m">char(20)</text>
+    <text x="302" y="196" class="c">FK court_acronym</text><text x="500" y="196" text-anchor="end" class="m">varchar(20)</text>
+    <text x="302" y="218" class="c">availability_date</text><text x="500" y="218" text-anchor="end" class="m">date</text>
+    <text x="302" y="240" class="c">type</text><text x="500" y="240" text-anchor="end" class="m">varchar(100)</text>
+    <text x="302" y="262" class="c">document_type</text><text x="500" y="262" text-anchor="end" class="m">varchar(100)?</text>
+    <text x="302" y="284" class="c">court_unit</text><text x="500" y="284" text-anchor="end" class="m">varchar(300)?</text>
+    <text x="302" y="306" class="c">content</text><text x="500" y="306" text-anchor="end" class="m">text</text>
+    <text x="302" y="328" class="c">link</text><text x="500" y="328" text-anchor="end" class="m">text?</text>
+    <!-- recipients -->
+    <rect x="560" y="170" width="150" height="126" rx="6" fill="#fff" stroke="#d4d4d4" />
+    <rect x="560" y="170" width="150" height="24" rx="6" fill="#0d4897" /><text x="572" y="186" class="t">recipients</text>
+    <text x="572" y="212" class="k">PK id</text><text x="700" y="212" text-anchor="end" class="m">serial</text>
+    <text x="572" y="234" class="c">FK communication_id</text>
+    <text x="572" y="256" class="c">name</text><text x="700" y="256" text-anchor="end" class="m">varchar(300)</text>
+    <text x="572" y="278" class="c">side</text><text x="700" y="278" text-anchor="end" class="m">varchar(20)?</text>
+    <!-- users -->
+    <rect x="20" y="320" width="200" height="92" rx="6" fill="#fff" stroke="#d4d4d4" />
+    <rect x="20" y="320" width="200" height="24" rx="6" fill="#6d6d6e" /><text x="32" y="336" class="t">users</text>
+    <text x="32" y="360" class="k">PK id</text><text x="210" y="360" text-anchor="end" class="m">uuid</text>
+    <text x="32" y="380" class="c">name · email (único)</text>
+    <text x="32" y="400" class="c">password_hash · created_at</text>
+    <!-- relações -->
+    <g stroke="#0d4897" stroke-width="1.4" fill="none">
+      <path d="M120 100 V170" /><text x="128" y="140" fill="#6d6d6e" stroke="none">1 : N</text>
+      <path d="M220 60 H255 V196 H290" /><text x="232" y="128" fill="#6d6d6e" stroke="none">1 : N</text>
+      <path d="M220 212 H260 V174 H290" />
+      <path d="M510 234 H560" /><text x="516" y="226" fill="#6d6d6e" stroke="none">1 : N</text>
+    </g>
+  </svg>
+
+  <table>
+    <tr><th>Tabela</th><th>Descrição e decisões</th></tr>
+    <tr><td><code>users</code></td><td>Contas de acesso. <code>email</code> único e sempre em minúsculas; a senha só existe como hash bcrypt.
+      Não se relaciona com os dados processuais (todos os usuários consultam a mesma base).</td></tr>
+    <tr><td><code>courts</code></td><td>Tribunais, identificados pela sigla (chave natural, estável e curta).</td></tr>
+    <tr><td><code>lawsuits</code></td><td>Processos, identificados pelo número CNJ <strong>só com dígitos</strong> (20 caracteres); a máscara é aplicada na saída. Guarda a classe processual.</td></tr>
+    <tr><td><code>communications</code></td><td>Comunicações. Mantém o <code>id</code> de origem, o que torna o seed idempotente. <code>availability_date</code> é <code>DATE</code> (sem hora), evitando problemas de fuso nos filtros. <code>court_acronym</code> é repetido (desnormalizado) para filtrar por tribunal sem junção.</td></tr>
+    <tr><td><code>recipients</code></td><td>Destinatários de cada comunicação (nome e polo). Removidos em cascata com a comunicação.</td></tr>
+  </table>
+
+  <h3>Índices</h3>
+  <table>
+    <tr><th>Índice</th><th>Atende a</th></tr>
+    <tr><td><code>communications (availability_date DESC, id DESC)</code></td><td>Listagem sem filtro, já na ordem da resposta, e filtro por período</td></tr>
+    <tr><td><code>communications (court_acronym, availability_date DESC)</code></td><td>Filtro por tribunal (com ou sem período)</td></tr>
+    <tr><td><code>communications (lawsuit_number, availability_date DESC)</code></td><td>Filtro por número e tela do processo</td></tr>
+    <tr><td><code>recipients (communication_id)</code></td><td>Carregar os destinatários de cada comunicação</td></tr>
+    <tr><td><code>users (email)</code> único</td><td>Login e unicidade do cadastro</td></tr>
+  </table>
+</section>
+
+<section class="chapter">
+  <h2>4. Importação dos dados (seed)</h2>
+  <p><code>api/src/database/seed/seed.ts</code> lê <code>dados/tribunais.json</code> e
+    <code>dados/comunicacoes.json</code> (formato inspirado na API pública de comunicações do CNJ, como
+    lista ou <code>{ items: [...] }</code>) e grava no banco. Roda automaticamente a cada
+    <code>docker compose up</code>.</p>
+  <table>
+    <tr><th>Origem (CNJ)</th><th>Destino</th><th>Tratamento</th></tr>
+    <tr><td><code>id</code></td><td><code>communications.id</code></td><td>Obrigatório, inteiro positivo</td></tr>
+    <tr><td><code>numero_processo</code> / <code>numeroprocessocommascara</code></td><td><code>lawsuits.number</code></td><td>Com ou sem máscara → 20 dígitos</td></tr>
+    <tr><td><code>siglaTribunal</code></td><td><code>court_acronym</code></td><td>Maiúsculas; tribunal ausente é criado</td></tr>
+    <tr><td><code>data_disponibilizacao</code></td><td><code>availability_date</code></td><td>Aceita data com hora; data inexistente é rejeitada</td></tr>
+    <tr><td><code>tipoComunicacao</code>, <code>tipoDocumento</code>, <code>nomeOrgao</code></td><td><code>type</code>, <code>document_type</code>, <code>court_unit</code></td><td>Espaços removidos</td></tr>
+    <tr><td><code>texto</code></td><td><code>content</code></td><td>Obrigatório</td></tr>
+    <tr><td><code>nomeClasse</code></td><td><code>lawsuits.class_name</code></td><td>Opcional</td></tr>
+    <tr><td><code>destinatarios[].nome/polo</code></td><td><code>recipients</code></td><td>Destinatário sem nome é descartado</td></tr>
+  </table>
+  <ul>
+    <li><strong>Idempotente</strong>: o lote substitui as comunicações com os mesmos ids; rodar de novo não duplica.</li>
+    <li><strong>Em lotes de 500</strong>, cada um numa transação.</li>
+    <li><strong>Registros inválidos</strong> são pulados e contados com o motivo no log; ids repetidos ficam com a última ocorrência.</li>
+  </ul>
+</section>
+
+<section class="chapter">
+  <h2>5. Dependências</h2>
+  <h3>API (<code>api/package.json</code>)</h3>
+  <table>
+    <tr><th>Pacote</th><th>Uso</th></tr>
+    <tr><td>@nestjs/core, common, platform-express 11</td><td>Framework HTTP</td></tr>
+    <tr><td>@nestjs/config 4</td><td>Variáveis de ambiente (com validação)</td></tr>
+    <tr><td>@nestjs/jwt 11</td><td>Emissão e verificação do JWT</td></tr>
+    <tr><td>@nestjs/swagger 11</td><td>Documentação OpenAPI em <code>/docs</code></td></tr>
+    <tr><td>prisma / @prisma/client 6</td><td>ORM, migrations</td></tr>
+    <tr><td>class-validator, class-transformer</td><td>Validação dos DTOs</td></tr>
+    <tr><td>bcryptjs</td><td>Hash de senha (JS puro, sem build nativo)</td></tr>
+    <tr><td>jest, supertest (dev)</td><td>Testes unitários e e2e</td></tr>
+  </table>
+  <h3>Front (<code>web/package.json</code>)</h3>
+  <table>
+    <tr><th>Pacote</th><th>Uso</th></tr>
+    <tr><td>react, react-dom 19</td><td>Interface</td></tr>
+    <tr><td>react-router 8</td><td>Rotas, rotas protegidas e carregamento sob demanda</td></tr>
+    <tr><td>@tanstack/react-query 5</td><td>Requisições, cache, retry e estados</td></tr>
+    <tr><td>react-hook-form, zod, @hookform/resolvers</td><td>Formulários e validação</td></tr>
+    <tr><td>tailwindcss 4, @tailwindcss/vite</td><td>Estilos (tokens do Figma)</td></tr>
+    <tr><td>lucide-react</td><td>Ícones</td></tr>
+    <tr><td>@fontsource-variable/inter</td><td>Fonte Inter auto-hospedada</td></tr>
+    <tr><td>vite 8, typescript, oxlint, vitest (dev)</td><td>Build, tipos, lint e testes</td></tr>
+  </table>
+</section>
+
+<section class="chapter">
+  <h2>6. Configuração e execução</h2>
+  <h3>Requisitos</h3>
+  <p>Docker com Docker Compose; Node.js 24+ e npm.</p>
+  <h3>Banco + API com os dados carregados</h3>
+  <pre>docker compose up -d --build
+# API: http://localhost:8888 · Swagger: http://localhost:8888/docs</pre>
+  <h3>Front</h3>
+  <pre>cd web
+cp .env.example .env.local     # VITE_API_URL=http://localhost:8888
+npm install
+npm run dev                    # http://localhost:3099</pre>
+  <h3>API fora do Docker</h3>
+  <pre>docker compose up -d db
+cd api
+cp .env.example .env           # gere um JWT_SECRET (instrução no arquivo)
+npm install
+npx prisma migrate deploy
+npm run seed:dev
+npm run start:dev</pre>
+  <h3>Variáveis de ambiente da API</h3>
+  <table>
+    <tr><th>Variável</th><th>Obrigatória</th><th>Descrição</th></tr>
+    <tr><td><code>DATABASE_URL</code></td><td>sim</td><td>Conexão com o Postgres</td></tr>
+    <tr><td><code>JWT_SECRET</code></td><td>sim</td><td>Segredo do JWT, mínimo 32 caracteres (a API não sobe sem ele)</td></tr>
+    <tr><td><code>JWT_EXPIRES_IN</code></td><td>não</td><td>Validade do token (padrão <code>1d</code>)</td></tr>
+    <tr><td><code>CORS_ORIGIN</code></td><td>não</td><td>Origens liberadas, separadas por vírgula (vazio = qualquer)</td></tr>
+    <tr><td><code>PORT</code></td><td>não</td><td>Porta HTTP (padrão 8888)</td></tr>
+    <tr><td><code>SEED_DATA_DIR</code></td><td>não</td><td>Pasta dos JSONs do seed (padrão <code>../dados</code>)</td></tr>
+    <tr><td><code>RUN_SEED</code></td><td>não</td><td><code>false</code> desliga o seed na subida do container</td></tr>
+  </table>
+  <p>Front: <code>VITE_API_URL</code> (URL da API, sem barra no final).</p>
+  <h3>Portas</h3>
+  <p>API 8888 (<code>API_HOST_PORT</code>), front 3099, Postgres 5434 (<code>DB_HOST_PORT</code>).</p>
+</section>
+
+<section class="chapter">
+  <h2>7. Testes</h2>
+  <table>
+    <tr><th>Suíte</th><th>Comando</th><th>Cobertura</th></tr>
+    <tr><td>API unitários</td><td><code>cd api &amp;&amp; npm test</code></td><td>AuthService, CNJ, mapper do seed, resumidor, trânsito em julgado</td></tr>
+    <tr><td>API e2e</td><td><code>cd api &amp;&amp; npm run test:e2e</code></td><td>Postgres real (<code>juscash_test</code>): status do contrato, filtros, limites inclusivos, paginação estável, processos, resumo</td></tr>
+    <tr><td>Front unitários</td><td><code>cd web &amp;&amp; npm test</code></td><td>Máscara CNJ, calendário, iniciais, paginação</td></tr>
+  </table>
+  <p>Os testes e2e usam um banco separado, criado na inicialização do Postgres do compose, e o
+    arquivo <code>api/.env.test</code> (versionado, sem segredos reais).</p>
+
+  <h2>8. Segurança</h2>
+  <ul>
+    <li>Todas as rotas exigem JWT por padrão (guard global); as públicas são marcadas explicitamente.</li>
+    <li>Senhas com bcrypt; limite de 72 caracteres para não aceitar senha truncada.</li>
+    <li>Login sem enumeração de usuários (mesma mensagem e tempo semelhante para e-mail inexistente).</li>
+    <li>Entrada validada com lista branca de campos (campo desconhecido → 400).</li>
+    <li>Segredos só por variável de ambiente; validação na subida.</li>
+    <li>Container da API roda como usuário sem privilégios.</li>
+    <li>O resumo não envia dados de processos a serviços externos.</li>
+    <li>Front: token em <code>localStorage</code> (trade-off documentado: o contrato devolve o token no corpo do
+      login); sessão encerrada automaticamente em qualquer 401.</li>
+  </ul>
+</section>
+
+</body>
+</html>
