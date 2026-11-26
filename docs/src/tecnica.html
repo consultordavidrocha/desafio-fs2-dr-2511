@@ -317,9 +317,11 @@ npm run start:dev</pre>
     após ~15 min sem uso (primeiro acesso em ~50 s) e o banco suspende o processamento quando
     ocioso (religa na primeira consulta). Migrations foram validadas antes num branch temporário
     do Neon; a cada deploy, o container aplica migrations pendentes e roda o seed idempotente.</p>
-  <p><strong>Keep-alive:</strong> um agendamento no GitHub Actions (<code>.github/workflows/keep-alive.yml</code>)
-    chama <code>GET /live</code> a cada 10 minutos das 07:00 às 23:59 (horário de Brasília), mantendo a API
-    acordada durante o dia sem consultar o banco — o Neon continua suspendendo quando ocioso. Se a API
+  <p><strong>Keep-alive:</strong> um pinger externo (cron-job.org) chama <code>GET /live</code> a cada
+    10 minutos das 07:00 às 23:59 (horário de Brasília), mantendo a API acordada durante o dia sem
+    consultar o banco — o Neon continua suspendendo quando ocioso. Um agendamento no GitHub Actions
+    (<code>.github/workflows/keep-alive.yml</code>) faz o mesmo como reserva; sozinho ele não bastou,
+    porque o agendador do GitHub é "melhor esforço" e chegou a ficar mais de 1 h sem rodar. Se a API
     demorar mais de 5 s, o front avisa que o servidor está ligando.</p>
 </section>
 
