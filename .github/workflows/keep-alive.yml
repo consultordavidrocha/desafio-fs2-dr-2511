@@ -10,13 +10,14 @@
 #
 # Limitações do agendamento do GitHub: pode atrasar alguns minutos em horário de pico
 # (por isso a cada 10 min, com folga até os 15 do Render) e é pausado após 60 dias sem
-# commits no repositório.
+# commits no repositório. Os minutos 7, 17, 27… evitam a virada de hora e os minutos
+# "redondos", em que o agendador do GitHub fica sobrecarregado e chega a descartar execuções.
 name: Keep-alive da API
 
 on:
   schedule:
-    - cron: "*/10 10-23 * * *" # 07:00–20:59 BRT
-    - cron: "*/10 0-2 * * *" #   21:00–23:59 BRT
+    - cron: "7-59/10 10-23 * * *" # 07:00–20:59 BRT
+    - cron: "7-59/10 0-2 * * *" #   21:00–23:59 BRT
   workflow_dispatch: # permite disparar manualmente pela aba Actions
 
 permissions: {}

@@ -216,8 +216,11 @@ eventos do Neon (`suspend_compute` / `start_compute`) num acesso real. Duas miti
 | **Keep-alive** ([`.github/workflows/keep-alive.yml`](.github/workflows/keep-alive.yml)) | GitHub Actions chama `GET /live` a cada 10 min das **07:00 às 23:59** (horário de Brasília); à noite para, para economizar as horas gratuitas. O `/live` **não consulta o banco**: o Neon continua desligando quando ocioso e não gasta a cota de processamento |
 | **Aviso na tela** | Se a API demorar mais de 5 s (login, cadastro, lista ou processo), aparece "Estamos ligando o servidor — … pode levar até 1 minuto", em vez de a tela parecer travada |
 
-Limites: o agendamento do GitHub pode atrasar alguns minutos no pico e é pausado após 60 dias sem
-commits; de madrugada, o primeiro acesso volta a levar ~50 s (com o aviso na tela).
+Limites: o agendamento do GitHub é "melhor esforço". Pode atrasar ou pular execuções, e no dia
+em que foi criado passou mais de 1 h sem rodar. Por isso o cron usa os minutos 7, 17, 27…, longe
+da virada de hora. Ele também é pausado após 60 dias sem commits. Com garantia, o caminho é um
+pinger externo (ex.: cron-job.org) com a mesma janela, ou o plano pago do Render, que não dorme. De
+madrugada, o primeiro acesso volta a levar ~50 s, com o aviso na tela.
 
 ### Front
 
