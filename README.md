@@ -10,7 +10,18 @@ filtrar comunicações, ver o detalhe de um processo e gerar um resumo do conte�
 | Front (`web/`) | React 19 · TypeScript · Vite 8 · Tailwind CSS 4 · React Router 8 · TanStack Query · React Hook Form + Zod |
 | Infra | Docker Compose (Postgres + API com dados carregados) |
 
-> **Links de produção:** _a preencher após o deploy_ (front, API e Swagger).
+### Produção
+
+| | URL |
+|---|---|
+| **Aplicação** | <https://desafio-fs2-dr-2511.vercel.app> |
+| **API** | <https://juscash-api-3xep.onrender.com> |
+| **Swagger** | <https://juscash-api-3xep.onrender.com/docs> |
+| **Kanban** | <https://github.com/users/consultordavidrocha/projects/1> |
+
+> A API está no plano gratuito do Render, que "dorme" após ~15 min sem uso: **o primeiro acesso
+> pode levar ~50 s**. Para não esperar no login, abra antes
+> <https://juscash-api-3xep.onrender.com/health> e aguarde `{"status":"ok"}`.
 
 ---
 
