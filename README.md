@@ -301,7 +301,13 @@ Colunas: **Backlog → A fazer → Em andamento → Em revisão → Concluído**
 
 ## 8. Horas gastas
 
-_A preencher._
+Desenvolvimento com IA como par de programação (ver [AI_USAGE.md](AI_USAGE.md)): as horas
+abaixo incluem leitura do enunciado, decisões, revisão do que foi gerado e validação.
+
+| Data | Horas | Atividades |
+|---|---|---|
+| 25/11/2026 | ~4 h | Leitura do case e do Figma, plano; API completa (auth, filtros, seed, bônus); front (login, cadastro, comunicações, processo, resumo); testes; README; PDFs; preparação do deploy |
+| **Total** | **~4 h** | _atualizado até a entrega_ |
 
 ---
 
