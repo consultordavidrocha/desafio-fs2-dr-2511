@@ -27,21 +27,22 @@ filtrar comunicações, ver o detalhe de um processo e gerar um resumo do conte�
 
 ---
 
+---
+
 ## Sumário
 
-1. [Como rodar](#1-como-rodar)
-2. [Funcionalidades](#2-funcionalidades)
-3. [API — rotas e exemplos](#3-api--rotas-e-exemplos)
-4. [Arquitetura e decisões](#4-arquitetura-e-decisões)
-5. [Testes](#5-testes)
-6. [Fluxo de trabalho (Kanban)](#6-fluxo-de-trabalho-kanban)
-7. [Premissas, bloqueios e o que ficou de fora](#7-premissas-bloqueios-e-o-que-ficou-de-fora)
-8. [Horas gastas](#8-horas-gastas)
-9. [Estrutura do repositório](#9-estrutura-do-repositório)
+1. [Como rodar](#como-rodar)
+2. [Decisões técnicas](#decisões-técnicas)
+3. [Premissas, bloqueios e o que ficou de fora](#premissas-bloqueios-e-o-que-ficou-de-fora)
+4. [Funcionalidades](#funcionalidades)
+5. [API — rotas e exemplos](#api--rotas-e-exemplos)
+6. [Fluxo de trabalho (Kanban)](#fluxo-de-trabalho-kanban)
+7. [Horas gastas](#horas-gastas)
+8. [Estrutura do repositório](#estrutura-do-repositório)
 
 ---
 
-## 1. Como rodar
+## Como rodar
 
 ### Requisitos
 
@@ -58,7 +59,7 @@ filtrar comunicações, ver o detalhe de um processo e gerar um resumo do conte�
 
 As portas fogem das padrão (3000/5432) para não conflitar com outros projetos locais.
 
-### 1.1 Banco + API (Docker) — um comando
+### Banco + API (Docker) — um comando
 
 ```bash
 docker compose up -d --build
@@ -71,7 +72,18 @@ Isso sobe o Postgres, aplica as migrations, **carrega `dados/tribunais.json` e
 - Swagger: <http://localhost:8888/docs>
 - Saúde: <http://localhost:8888/health>
 
-### 1.2 Front
+### Usuário de teste
+
+O seed cria uma conta de demonstração (local e produção):
+
+| E-mail | Senha |
+|---|---|
+| `demo@exemplo.com` | `demo12345` |
+
+Os dados do case são fictícios; a conta pode ser desligada com `SEED_DEMO_USER=false` ou trocada com
+`DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD`.
+
+### Front
 
 ```bash
 cd web
@@ -80,7 +92,7 @@ npm install
 npm run dev                  # http://localhost:3099
 ```
 
-### 1.3 API fora do Docker (desenvolvimento)
+### API fora do Docker (desenvolvimento)
 
 ```bash
 docker compose up -d db      # só o Postgres
@@ -100,103 +112,28 @@ sem ele), `JWT_EXPIRES_IN` (padrão `1d`), `CORS_ORIGIN` (origens separadas por 
 
 **Front** (`web/.env.example`): `VITE_API_URL`.
 
----
+### Testes
 
-## 2. Funcionalidades
-
-| Tela | Rota | Estados implementados |
+| Onde | Comando | O que cobre |
 |---|---|---|
-| Login | `/login` | padrão · erro "E-mail ou senha incorretos…" · carregando · mostrar/ocultar senha |
-| Cadastro | `/cadastro` | padrão · e-mail inválido · senha curta · senhas diferentes · e-mail já cadastrado · carregando |
-| Comunicações (protegida) | `/comunicacoes` | lista · filtros (número, tribunal, período com calendário de 2 meses) · paginação · "Ler mais" · skeleton · vazio · erro · iniciais no avatar |
-| Detalhes do processo (bônus) | `/processos/:numero` | selo "Transitou em julgado" · movimentações · skeleton · não encontrado · erro |
-| Resumo com IA (bônus) | modal | carregando · resumo com destaques · erro |
+| API — unitários | `cd api && npm test` | AuthService, máscara/normalização CNJ, mapper do seed, resumidor, detecção de trânsito em julgado |
+| API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos e resumo |
+| Front — unitários | `cd web && npm test` | máscara CNJ, datas/grade do calendário, iniciais, paginação |
+| Tamanho de arquivo | `node scripts/check-file-size.mjs` | nenhum arquivo de código acima de 500 linhas |
 
-- Sem sessão, rotas protegidas redirecionam para o login (e voltam para a página pedida após entrar).
-- Filtros ficam na URL: link compartilhável, recarregar mantém o estado, botão "voltar" funciona.
-- Responsivo nos 5 tamanhos do Figma (1920, 1024, 768, 430, 360).
+**CI (GitHub Actions):** a cada push na `main` e em todo PR rodam, em paralelo, lint + testes
+unitários + e2e com Postgres 16 + build da API, lint + testes + build do front e a trava de 500
+linhas por arquivo ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
 
----
+Os testes e2e exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
+criado automaticamente e o `api/.env.test` já está versionado (sem segredos reais).
 
-## 3. API — rotas e exemplos
-
-O contrato do case (rotas, parâmetros e status) foi seguido à risca. Documentação interativa
-completa em **`/docs`** (Swagger).
-
-| Método | Rota | Auth | Descrição | Status |
-|---|---|---|---|---|
-| POST | `/auth/cadastro` | pública | Cria a conta | 201 · 400 · 409 |
-| POST | `/auth/login` | pública | Devolve `{ "accessToken": "<JWT>" }` | 200 · 400 · 401 |
-| GET | `/auth/me` | Bearer | Usuário logado (extra: iniciais do avatar) | 200 · 401 |
-| GET | `/tribunais` | Bearer | Lista de tribunais | 200 · 401 |
-| GET | `/comunicacoes` | Bearer | Lista paginada com filtros | 200 · 400 · 401 |
-| GET | `/processos/:numero` | Bearer | (bônus) Processo + comunicações | 200 · 400 · 401 · 404 |
-| POST | `/comunicacoes/:id/resumo` | Bearer | (bônus) Resumo do conteúdo | 200 · 400 · 401 · 404 |
-| GET | `/health` | pública | API e banco no ar | 200 |
-
-### Filtros de `GET /comunicacoes`
-
-| Parâmetro | Regra |
-|---|---|
-| `numeroProcesso` | número CNJ com ou sem máscara (20 dígitos) |
-| `tribunal` | sigla, sem diferenciar maiúsculas (ex.: `TJSP`) |
-| `dataInicio`, `dataFim` | `YYYY-MM-DD`, inclusivos; data inexistente ou início > fim → 400 |
-| `page`, `pageSize` | padrão `1` e `10`; `pageSize` máximo 50 (acima → 400) |
-
-Ordem: da comunicação mais recente para a mais antiga (o `id` desempata o mesmo dia, para a
-paginação não repetir nem pular itens). Parâmetro vazio (`?tribunal=`) equivale a ausente.
-
-### Exemplos
-
-```bash
-API=http://localhost:8888
-
-# Cadastro
-curl -X POST $API/auth/cadastro -H 'Content-Type: application/json' \
-  -d '{"name":"Amélia Macedo","email":"amelia@exemplo.com","password":"senhaSegura123"}'
-# 201 {"id":"…","name":"Amélia Macedo","email":"amelia@exemplo.com"}
-
-# Login
-TOKEN=$(curl -s -X POST $API/auth/login -H 'Content-Type: application/json' \
-  -d '{"email":"amelia@exemplo.com","password":"senhaSegura123"}' | jq -r .accessToken)
-
-# Tribunais
-curl $API/tribunais -H "Authorization: Bearer $TOKEN"
-# [{"acronym":"TJSP","name":"Tribunal de Justiça de São Paulo"}, …]
-
-# Comunicações do TJSP em agosto/2025, página 1
-curl "$API/comunicacoes?tribunal=TJSP&dataInicio=2025-08-01&dataFim=2025-08-31&page=1&pageSize=10" \
-  -H "Authorization: Bearer $TOKEN"
-# Formato da resposta:
-# {"data":[{"id":…,"lawsuitNumber":"NNNNNNN-DD.AAAA.J.TR.OOOO","lawsuitClass":"Procedimento comum",
-#   "court":"TJSP","availabilityDate":"2025-08-15","type":"Intimação","content":"…",
-#   "recipients":[{"name":"…","side":"P"}], …}],
-#  "meta":{"page":1,"pageSize":10,"total":…,"totalPages":…}}
-
-# Por número do processo (com ou sem máscara)
-curl "$API/comunicacoes?numeroProcesso=2458591-85.2024.8.26.0521" -H "Authorization: Bearer $TOKEN"
-
-# Erros do contrato
-curl "$API/comunicacoes?pageSize=51" -H "Authorization: Bearer $TOKEN"   # 400
-curl "$API/comunicacoes"                                                  # 401
-
-# Detalhe do processo (bônus)
-curl "$API/processos/NUMERO_CNJ" -H "Authorization: Bearer $TOKEN"
-# {"lawsuit":{"number":"…","className":"…","court":"TJSP","recipients":[…],
-#   "totalCommunications":2,"finalJudgment":true},
-#  "communications":[{…,"mentionsFinalJudgment":true}], "meta":{…}}
-
-# Resumo (bônus)
-curl -X POST "$API/comunicacoes/ID/resumo" -H "Authorization: Bearer $TOKEN"
-# {"highlights":["Prazo: 15 dias"],"summary":"Fica a parte intimada para, no prazo de 15 …"}
-```
-
-Erros seguem o formato padrão do NestJS: `{ "statusCode": 400, "message": "…", "error": "Bad Request" }`
-(`message` em pt-BR, pronta para exibir).
+> **Windows:** se o projeto for aberto com a letra do drive em minúsculo (`c:\…`), o Vitest pode
+> carregar duas instâncias de si mesmo e falhar com `reading 'config'`. Rode a partir de `C:\…`.
 
 ---
 
-## 4. Arquitetura e decisões
+## Decisões técnicas
 
 ### API
 
@@ -275,65 +212,28 @@ web/src/
 
 ---
 
-## 5. Testes
-
-| Onde | Comando | O que cobre |
-|---|---|---|
-| API — unitários | `cd api && npm test` | AuthService, máscara/normalização CNJ, mapper do seed, resumidor, detecção de trânsito em julgado |
-| API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos e resumo |
-| Front — unitários | `cd web && npm test` | máscara CNJ, datas/grade do calendário, iniciais, paginação |
-| Tamanho de arquivo | `node scripts/check-file-size.mjs` | nenhum arquivo de código acima de 500 linhas |
-
-**CI (GitHub Actions):** a cada push na `main` e em todo PR rodam, em paralelo, lint + testes
-unitários + e2e com Postgres 16 + build da API, lint + testes + build do front e a trava de 500
-linhas por arquivo ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
-
-Os testes e2e exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
-criado automaticamente e o `api/.env.test` já está versionado (sem segredos reais).
-
-> **Windows:** se o projeto for aberto com a letra do drive em minúsculo (`c:\…`), o Vitest pode
-> carregar duas instâncias de si mesmo e falhar com `reading 'config'`. Rode a partir de `C:\…`.
-
----
-
-## 6. Fluxo de trabalho (Kanban)
-
-**Quadro:** <https://github.com/users/consultordavidrocha/projects/1> (GitHub Projects, ligado
-a este repositório; cada cartão é uma issue).
-
-Colunas: **Backlog → A fazer → Em andamento → Em revisão → Concluído**.
-
-| Coluna | Significado |
-|---|---|
-| Backlog | Mapeado, ainda não priorizado — ou bloqueado (label `bloqueado`) |
-| A fazer | Priorizado para a próxima etapa |
-| Em andamento | Em execução (um cartão por vez) |
-| Em revisão | Pronto, passando por testes, lint e comparação com o Figma |
-| Concluído | Validado e commitado; a issue é fechada |
-
-1. Cada entrega do enunciado vira um cartão/issue com labels de área (`api`, `web`, `docs`,
-   `infra`, `parte-2`, `bonus`), por exemplo "API: GET /tribunais e GET /comunicacoes" ou "P5".
-2. Prioridade pelos pesos da avaliação e pelas dependências: obrigatórios antes de bônus.
-3. Um cartão por vez em "Em andamento"; ele só vai para "Concluído" com testes passando,
-   lint limpo e (no front) comparação com o Figma.
-4. Commits pequenos e temáticos (`feat(api): …`, `feat(web): …`, `docs: …`), um ou mais por
-   cartão; a issue lista os commits que a entregaram.
-
----
-
-## 7. Premissas, bloqueios e o que ficou de fora
+## Premissas, bloqueios e o que ficou de fora
 
 **Premissas**
-- O formato de `dados/comunicacoes.json` segue a API pública de comunicações do CNJ
-  (`items[]`, `numero_processo`, `siglaTribunal`, `data_disponibilizacao`, `destinatarios[]`…).
-  O mapeamento fica isolado em `api/src/database/seed/cnj-mapper.ts`.
-- Tribunal citado numa comunicação mas ausente de `tribunais.json` é criado com a sigla como nome.
+- **Nome do repositório:** o PDF do case, enviado junto com o codinome, pede
+  `desafio-[codinome]-[iniciais]-[DDMM]`; o `ENUNCIADO.md` do repositório base fala em
+  `case-fullstack-<iniciais>`. Segui o PDF, a instrução específica que recebi: `desafio-fs2-dr-2511`.
+- **Mapeamento dos dados** (`api/src/database/seed/cnj-mapper.ts`): o JSON segue a API pública do
+  CNJ. Persisto o que as telas usam — `id`, `data_disponibilizacao`, `siglaTribunal`,
+  `tipoComunicacao`, `nomeOrgao`, `texto`, `numero_processo` (só dígitos), `nomeClasse` e
+  `destinatarios[]`. Ficaram de fora `meio`/`meiocompleto` (sempre "D"/DJEN) e
+  `destinatarioadvogados` (nenhuma tela mostra; entraria numa tabela de advogados por OAB se o
+  produto passar a acompanhar comunicações por OAB).
+- Tribunal citado numa comunicação mas ausente de `tribunais.json` seria criado com a sigla como
+  nome (nos dados do case, todos os 10 estão na lista).
 - "Transitou em julgado quando identificado" = alguma comunicação do processo contém a expressão
-  (transitou/trânsito/transitada em julgado).
+  (transitou/trânsito/transitada em julgado) — 8 das 120 comunicações.
 
 **Bloqueios**
-- O repositório base do case estava privado no início; dados reais e artefatos da Parte 2
-  dependiam do acesso. _Atualizar conforme liberação._
+- O repositório base do case (dados e artefatos da Parte 2) só foi liberado no 2º dia. Até lá, a
+  API e o seed foram construídos sobre o formato público do CNJ e validados com massa fictícia;
+  com os dados reais, o seed carregou as 120 comunicações sem nenhum ajuste no mapeamento.
+- O `ENUNCIADO.md` dá **5 dias** de prazo; o PDF, 4. Planejei pelos 4.
 
 **O que ficou de fora (e como eu faria)**
 - Refresh token e sessão em cookie httpOnly.
@@ -376,7 +276,126 @@ produção. Com time maior, o melhor é um "trem" com horário fixo:
 
 ---
 
-## 8. Horas gastas
+## Funcionalidades
+
+| Tela | Rota | Estados implementados |
+|---|---|---|
+| Login | `/login` | padrão · erro "E-mail ou senha incorretos…" · carregando · mostrar/ocultar senha |
+| Cadastro | `/cadastro` | padrão · e-mail inválido · senha curta · senhas diferentes · e-mail já cadastrado · carregando |
+| Comunicações (protegida) | `/comunicacoes` | lista · filtros (número, tribunal, período com calendário de 2 meses) · paginação · "Ler mais" · skeleton · vazio · erro · iniciais no avatar |
+| Detalhes do processo (bônus) | `/processos/:numero` | selo "Transitou em julgado" · movimentações · skeleton · não encontrado · erro |
+| Resumo com IA (bônus) | modal | carregando · resumo com destaques · erro |
+
+- Sem sessão, rotas protegidas redirecionam para o login (e voltam para a página pedida após entrar).
+- Filtros ficam na URL: link compartilhável, recarregar mantém o estado, botão "voltar" funciona.
+- Responsivo nos 5 tamanhos do Figma (1920, 1024, 768, 430, 360).
+
+---
+
+## API — rotas e exemplos
+
+O contrato do case (rotas, parâmetros e status) foi seguido à risca. Documentação interativa
+completa em **`/docs`** (Swagger).
+
+| Método | Rota | Auth | Descrição | Status |
+|---|---|---|---|---|
+| POST | `/auth/cadastro` | pública | Cria a conta | 201 · 400 · 409 |
+| POST | `/auth/login` | pública | Devolve `{ "accessToken": "<JWT>" }` | 200 · 400 · 401 |
+| GET | `/auth/me` | Bearer | Usuário logado (extra: iniciais do avatar) | 200 · 401 |
+| GET | `/tribunais` | Bearer | Lista de tribunais | 200 · 401 |
+| GET | `/comunicacoes` | Bearer | Lista paginada com filtros | 200 · 400 · 401 |
+| GET | `/processos/:numero` | Bearer | (bônus) Processo + comunicações | 200 · 400 · 401 · 404 |
+| POST | `/comunicacoes/:id/resumo` | Bearer | (bônus) Resumo do conteúdo | 200 · 400 · 401 · 404 |
+| GET | `/health` | pública | API e banco no ar | 200 |
+
+### Filtros de `GET /comunicacoes`
+
+| Parâmetro | Regra |
+|---|---|
+| `numeroProcesso` | número CNJ com ou sem máscara (20 dígitos) |
+| `tribunal` | sigla, sem diferenciar maiúsculas (ex.: `TJSP`) |
+| `dataInicio`, `dataFim` | `YYYY-MM-DD`, inclusivos; data inexistente ou início > fim → 400 |
+| `page`, `pageSize` | padrão `1` e `10`; `pageSize` máximo 50 (acima → 400) |
+
+Ordem: da comunicação mais recente para a mais antiga (o `id` desempata o mesmo dia, para a
+paginação não repetir nem pular itens). Parâmetro vazio (`?tribunal=`) equivale a ausente.
+
+### Exemplos
+
+```bash
+API=http://localhost:8888
+
+# Cadastro
+curl -X POST $API/auth/cadastro -H 'Content-Type: application/json' \
+  -d '{"name":"Amélia Macedo","email":"amelia@exemplo.com","password":"senhaSegura123"}'
+# 201 {"id":"…","name":"Amélia Macedo","email":"amelia@exemplo.com"}
+
+# Login
+TOKEN=$(curl -s -X POST $API/auth/login -H 'Content-Type: application/json' \
+  -d '{"email":"amelia@exemplo.com","password":"senhaSegura123"}' | jq -r .accessToken)
+
+# Tribunais
+curl $API/tribunais -H "Authorization: Bearer $TOKEN"
+# [{"acronym":"TJSP","name":"Tribunal de Justiça de São Paulo"}, …]
+
+# Comunicações do TJSP em agosto/2025, página 1
+curl "$API/comunicacoes?tribunal=TJSP&dataInicio=2025-08-01&dataFim=2025-08-31&page=1&pageSize=10" \
+  -H "Authorization: Bearer $TOKEN"
+# Formato da resposta:
+# {"data":[{"id":…,"lawsuitNumber":"NNNNNNN-DD.AAAA.J.TR.OOOO","lawsuitClass":"Procedimento comum",
+#   "court":"TJSP","availabilityDate":"2025-08-15","type":"Intimação","content":"…",
+#   "recipients":[{"name":"…","side":"P"}], …}],
+#  "meta":{"page":1,"pageSize":10,"total":…,"totalPages":…}}
+
+# Por número do processo (com ou sem máscara)
+curl "$API/comunicacoes?numeroProcesso=2458591-85.2024.8.26.0521" -H "Authorization: Bearer $TOKEN"
+
+# Erros do contrato
+curl "$API/comunicacoes?pageSize=51" -H "Authorization: Bearer $TOKEN"   # 400
+curl "$API/comunicacoes"                                                  # 401
+
+# Detalhe do processo (bônus)
+curl "$API/processos/NUMERO_CNJ" -H "Authorization: Bearer $TOKEN"
+# {"lawsuit":{"number":"…","className":"…","court":"TJSP","recipients":[…],
+#   "totalCommunications":2,"finalJudgment":true},
+#  "communications":[{…,"mentionsFinalJudgment":true}], "meta":{…}}
+
+# Resumo (bônus)
+curl -X POST "$API/comunicacoes/ID/resumo" -H "Authorization: Bearer $TOKEN"
+# {"highlights":["Prazo: 15 dias"],"summary":"Fica a parte intimada para, no prazo de 15 …"}
+```
+
+Erros seguem o formato padrão do NestJS: `{ "statusCode": 400, "message": "…", "error": "Bad Request" }`
+(`message` em pt-BR, pronta para exibir).
+
+---
+
+## Fluxo de trabalho (Kanban)
+
+**Quadro:** <https://github.com/users/consultordavidrocha/projects/1> (GitHub Projects, ligado
+a este repositório; cada cartão é uma issue).
+
+Colunas: **Backlog → A fazer → Em andamento → Em revisão → Concluído**.
+
+| Coluna | Significado |
+|---|---|
+| Backlog | Mapeado, ainda não priorizado — ou bloqueado (label `bloqueado`) |
+| A fazer | Priorizado para a próxima etapa |
+| Em andamento | Em execução (um cartão por vez) |
+| Em revisão | Pronto, passando por testes, lint e comparação com o Figma |
+| Concluído | Validado e commitado; a issue é fechada |
+
+1. Cada entrega do enunciado vira um cartão/issue com labels de área (`api`, `web`, `docs`,
+   `infra`, `parte-2`, `bonus`), por exemplo "API: GET /tribunais e GET /comunicacoes" ou "P5".
+2. Prioridade pelos pesos da avaliação e pelas dependências: obrigatórios antes de bônus.
+3. Um cartão por vez em "Em andamento"; ele só vai para "Concluído" com testes passando,
+   lint limpo e (no front) comparação com o Figma.
+4. Commits pequenos e temáticos (`feat(api): …`, `feat(web): …`, `docs: …`), um ou mais por
+   cartão; a issue lista os commits que a entregaram.
+
+---
+
+## Horas gastas
 
 Desenvolvimento com IA como par de programação (ver [AI_USAGE.md](AI_USAGE.md)): as horas
 abaixo incluem leitura do enunciado, decisões, revisão do que foi gerado e validação.
@@ -388,7 +407,7 @@ abaixo incluem leitura do enunciado, decisões, revisão do que foi gerado e val
 
 ---
 
-## 9. Estrutura do repositório
+## Estrutura do repositório
 
 ```
 ├── api/                 API NestJS (Dockerfile, prisma/, src/, test/)
