@@ -7,7 +7,7 @@ services:
     dockerContext: .
     dockerfilePath: ./api/Dockerfile
     plan: free
-    region: oregon
+    region: virginia # mesma região do banco no Neon (AWS us-east-1)
     healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
