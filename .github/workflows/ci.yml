@@ -1,0 +1,85 @@
+# Integração contínua: roda a cada push na main e em todo pull request.
+# Um PR só deve ser mesclado com os 3 jobs verdes.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Um push novo cancela a execução anterior do mesmo branch/PR.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  file-size:
+    name: Tamanho dos arquivos (máx. 500 linhas)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: node scripts/check-file-size.mjs 500
+
+  api:
+    name: API — lint, testes unitários, e2e e build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
+    services:
+      # Postgres real para os testes e2e (mesmos dados do api/.env.test).
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: juscash
+          POSTGRES_PASSWORD: juscash
+          POSTGRES_DB: juscash_test
+        ports:
+          - 5434:5432
+        options: >-
+          --health-cmd "pg_isready -U juscash -d juscash_test"
+          --health-interval 5s --health-timeout 3s --health-retries 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: api/package-lock.json
+      - run: npm ci
+      - run: npx prisma generate
+      - name: Lint
+        run: npx eslint "{src,test}/**/*.ts"
+      - name: Testes unitários
+        run: npm test
+      - name: Testes e2e (Postgres real)
+        run: npm run test:e2e
+      - name: Build
+        run: npm run build
+
+  web:
+    name: Front — lint, testes e build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Testes unitários
+        run: npm test
+      - name: Build (tsc + vite)
+        run: npm run build
