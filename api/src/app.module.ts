@@ -1,4 +1,3 @@
-import { DebugIpController } from './health/debug-ip.controller';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
@@ -19,6 +18,6 @@ import { PrismaModule } from './prisma/prisma.module';
     CommunicationsModule,
     LawsuitsModule,
   ],
-  controllers: [HealthController, LiveController, DebugIpController],
+  controllers: [HealthController, LiveController],
 })
 export class AppModule {}

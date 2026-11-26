@@ -233,7 +233,9 @@ Auditoria feita com o sistema no ar, medindo cada proteção contra o ambiente v
 - **Já existia:** JWT em todas as rotas, exceto as marcadas `@Public()` (*guard* global); bcrypt; a mesma
   mensagem e o mesmo tempo para e-mail inexistente e senha errada; rate limit no login e no cadastro;
   whitelist que recusa campos extras; SQL só parametrizado; CORS restrito à origem da Vercel.
-- **Corrigido na auditoria:** `page` gigante devolvia 500 (agora 400, com teto de 10 mil); a API ganhou
+- **Corrigido na auditoria:** o rate limit contava pelo IP de um balanceador interno do Render, e não
+  pelo do usuário (medido com uma rota de diagnóstico temporária; agora a API só confia nos proxies de
+  rede privada e para no primeiro IP público); `page` gigante devolvia 500 (agora 400, com teto de 10 mil); a API ganhou
   cabeçalhos de segurança (`helmet`) e deixou de expor o `x-powered-by`; o front ganhou CSP estrita
   (`script-src 'self'`, sem `unsafe-inline`), anti-frame e nosniff. A suíte Playwright roda sob a mesma CSP.
 - **Riscos aceitos, com motivo:** CVEs no CLI do Prisma (só roda nas migrations, sem entrada de usuário;

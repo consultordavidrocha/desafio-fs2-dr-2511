@@ -12,6 +12,7 @@ const API = process.env.API ?? 'https://juscash-api-3xep.onrender.com'
 const WEB = process.env.WEB ?? 'https://desafio-fs2-dr-2511.vercel.app'
 const DEMO = { email: 'demo@exemplo.com', password: 'demo12345' }
 const out = []
+const logins = [] // status + contador de cada login, na ordem (checagem do rate limit)
 const log = (area, teste, esperado, obtido, ok) => out.push({ area, teste, esperado, obtido, ok })
 
 async function req(path, { method = 'GET', headers = {}, body, raw } = {}) {
@@ -21,6 +22,7 @@ async function req(path, { method = 'GET', headers = {}, body, raw } = {}) {
     body: raw ?? (body !== undefined ? JSON.stringify(body) : undefined),
   })
   const text = await r.text()
+  if (path === '/auth/login') logins.push({ status: r.status, restante: r.headers.get('x-ratelimit-remaining-auth') })
   return { status: r.status, headers: r.headers, text }
 }
 const b64 = (o) => Buffer.from(JSON.stringify(o)).toString('base64url')
@@ -123,9 +125,16 @@ log('Auth', 'mensagem: e-mail inexistente × senha errada', 'idênticas', `${sem
 const extra = await req('/auth/cadastro', { method: 'POST', body: { name: 'X', email: `x.${Date.now()}@exemplo.com`, password: 'senha1234', role: 'admin', id: 'fixo' } })
 log('Entrada', 'cadastro com campos extras (role/id)', '400 (whitelist) — e nada criado', `${extra.status} ${extra.text.slice(0, 90)}`, extra.status === 400)
 
-const statuses = []
-for (let i = 0; i < 6; i++) statuses.push((await req('/auth/login', { method: 'POST', body: { email: DEMO.email, password: 'senhaerrada1' } })).status)
-log('Rate limit', 'logins seguidos', 'corta com 429 antes de 8 tentativas', statuses.join(','), statuses.includes(429))
+for (let i = 0; i < 6; i++) await req('/auth/login', { method: 'POST', body: { email: DEMO.email, password: 'senhaerrada1' } })
+// Um 429 sozinho não prova nada: em 26/11 ele apareceu "por sorte" com o IP errado (cada
+// balanceador interno do Render tinha o próprio contador). Exige-se UM contador por cliente:
+// o restante só diminui e, depois do primeiro 429, nenhuma tentativa volta a passar.
+const restantes = logins.filter((l) => l.status !== 429).map((l) => Number(l.restante))
+const decrescente = restantes.every((v, i) => i === 0 || v < restantes[i - 1])
+const primeiro429 = logins.findIndex((l) => l.status === 429)
+const travou = primeiro429 >= 0 && logins.slice(primeiro429).every((l) => l.status === 429)
+log('Rate limit', 'um contador por cliente', 'restante só diminui e, após o 1º 429, tudo 429',
+  logins.map((l) => (l.status === 429 ? '429' : `${l.status}(${l.restante})`)).join(' '), decrescente && travou)
 
 // --- Front: segredos no bundle e source maps
 const html = await (await fetch(WEB + '/')).text()

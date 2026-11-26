@@ -358,7 +358,7 @@ npm run start:dev</pre>
       login; a CSP reduz o risco de XSS, que é o que poderia roubá-lo); sessão encerrada automaticamente em qualquer 401.</li>
   </ul>
   <p><strong>Auditoria de 26/11:</strong> cada proteção foi medida contra o sistema no ar, com chamada de
-    controle (a credencial fraca falha e a forte funciona). Encontrou e corrigiu 3 problemas: <code>page</code>
+    controle (a credencial fraca falha e a forte funciona). Encontrou e corrigiu 4 problemas: o rate limit contava pelo IP de um balanceador interno do Render (agora a API só confia nos proxies de rede privada e usa o primeiro IP público), <code>page</code>
     gigante devolvia 500, a API não tinha cabeçalhos de segurança e o front não tinha CSP. Também registrou
     os riscos aceitos e o que não foi coberto. Relatório: <code>docs/auditoria-seguranca.md</code>.</p>
 </section>

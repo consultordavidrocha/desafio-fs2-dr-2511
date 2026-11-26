@@ -44,6 +44,38 @@ describe('Rate limit de autenticação (e2e)', () => {
     );
   });
 
+  /**
+   * Como a requisição chega em produção: IP real à esquerda dos proxies internos
+   * do Render (medido na auditoria de 26/11).
+   */
+  const loginVia = (forwardedFor: string) =>
+    login().set('X-Forwarded-For', forwardedFor);
+  const viaRender = (clientIp: string, internalHop = '10.0.0.7') =>
+    `${clientIp}, 172.16.5.4, ${internalHop}`;
+
+  it('conta por cliente real, não pelo balanceador interno do Render', async () => {
+    const a = '203.0.113.10';
+    const b = '203.0.113.20';
+    for (let i = 0; i < LIMIT; i++) {
+      expect((await loginVia(viaRender(a))).status).toBe(401);
+    }
+    expect((await loginVia(viaRender(a))).status).toBe(429);
+
+    // Mesmo caminho interno, outro usuário: tem o próprio limite.
+    expect((await loginVia(viaRender(b))).status).toBe(401);
+    // Outro balanceador interno não "zera" o limite de quem já foi bloqueado.
+    expect((await loginVia(viaRender(a, '10.9.9.9'))).status).toBe(429);
+  });
+
+  it('ignora IP inventado pelo cliente no X-Forwarded-For', async () => {
+    const real = '198.51.100.30';
+    for (let i = 0; i < LIMIT; i++) {
+      expect((await loginVia(viaRender(real))).status).toBe(401);
+    }
+    // O cliente acrescenta um IP falso: ele fica à esquerda do real e não conta.
+    expect((await loginVia(`192.0.2.99, ${viaRender(real)}`)).status).toBe(429);
+  });
+
   it('não limita as demais rotas (ex.: /health, /auth/me)', async () => {
     for (let i = 0; i < LIMIT + 2; i++) {
       expect((await request(app.getHttpServer()).get('/health')).status).toBe(

@@ -52,6 +52,7 @@
 | O mesmo erro **voltou** ao adicionar o Playwright: regenerar no Windows não resolve de vez (o npm resolve a dependência *peer* do `@napi-rs/wasm-runtime` de forma diferente por plataforma) | CI falhou de novo no `npm ci` | Causa investigada no lock; agora o lock é gerado num container Linux (`scripts/regenerar-lock.sh`), validado com `npm ci` no Linux e no Windows, e documentado no README |
 | A CLI do Neon gravou o MCP no perfil errado do Claude | Conferência dos arquivos contra backup | Registro no lugar certo; outro perfil restaurado |
 | Contou errado as palavras da P5 (149 → 155 com contagem rigorosa) | Script de conferência dos limites | Resposta enxugada para 147 |
+| Configurou `trust proxy: 1` para o Render sem medir quantos proxies havia: o rate limit contava pelo balanceador interno, não pelo usuário. E a primeira sonda aceitou um 429 "de sorte" como prova | Na auditoria, os contadores de rate limit não batiam entre si (`remaining` 0 e depois 4; `retry-after` diferentes) | Rota de diagnóstico temporária mostrou a cadeia real de proxies; correção com `loopback, uniquelocal`, 2 testes e2e que falham na configuração antiga, e a sonda passou a exigir um contador que só diminui |
 | Na auditoria de segurança, a sonda leu como "vazamento" o 403 em HTML que a Cloudflare devolve ao barrar SQL injection | O texto da resposta era a página da Cloudflare, não da API | Resultado tratado como **inconclusivo** (barrado na borda); os mesmos payloads repetidos na API local, sem o WAF, deram 400 pela validação |
 | Keep-alive confiado só ao agendador do GitHub | **Eu** vi o primeiro acesso lento de novo; o GitHub não tinha rodado nenhum agendamento em 1h20 | Ping principal num pinger externo (cron-job.org); GitHub Actions como reserva, documentado no README |
 
@@ -71,8 +72,8 @@
 - **Parte 2**: números de linha citados conferidos contra o diff e o código; limites de palavras e
   linhas conferidos por script; a P1 roda sobre o `legado.csv` real.
 - **Auditoria de segurança** (`docs/auditoria-seguranca.md`): cada proteção medida contra o sistema
-  no ar, com chamada de controle (a credencial fraca falha e a forte funciona). Achou 3 problemas
-  (500 com `page` gigante, API sem cabeçalhos de segurança, front sem CSP), todos corrigidos com teste.
+  no ar, com chamada de controle (a credencial fraca falha e a forte funciona). Achou 4 problemas
+  (rate limit contando pelo IP de um balanceador interno, 500 com `page` gigante, API sem cabeçalhos de segurança, front sem CSP), todos corrigidos com teste.
 - **Leitura do código** antes de cada commit: o que eu não conseguia explicar não entrava.
 
 ## Onde você preferiu não usar IA, e por quê
