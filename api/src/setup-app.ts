@@ -1,18 +1,20 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import type { Application } from 'express';
 import helmet from 'helmet';
+import { CLOUDFLARE_IPS } from './common/cloudflare-ips';
 
 /**
- * Quais saltos do X-Forwarded-For são proxies nossos: loopback e rede privada.
+ * Quais saltos do X-Forwarded-For são proxies, e não o cliente.
  * Medido em produção (auditoria 26/11): a requisição chega como
- * `IP real, 172.x, 10.x` e o socket é `::1`. Com `trust proxy: 1` o Express
- * pegava o 10.x, um balanceador interno do Render que muda entre requisições:
- * o rate limit contava por balanceador, não por usuário. Confiando só nos
- * endereços internos, o Express pula esses saltos e para no primeiro IP público
- * (o real, gravado pela Cloudflare). O que o cliente inventar no cabeçalho fica
- * à esquerda dele e é ignorado. Não depende de quantos proxies o Render usa.
+ * `IP real, IP da Cloudflare, 10.x` e o socket é `::1`. Com `trust proxy: 1`
+ * o Express pegava o 10.x (balanceador interno do Render); confiando só na
+ * rede privada, pegava o IP da Cloudflare. Os dois mudam entre requisições, e
+ * o rate limit contava por proxy, não por usuário. Confiando em loopback, rede
+ * privada e nas faixas da Cloudflare, o Express pula todos os saltos e para no
+ * primeiro IP de fora: o real. O que o cliente inventar no cabeçalho fica à
+ * esquerda dele e é ignorado. Não depende de quantos proxies há no caminho.
  */
-export const TRUSTED_PROXIES = 'loopback, uniquelocal';
+export const TRUSTED_PROXIES = ['loopback', 'uniquelocal', ...CLOUDFLARE_IPS];
 
 /**
  * Configuração compartilhada entre main.ts e os testes e2e, para os testes

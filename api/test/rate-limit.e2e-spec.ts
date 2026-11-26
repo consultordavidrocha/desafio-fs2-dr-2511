@@ -45,15 +45,19 @@ describe('Rate limit de autenticação (e2e)', () => {
   });
 
   /**
-   * Como a requisição chega em produção: IP real à esquerda dos proxies internos
-   * do Render (medido na auditoria de 26/11).
+   * Como a requisição chega em produção (medido na auditoria de 26/11): IP real,
+   * depois um IP da Cloudflare (muda a cada requisição) e um balanceador interno
+   * do Render.
    */
   const loginVia = (forwardedFor: string) =>
     login().set('X-Forwarded-For', forwardedFor);
-  const viaRender = (clientIp: string, internalHop = '10.0.0.7') =>
-    `${clientIp}, 172.16.5.4, ${internalHop}`;
+  const viaRender = (
+    clientIp: string,
+    cloudflare = '172.70.1.2',
+    internalHop = '10.0.0.7',
+  ) => `${clientIp}, ${cloudflare}, ${internalHop}`;
 
-  it('conta por cliente real, não pelo balanceador interno do Render', async () => {
+  it('conta por cliente real, não pelo IP da Cloudflare nem do balanceador', async () => {
     const a = '203.0.113.10';
     const b = '203.0.113.20';
     for (let i = 0; i < LIMIT; i++) {
@@ -61,10 +65,13 @@ describe('Rate limit de autenticação (e2e)', () => {
     }
     expect((await loginVia(viaRender(a))).status).toBe(429);
 
-    // Mesmo caminho interno, outro usuário: tem o próprio limite.
+    // Mesmo caminho, outro usuário: tem o próprio limite.
     expect((await loginVia(viaRender(b))).status).toBe(401);
-    // Outro balanceador interno não "zera" o limite de quem já foi bloqueado.
-    expect((await loginVia(viaRender(a, '10.9.9.9'))).status).toBe(429);
+    // Outro IP da Cloudflare ou outro balanceador não "zera" quem já foi bloqueado.
+    expect((await loginVia(viaRender(a, '162.158.3.4'))).status).toBe(429);
+    expect(
+      (await loginVia(viaRender(a, '2606:4700::6810:1', '10.9.9.9'))).status,
+    ).toBe(429);
   });
 
   it('ignora IP inventado pelo cliente no X-Forwarded-For', async () => {
