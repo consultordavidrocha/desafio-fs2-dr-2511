@@ -5,6 +5,7 @@ import { CommunicationsModule } from './communications/communications.module';
 import { CourtsModule } from './courts/courts.module';
 import { validateEnv } from './config/env.validation';
 import { HealthController } from './health/health.controller';
+import { LiveController } from './health/live.controller';
 import { LawsuitsModule } from './lawsuits/lawsuits.module';
 import { PrismaModule } from './prisma/prisma.module';
 
@@ -17,6 +18,6 @@ import { PrismaModule } from './prisma/prisma.module';
     CommunicationsModule,
     LawsuitsModule,
   ],
-  controllers: [HealthController],
+  controllers: [HealthController, LiveController],
 })
 export class AppModule {}

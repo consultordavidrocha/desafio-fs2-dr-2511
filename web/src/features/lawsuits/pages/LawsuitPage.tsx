@@ -4,6 +4,7 @@ import { useState, type ReactNode } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { AppShell } from '@/components/layout/AppShell'
 import { Card } from '@/components/ui/Card'
+import { SlowServerNotice } from '@/components/ui/SlowServerNotice'
 import type { Communication } from '@/features/communications/api'
 import { Field, FieldLabel, SummarizeButton } from '@/features/communications/components/fields'
 import { Pagination } from '@/features/communications/components/Pagination'
@@ -70,6 +71,7 @@ function PageContent({
   if (query.isPending) {
     return (
       <>
+        <SlowServerNotice active />
         <Card className="flex flex-col gap-5" aria-hidden>
           <Bone className="w-1/2" />
           <Bone className="w-2/3" />

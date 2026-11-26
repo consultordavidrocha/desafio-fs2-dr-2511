@@ -81,7 +81,8 @@
     <tr><td><code>GET /comunicacoes</code></td><td>Bearer</td><td>Lista paginada com filtros</td><td>200 · 400 · 401</td></tr>
     <tr><td><code>GET /processos/:numero</code></td><td>Bearer</td><td>Processo e comunicações (bônus)</td><td>200 · 400 · 401 · 404</td></tr>
     <tr><td><code>POST /comunicacoes/:id/resumo</code></td><td>Bearer</td><td>Resumo do conteúdo (bônus)</td><td>200 · 400 · 401 · 404</td></tr>
-    <tr><td><code>GET /health</code></td><td>pública</td><td>API e banco no ar</td><td>200</td></tr>
+    <tr><td><code>GET /health</code></td><td>pública</td><td>API e banco no ar (healthcheck)</td><td>200</td></tr>
+    <tr><td><code>GET /live</code></td><td>pública</td><td>Só a API, sem consultar o banco (keep-alive)</td><td>200</td></tr>
   </table>
 
   <h3>POST /auth/cadastro</h3>
@@ -316,6 +317,10 @@ npm run start:dev</pre>
     após ~15 min sem uso (primeiro acesso em ~50 s) e o banco suspende o processamento quando
     ocioso (religa na primeira consulta). Migrations foram validadas antes num branch temporário
     do Neon; a cada deploy, o container aplica migrations pendentes e roda o seed idempotente.</p>
+  <p><strong>Keep-alive:</strong> um agendamento no GitHub Actions (<code>.github/workflows/keep-alive.yml</code>)
+    chama <code>GET /live</code> a cada 10 minutos das 07:00 às 23:59 (horário de Brasília), mantendo a API
+    acordada durante o dia sem consultar o banco — o Neon continua suspendendo quando ocioso. Se a API
+    demorar mais de 5 s, o front avisa que o servidor está ligando.</p>
 </section>
 
 <section class="chapter">

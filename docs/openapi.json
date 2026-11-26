@@ -16,6 +16,21 @@
         ]
       }
     },
+    "/live": {
+      "get": {
+        "operationId": "LiveController_live",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Verifica se a API está no ar (sem consultar o banco)",
+        "tags": [
+          "Saúde"
+        ]
+      }
+    },
     "/auth/cadastro": {
       "post": {
         "operationId": "AuthController_signUp",
@@ -46,6 +61,9 @@
           },
           "409": {
             "description": "E-mail já cadastrado"
+          },
+          "429": {
+            "description": "Muitas tentativas por minuto"
           }
         },
         "summary": "Cria uma conta",
@@ -84,6 +102,9 @@
           },
           "401": {
             "description": "E-mail ou senha incorretos"
+          },
+          "429": {
+            "description": "Muitas tentativas por minuto"
           }
         },
         "summary": "Autentica e devolve o access token (JWT)",

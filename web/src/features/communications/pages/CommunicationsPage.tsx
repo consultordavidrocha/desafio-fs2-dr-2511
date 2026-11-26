@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AppShell } from '@/components/layout/AppShell'
 import { Card } from '@/components/ui/Card'
+import { SlowServerNotice } from '@/components/ui/SlowServerNotice'
 import { ApiError } from '@/lib/api-client'
 import { CommunicationCard } from '../components/CommunicationCard'
 import { FiltersBar } from '../components/FiltersBar'
@@ -29,7 +30,10 @@ export function CommunicationsPage() {
     <AppShell>
       <div className="flex flex-col gap-4 p-6">
         {firstLoad ? (
-          <PageSkeleton />
+          <>
+            <SlowServerNotice active={firstLoad} />
+            <PageSkeleton />
+          </>
         ) : (
           <>
             <Card className="flex flex-col gap-2">

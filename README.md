@@ -119,7 +119,7 @@ sem ele), `JWT_EXPIRES_IN` (padrão `1d`), `CORS_ORIGIN` (origens separadas por 
 | API — unitários | `cd api && npm test` | AuthService, máscara/normalização CNJ, mapper do seed, resumidor, detecção de trânsito em julgado |
 | API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos e resumo |
 | Front — unitários | `cd web && npm test` | máscara CNJ, datas/grade do calendário, iniciais, paginação |
-| **E2E no navegador** | `cd web && npm run test:e2e` | Playwright contra a stack real (Postgres + API + build do front): login, erros e validações do cadastro, sessão e logout, lista e paginação, filtros (número com máscara, tribunal, calendário de 2 meses), vazio, erro com "Tentar novamente", "Ler mais", modal de resumo, detalhes do processo com selo, celular |
+| **E2E no navegador** | `cd web && npm run test:e2e` | Playwright contra a stack real (Postgres + API + build do front): login, erros e validações do cadastro, sessão e logout, lista e paginação, filtros (número com máscara, tribunal, calendário de 2 meses), vazio, erro com "Tentar novamente", "Ler mais", modal de resumo, detalhes do processo com selo, celular, aviso de servidor lento (aparece só com a API demorando) |
 | P1 — migração | `cd problemas/01-migracao/solucao && python -m pytest` | regras de dinheiro, deságio, status, CPF/CNJ e o `legado.csv` completo |
 | Tamanho de arquivo | `node scripts/check-file-size.mjs` | nenhum arquivo de código acima de 500 linhas |
 | **Manual** | [`docs/roteiro-testes-manuais.md`](docs/roteiro-testes-manuais.md) | roteiro com checklist: fidelidade ao Figma, teclado, celular real, produção e Swagger |
@@ -134,7 +134,7 @@ e2e com Postgres 16, build), front (lint, unitários, build), **e2e no navegador
 ```bash
 AUTH_RATE_LIMIT=1000 docker compose up -d --build --wait   # banco + API com os dados (limite alto: a suíte faz vários logins)
 cd web && npx playwright install chromium                  # só na primeira vez (ou use o Chrome instalado)
-npm run test:e2e                                           # builda o front, sobe o preview na 3099 e roda os 19 testes
+npm run test:e2e                                           # builda o front, sobe o preview na 3099 e roda os 22 testes
 ```
 
 Contra a **produção**, rode arquivos isolados — a suíte inteira faz dezenas de logins e o rate limit de
@@ -207,8 +207,17 @@ gratuito o projeto pausa após uma semana sem uso. As Edge Functions (Supabase) 
 também não se aplicam: a API é NestJS. Em produção para usuários no Brasil, o ideal seria API e
 banco em São Paulo (o Neon tem Postgres em `aws-sa-east-1`; o Render não tem região no Brasil).
 
-> **Plano gratuito do Render:** a API "dorme" após ~15 min sem uso; a primeira requisição depois
-> disso leva ~50 s para acordar.
+**Primeiro acesso lento (plano gratuito).** O Render desliga a API após ~15 min sem tráfego (~50 s
+para acordar) e o Neon suspende o banco após ~5 min (religa em menos de 1 s). Diagnosticado pelos
+eventos do Neon (`suspend_compute` / `start_compute`) num acesso real. Duas mitigações:
+
+| Mitigação | Como |
+|---|---|
+| **Keep-alive** ([`.github/workflows/keep-alive.yml`](.github/workflows/keep-alive.yml)) | GitHub Actions chama `GET /live` a cada 10 min das **07:00 às 23:59** (horário de Brasília); à noite para, para economizar as horas gratuitas. O `/live` **não consulta o banco**: o Neon continua desligando quando ocioso e não gasta a cota de processamento |
+| **Aviso na tela** | Se a API demorar mais de 5 s (login, cadastro, lista ou processo), aparece "Estamos ligando o servidor — … pode levar até 1 minuto", em vez de a tela parecer travada |
+
+Limites: o agendamento do GitHub pode atrasar alguns minutos no pico e é pausado após 60 dias sem
+commits; de madrugada, o primeiro acesso volta a levar ~50 s (com o aviso na tela).
 
 ### Front
 
@@ -332,7 +341,8 @@ completa em **`/docs`** (Swagger).
 | GET | `/comunicacoes` | Bearer | Lista paginada com filtros | 200 · 400 · 401 |
 | GET | `/processos/:numero` | Bearer | (bônus) Processo + comunicações | 200 · 400 · 401 · 404 |
 | POST | `/comunicacoes/:id/resumo` | Bearer | (bônus) Resumo do conteúdo | 200 · 400 · 401 · 404 |
-| GET | `/health` | pública | API e banco no ar | 200 |
+| GET | `/health` | pública | API e banco no ar (healthcheck do Docker e do Render) | 200 |
+| GET | `/live` | pública | Só a API, **sem consultar o banco** (keep-alive) | 200 |
 
 ### Filtros de `GET /comunicacoes`
 

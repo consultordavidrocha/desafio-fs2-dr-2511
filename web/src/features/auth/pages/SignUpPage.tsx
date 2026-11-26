@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router'
 import { Button } from '@/components/ui/Button'
 import { FormAlert } from '@/components/ui/FormAlert'
+import { SlowServerNotice } from '@/components/ui/SlowServerNotice'
 import { TextField } from '@/components/ui/TextField'
 import { ApiError } from '@/lib/api-client'
 import { authApi } from '../api'
@@ -97,6 +98,7 @@ export function SignUpPage() {
         <Button type="submit" loading={isSubmitting}>
           Criar conta
         </Button>
+        <SlowServerNotice active={isSubmitting} />
 
         <p className="text-center">
           Já tem conta?{' '}

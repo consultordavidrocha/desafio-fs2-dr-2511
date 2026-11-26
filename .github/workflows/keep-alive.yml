@@ -1,0 +1,33 @@
+# Mantém a API acordada no plano gratuito do Render, que desliga o serviço após
+# ~15 min sem tráfego (o primeiro acesso depois disso leva ~50 s).
+#
+# Janela: 07:00–23:59 (horário de Brasília). À noite o ping para, para economizar as
+# horas gratuitas; o primeiro acesso da madrugada volta a ter o "acordar" de ~50 s.
+# O GitHub agenda em UTC (Brasília = UTC−3): 07:00–23:59 BRT = 10:00–02:59 UTC.
+#
+# Usa GET /live, que NÃO consulta o banco: o Neon continua desligando quando
+# ocioso (scale-to-zero) e o ping não consome a cota gratuita de processamento dele.
+#
+# Limitações do agendamento do GitHub: pode atrasar alguns minutos em horário de pico
+# (por isso a cada 10 min, com folga até os 15 do Render) e é pausado após 60 dias sem
+# commits no repositório.
+name: Keep-alive da API
+
+on:
+  schedule:
+    - cron: "*/10 10-23 * * *" # 07:00–20:59 BRT
+    - cron: "*/10 0-2 * * *" #   21:00–23:59 BRT
+  workflow_dispatch: # permite disparar manualmente pela aba Actions
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: GET /live (sem banco)
+        run: |
+          curl --fail --silent --show-error --retry 3 --retry-delay 10 --max-time 90 \
+            -w '\nHTTP %{http_code} em %{time_total}s\n' \
+            https://juscash-api-3xep.onrender.com/live

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { Link, useLocation, useNavigate } from 'react-router'
 import { Button } from '@/components/ui/Button'
 import { FormAlert } from '@/components/ui/FormAlert'
+import { SlowServerNotice } from '@/components/ui/SlowServerNotice'
 import { TextField } from '@/components/ui/TextField'
 import { ApiError } from '@/lib/api-client'
 import { useAuth } from '../use-auth'
@@ -70,6 +71,7 @@ export function LoginPage() {
         <Button type="submit" loading={isSubmitting}>
           Entrar
         </Button>
+        <SlowServerNotice active={isSubmitting} />
 
         <p className="text-center">
           Não tem conta?{' '}
