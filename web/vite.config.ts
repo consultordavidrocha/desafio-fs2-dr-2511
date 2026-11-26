@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
@@ -17,5 +18,7 @@ export default defineConfig({
     include: ['react-hook-form', '@hookform/resolvers/zod', 'zod', 'lucide-react'],
   },
   server: { port: PORT, strictPort: true },
+  // Vitest: só testes unitários em src/; e2e/ é do Playwright (npm run test:e2e).
+  test: { include: ['src/**/*.test.{ts,tsx}'] },
   preview: { port: PORT, strictPort: true },
 })

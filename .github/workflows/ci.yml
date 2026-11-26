@@ -79,6 +79,40 @@ jobs:
       - name: Build
         run: npm run build
 
+  e2e:
+    name: E2E no navegador (Playwright) — Postgres + API + front
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Sobe Postgres e API com os dados do case (docker compose)
+        env:
+          AUTH_RATE_LIMIT: 1000 # a suíte faz vários logins seguidos
+        run: docker compose up -d --build --wait
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: npx playwright install --with-deps chromium
+        working-directory: web
+      - name: Testes E2E
+        working-directory: web
+        env:
+          VITE_API_URL: http://localhost:8888
+        run: npm run test:e2e
+      - name: Logs da API (se falhar)
+        if: failure()
+        run: docker compose logs api --tail 200
+      - name: Relatório do Playwright (se falhar)
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: web/playwright-report
+          retention-days: 7
+
   web:
     name: Front — lint, testes e build
     runs-on: ubuntu-latest

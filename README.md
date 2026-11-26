@@ -119,13 +119,25 @@ sem ele), `JWT_EXPIRES_IN` (padrão `1d`), `CORS_ORIGIN` (origens separadas por 
 | API — unitários | `cd api && npm test` | AuthService, máscara/normalização CNJ, mapper do seed, resumidor, detecção de trânsito em julgado |
 | API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos e resumo |
 | Front — unitários | `cd web && npm test` | máscara CNJ, datas/grade do calendário, iniciais, paginação |
+| **E2E no navegador** | `cd web && npm run test:e2e` | Playwright contra a stack real (Postgres + API + build do front): login, erros e validações do cadastro, sessão e logout, lista e paginação, filtros (número com máscara, tribunal, calendário de 2 meses), vazio, erro com "Tentar novamente", "Ler mais", modal de resumo, detalhes do processo com selo, celular |
+| P1 — migração | `cd problemas/01-migracao/solucao && python -m pytest` | regras de dinheiro, deságio, status, CPF/CNJ e o `legado.csv` completo |
 | Tamanho de arquivo | `node scripts/check-file-size.mjs` | nenhum arquivo de código acima de 500 linhas |
+| **Manual** | [`docs/roteiro-testes-manuais.md`](docs/roteiro-testes-manuais.md) | roteiro com checklist: fidelidade ao Figma, teclado, celular real, produção e Swagger |
 
-**CI (GitHub Actions):** a cada push na `main` e em todo PR rodam, em paralelo, lint + testes
-unitários + e2e com Postgres 16 + build da API, lint + testes + build do front e a trava de 500
-linhas por arquivo ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
+**CI (GitHub Actions):** a cada push na `main` e em todo PR rodam, em paralelo: API (lint, unitários,
+e2e com Postgres 16, build), front (lint, unitários, build), **e2e no navegador** (sobe banco e API com
+`docker compose`, roda o Playwright e guarda relatório e trace se falhar), P1 (pytest) e a trava de
+500 linhas ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
 
-Os testes e2e exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
+**Como rodar o e2e do navegador localmente:**
+
+```bash
+AUTH_RATE_LIMIT=1000 docker compose up -d --build --wait   # banco + API com os dados (limite alto: a suíte faz vários logins)
+cd web && npx playwright install chromium                  # só na primeira vez (ou use o Chrome instalado)
+npm run test:e2e                                           # builda o front, sobe o preview na 3099 e roda os 19 testes
+```
+
+Os testes e2e da API exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
 criado automaticamente e o `api/.env.test` já está versionado (sem segredos reais).
 
 > **Windows:** se o projeto for aberto com a letra do drive em minúsculo (`c:\…`), o Vitest pode
