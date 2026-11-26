@@ -65,11 +65,17 @@ export async function seedCommunications(prisma: PrismaService) {
       date: '2025-09-10',
     },
   ];
+  // A comunicação 3 menciona trânsito em julgado (testa a detecção em /processos).
+  const contentOf = (id: number) =>
+    id === 3
+      ? 'Certifica-se que a decisão transitou em julgado em 16/08/2025.'
+      : base.content;
   for (const { date, ...row } of rows) {
     await prisma.communication.create({
       data: {
         ...base,
         ...row,
+        content: contentOf(row.id),
         availabilityDate: new Date(`${date}T00:00:00.000Z`),
         recipients: { create: [{ name: `Destinatário ${row.id}`, side: 'P' }] },
       },

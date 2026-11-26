@@ -5,6 +5,7 @@ import { CommunicationsModule } from './communications/communications.module';
 import { CourtsModule } from './courts/courts.module';
 import { validateEnv } from './config/env.validation';
 import { HealthController } from './health/health.controller';
+import { LawsuitsModule } from './lawsuits/lawsuits.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
@@ -14,6 +15,7 @@ import { PrismaModule } from './prisma/prisma.module';
     AuthModule,
     CourtsModule,
     CommunicationsModule,
+    LawsuitsModule,
   ],
   controllers: [HealthController],
 })
