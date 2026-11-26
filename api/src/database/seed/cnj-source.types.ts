@@ -2,9 +2,11 @@
  * Formato de origem de dados/comunicacoes.json, inspirado na API pública de
  * comunicações processuais do CNJ (comunicaapi.pje.jus.br).
  *
- * PROVISÓRIO: escrito a partir da API pública enquanto o arquivo real do case
- * não está disponível. Todos os campos são opcionais porque os dados podem vir
- * "sujos"; o mapper decide o que é obrigatório.
+ * Escrito a partir da API pública antes de o arquivo do case ser liberado e
+ * confirmado com os dados reais (120 comunicações carregadas sem ajuste).
+ * Todos os campos são opcionais porque os dados podem vir "sujos"; o mapper
+ * decide o que é obrigatório. Campos do arquivo ignorados de propósito:
+ * `meio`/`meiocompleto` (sempre DJEN) e `destinatarioadvogados` (sem uso nas telas).
  */
 export interface CnjCommunicationSource {
   id?: number | string;

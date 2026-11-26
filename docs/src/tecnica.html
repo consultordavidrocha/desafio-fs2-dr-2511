@@ -232,7 +232,13 @@
     <li><strong>Idempotente</strong>: o lote substitui as comunicações com os mesmos ids; rodar de novo não duplica.</li>
     <li><strong>Em lotes de 500</strong>, cada um numa transação.</li>
     <li><strong>Registros inválidos</strong> são pulados e contados com o motivo no log; ids repetidos ficam com a última ocorrência.</li>
+    <li><strong>Conta de demonstração</strong> (<code>demo@exemplo.com</code> / <code>demo12345</code>), criada ou atualizada a cada execução; desligável com <code>SEED_DEMO_USER=false</code>.</li>
   </ul>
+  <p>Com os dados do case: <strong>10 tribunais, 40 processos, 120 comunicações e 311
+    destinatários</strong>, carregados sem nenhum registro rejeitado. Campos do arquivo ignorados de
+    propósito: <code>meio</code>/<code>meiocompleto</code> (sempre DJEN) e
+    <code>destinatarioadvogados</code> (nenhuma tela usa; seriam uma tabela de advogados por OAB se o
+    produto passar a acompanhar comunicações por OAB).</p>
 </section>
 
 <section class="chapter">
