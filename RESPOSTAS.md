@@ -26,7 +26,7 @@
 | Data impossível (`0000-00-00`, `31/02/2025`) | 1007, 1008 | `NULL` + aviso | A coluna aceita `NULL`; rejeitar perderia um negócio válido |
 | Classe placeholder ou vazia (`não se aplica`, vazio) | 1002, 1011 | `NULL`; o processo fica com a classe preenchida mais recente | Não gravar lixo como classe |
 | Duplicata exata (mesmo processo, cliente, valor, deságio, status e data) | 1010 (= 1001) | Rejeitar como duplicata; fica a atualizada por último | Importar as duas dobraria o valor comprado |
-| Cliente/processo que só aparece em linhas rejeitadas (João, TJPR, TJMS) | 1004, 1006, 1009 | Não criar | Evita registro órfão, sem negócio |
+| Cliente/processo que só aparece em linhas rejeitadas (cliente João; processos do TJPR e do TJMS) | 1004, 1006, 1009 | Não criar | Evita registro órfão, sem negócio |
 
 Resultado: **8 negócios, 5 clientes, 5 processos, 5 rejeitados (com motivo) e 5 avisos.**
 Cada linha rejeitada traz **todos** os seus motivos, para ser corrigida de uma vez.
@@ -82,13 +82,15 @@ async function main() {
 
   await canal.consume(FILA, async (msg) => {
     if (!msg) return process.exit(1); // consumo cancelado pelo broker
+    let evento: any;
     try {
-      const evento = JSON.parse(msg.content.toString());
+      evento = JSON.parse(msg.content.toString());
       // Idempotente e atômico: ON CONFLICT (id_externo) DO NOTHING — reentrega vira no-op.
+      // (Se o mapper criar destinatários aninhados, createMany não serve: create + P2002 = duplicata, ack.)
       await prisma.comunicacao.createMany({ data: [mapearComunicacao(evento)], skipDuplicates: true });
       canal.ack(msg); // só depois do commit
     } catch (erro) {
-      console.error('[consumer] falhou; mensagem vai para a DLQ', { idExterno: msg.properties.messageId, erro });
+      console.error('[consumer] falhou; mensagem vai para a DLQ', { idExterno: evento?.idExterno, erro });
       canal.nack(msg, false, false); // o broker roteia para a DLQ (policy): sem typo, sem perda
     }
   });
@@ -110,7 +112,7 @@ efeito de exatamente uma vez. Se o evento puder trazer versões novas da mesma c
 
 ### (a) Cadeia de causas · até 8 linhas
 1. O cache do PR #311 (`Map` sem limite nem expiração) cresce com o pico de segunda até o limite de 256Mi.
-2. `--max-old-space-size=1024` é maior que o limite: o V8 não coleta a tempo e o kernel mata o pod (`OOMKilled`).
+2. `--max-old-space-size=1024` é maior que o limite: o V8 não coleta a tempo e o kernel mata o contêiner (`OOMKilled`).
 3. GC e reinícios elevam a CPU; o HPA, que escala por CPU, sobe de 3 para 10 pods — cada um com cache vazio, repetindo o ciclo.
 4. 10 pods × `connection_limit=20` = 200 conexões, contra ~75 livres (100 − 25 de outros serviços): `too many clients`.
 5. A liveness faz `SELECT 1`; sem conexão ela estoura o timeout de 1 s e o kubelet reinicia pods **saudáveis**.
@@ -159,6 +161,7 @@ efeito de exatamente uma vez. Se o evento puder trazer versões novas da mesma c
 +  behavior: { scaleUp: { stabilizationWindowSeconds: 120 } }
 ```
 E no código: cache com limite e TTL (LRU) — ou cache compartilhado (Redis) — em vez de `Map` sem fim.
+A senha que estava no manifest foi parar no Git: trocá-la no Postgres, não só movê-la para o Secret.
 
 ### (d) Por que homolog não pegou, e o que muda no processo
 Homolog tinha 1 réplica, 2 mil comunicações e nenhum pico: o cache nunca chegou a 256Mi e 1 × 20
@@ -184,7 +187,7 @@ alguns minutos. Mandamos novo aviso até as 11h confirmando a normalização.
 | 4 | `prisma/schema.prisma:17` | **Importante** | Coluna `cpf` sem migration no PR, sem índice (busca por CPF vira varredura completa) e sem definição de origem do dado. Inclua a migration com índice e alinhe com o DPO a necessidade de guardar CPF em texto puro. |
 | 5 | `clientes-comunicacoes.service.ts:24-25` | **Importante** | O `catch` engole qualquer erro e devolve `[]`: banco fora vira "cliente sem comunicações", sem alerta. Deixe a exceção subir (ou registre e lance). |
 | 6 | `clientes-comunicacoes.service.ts:17-20` | **Importante** | N+1: uma consulta de destinatários por comunicação, e sem limite/paginação. Use `findMany` com `include` e `take`/`skip`, como já faz o `listarPorPeriodo`. |
-| 7 | `clientes-comunicacoes.controller.ts:15,23-25` · `service.ts:34-35` | **Importante** | Sem validação: `cpf: any`; `new Date('abc')` gera *Invalid Date* e erro 500; `lte: new Date(dataFim)` corta o último dia (meia-noite). Crie um DTO com class-validator e trate o fim do período como inclusivo. |
+| 7 | `clientes-comunicacoes.controller.ts:15,23-25` · `service.ts:34-35` | **Importante** | Sem validação: `cpf: any`. Sem `cpf`, o Prisma ignora o `some: { cpf: undefined }` e a rota de período devolve comunicações de **todos** os clientes; `new Date('abc')` gera *Invalid Date* e erro 500; `lte: new Date(dataFim)` corta o último dia (meia-noite). Crie um DTO com class-validator e trate o fim do período como inclusivo. |
 | 8 | PR (geral) | Sugestão | Sem testes ("testei no Postman"): inclua e2e de autorização, CPF inválido e período. Duas rotas para o mesmo recurso → um `GET /clientes/:cpf/comunicacoes` com período opcional; o `take: 100` silencioso esconde resultados. |
 
 **Decisão:** pedir mudanças.
@@ -204,7 +207,7 @@ e revise o código gerado como se fosse de outra pessoa — se quiser, pareamos 
 
 ## P6 — Consulta lenta · até 150 palavras + SQL
 
-**A** aplica `regexp_replace` na coluna: o índice em `numero_processo` não serve e o Postgres varre 2,1 milhões de linhas. Correção: gravar o número normalizado (coluna gerada só com dígitos) e indexá-la junto com a data, já na ordem da consulta.
+**A** aplica `regexp_replace` na coluna: o índice em `numero_processo` não serve e o Postgres varre 2,1 milhões de linhas. Correção: índice **de expressão** com a mesma expressão, mais a data na ordem da listagem: a consulta não muda e a tabela não é reescrita (uma coluna gerada a travaria).
 
 **B** pede a página 2.001 com `OFFSET 40000` sem índice na data: ordena a tabela inteira em disco (1 GB) para descartar 40 mil linhas. Correção: índice `(data_disponibilizacao DESC, id DESC)` e paginação por cursor (*keyset*), que lê só 20 linhas em qualquer página.
 
@@ -213,13 +216,9 @@ e revise o código gerado como se fosse de outra pessoa — se quiser, pareamos 
 **Validação:** `EXPLAIN (ANALYZE, BUFFERS)` antes e depois numa cópia com volume real (Index Scan, sem Sort em disco), `pg_stat_statements` e o p95 do endpoint no APM após o deploy.
 
 ```sql
--- A: número só com dígitos, indexado na ordem da listagem
-ALTER TABLE comunicacao
-  ADD COLUMN numero_digitos text GENERATED ALWAYS AS (regexp_replace(numero_processo, '\D', '', 'g')) STORED;
-CREATE INDEX CONCURRENTLY comunicacao_numero_data_idx
-  ON comunicacao (numero_digitos, data_disponibilizacao DESC, id DESC);
-SELECT id, numero_processo, data_disponibilizacao, tipo, conteudo FROM comunicacao
-WHERE numero_digitos = $1 ORDER BY data_disponibilizacao DESC, id DESC LIMIT 20;
+-- A: índice sobre a MESMA expressão da consulta; a consulta A fica como está (Index Scan, sem Sort)
+CREATE INDEX CONCURRENTLY comunicacao_numero_digitos_data_idx
+  ON comunicacao ((regexp_replace(numero_processo, '\D', '', 'g')), data_disponibilizacao DESC, id DESC);
 
 -- B: keyset — o cliente envia a data e o id do último item da página anterior
 CREATE INDEX CONCURRENTLY comunicacao_data_id_idx ON comunicacao (data_disponibilizacao DESC, id DESC);
@@ -228,7 +227,7 @@ WHERE (data_disponibilizacao, id) < ($ultima_data, $ultimo_id)
 ORDER BY data_disponibilizacao DESC, id DESC LIMIT 20;
 
 -- C: com filtro usa o índice de A; sem filtro, estimativa barata em vez de varrer a tabela
-SELECT count(*) FROM comunicacao WHERE numero_digitos = $1;
+SELECT count(*) FROM comunicacao WHERE regexp_replace(numero_processo, '\D', '', 'g') = $1;
 SELECT reltuples::bigint AS total_estimado FROM pg_class WHERE relname = 'comunicacao';
 ```
 
