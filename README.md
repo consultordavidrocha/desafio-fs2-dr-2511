@@ -1,5 +1,7 @@
 # JusCash Comunicações — Case FS2
 
+[![CI](https://github.com/consultordavidrocha/desafio-fs2-dr-2511/actions/workflows/ci.yml/badge.svg)](https://github.com/consultordavidrocha/desafio-fs2-dr-2511/actions/workflows/ci.yml)
+
 Aplicação para advogados acompanharem **comunicações processuais** (intimações, citações,
 editais) publicadas no Diário de Justiça Eletrônico Nacional: criar conta, entrar, consultar e
 filtrar comunicações, ver o detalhe de um processo e gerar um resumo do conteúdo.
@@ -328,12 +330,43 @@ Colunas: **Backlog → A fazer → Em andamento → Em revisão → Concluído**
   dependiam do acesso. _Atualizar conforme liberação._
 
 **O que ficou de fora (e como eu faria)**
-- Rate limit no login (`@nestjs/throttler`, ex.: 5 tentativas/min por IP + e-mail).
 - Refresh token e sessão em cookie httpOnly.
 - Paginação por cursor (keyset) para volumes muito grandes; hoje é `OFFSET`.
 - Resumo com LLM (com anonimização antes do envio e cache por comunicação).
 - Imagem Docker menor (~710 MB, quase toda do Prisma CLI usado no `migrate deploy`): migrar num
   job separado.
+- Rate limit com storage em Redis: hoje a contagem é em memória (vale para uma instância);
+  com várias réplicas, o limite precisa ser compartilhado entre elas.
+
+### Melhorias futuras (crescimento do projeto)
+
+**Filas para trabalho assíncrono.** Hoje tudo acontece dentro da requisição. Com volume real,
+três fluxos deveriam ir para uma fila (BullMQ + Redis, ou RabbitMQ):
+- **ingestão do DJEN**: um job agendado busca as comunicações novas e enfileira uma tarefa por
+  lote, com retry, backoff e fila de erro — se o fornecedor falhar, retoma de onde parou
+  (mesmo raciocínio da P5);
+- **resumo com LLM**: gerado em segundo plano e cacheado, sem prender a requisição do usuário;
+- **notificações** ao advogado quando chega comunicação de um processo que ele acompanha.
+  Consumidores idempotentes (chave por id da comunicação), para reentregas não duplicarem
+  registros (o tema da P2).
+
+**Análise automática de PRs.** Além do CI que já roda (lint, testes, build e a trava de 500
+linhas por arquivo), um revisor automático comentaria cada PR apontando bugs, riscos de segurança
+e desvios das convenções do projeto — por exemplo, com o Claude Code no GitHub Actions. O
+revisor humano continua aprovando; a IA só antecipa o que é mecânico.
+
+**Trem de PRs (release train) para produção.** Hoje cada merge na `main` vai direto para
+produção. Com time maior, o melhor é um "trem" com horário fixo:
+1. PRs aprovados entram numa **fila de merge** (merge queue do GitHub), que testa cada PR já
+   combinado com os anteriores — evita a `main` quebrar por dois PRs que, sozinhos, passavam;
+2. o que entrou na fila vai primeiro para um ambiente de **homologação** (um *branch* do banco no
+   Neon serve de cópia de dados);
+3. num horário programado (ex.: 10h e 16h, nunca sexta à tarde), um workflow agendado publica o
+   lote em produção (deploy hook do Render com o auto-deploy desligado), com nota de versão gerada
+   dos PRs;
+4. se o health check ou as métricas piorarem, rollback de um clique para o trem anterior.
+   Ganha-se previsibilidade (todo mundo sabe quando sai versão), lotes pequenos fáceis de
+   reverter e janelas com alguém de plantão.
 
 ---
 
