@@ -1,0 +1,20 @@
+# Blueprint do Render para a API (https://render.com/docs/blueprint-spec).
+# O banco é externo (Neon): informe DATABASE_URL no painel ao criar o serviço.
+services:
+  - type: web
+    name: juscash-api
+    runtime: docker
+    dockerContext: .
+    dockerfilePath: ./api/Dockerfile
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false # postgresql://...neon.tech/...?sslmode=require
+      - key: JWT_SECRET
+        generateValue: true # gerado pelo Render (256 bits)
+      - key: JWT_EXPIRES_IN
+        value: 1d
+      - key: CORS_ORIGIN
+        sync: false # URL do front na Vercel, ex.: https://desafio-fs2-dr-2511.vercel.app

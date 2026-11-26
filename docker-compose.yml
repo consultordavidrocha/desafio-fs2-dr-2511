@@ -24,7 +24,10 @@ services:
       retries: 10
 
   api:
-    build: ./api
+    # Contexto na raiz para a imagem incluir dados/ (ver api/Dockerfile).
+    build:
+      context: .
+      dockerfile: api/Dockerfile
     container_name: juscash-api
     depends_on:
       db:
@@ -36,12 +39,8 @@ services:
       JWT_EXPIRES_IN: 1d
       CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3099}
       PORT: 8888
-      SEED_DATA_DIR: /app/dados
     ports:
       - "${API_HOST_PORT:-8888}:8888"
-    volumes:
-      # Dados do case (comunicacoes.json, tribunais.json) lidos pelo seed.
-      - ./dados:/app/dados:ro
 
 volumes:
   db-data:
