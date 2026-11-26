@@ -33,7 +33,9 @@ export function SignUpPage() {
       if (error instanceof ApiError && error.status === 409) {
         setError('email', { message: 'Este e-mail já está cadastrado.' }, { shouldFocus: true })
       } else {
-        setFormError(error instanceof ApiError && error.status === 0 ? error.message : GENERIC_ERROR)
+        // Sem conexão (0) e rate limit (429) têm mensagem útil; o resto vira genérica.
+        const useApiMessage = error instanceof ApiError && [0, 429].includes(error.status)
+        setFormError(useApiMessage ? error.message : GENERIC_ERROR)
       }
       return
     }

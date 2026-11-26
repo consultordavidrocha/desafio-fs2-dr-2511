@@ -32,8 +32,8 @@ export function LoginPage() {
       const from = (location.state as { from?: string } | null)?.from
       navigate(from ?? '/comunicacoes', { replace: true })
     } catch (error) {
-      // 401 e 400 trazem mensagem pronta da API; o resto vira mensagem genérica.
-      const isKnown = error instanceof ApiError && [0, 400, 401].includes(error.status)
+      // 400, 401 e 429 (rate limit) trazem mensagem pronta da API; o resto vira genérica.
+      const isKnown = error instanceof ApiError && [0, 400, 401, 429].includes(error.status)
       setFormError(isKnown ? error.message : GENERIC_ERROR)
     }
   })

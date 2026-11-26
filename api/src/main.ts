@@ -1,10 +1,15 @@
 import { NestFactory } from '@nestjs/core';
+import type { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { setupApp } from './setup-app';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  // Atrás do proxy do Render: confiar no X-Forwarded-For para obter o IP real do
+  // cliente. Sem isso, todos os usuários "teriam" o IP do proxy e um único usuário
+  // esgotaria o rate limit de todos.
+  app.set('trust proxy', 1);
   setupApp(app);
 
   const origins = process.env.CORS_ORIGIN?.split(',')

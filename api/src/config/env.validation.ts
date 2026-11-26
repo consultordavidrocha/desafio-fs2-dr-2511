@@ -29,6 +29,11 @@ class EnvironmentVariables {
   @IsOptional()
   @IsInt()
   PORT?: number;
+
+  /** Tentativas de login/cadastro por IP a cada minuto. Padrão: 5. */
+  @IsOptional()
+  @IsInt()
+  AUTH_RATE_LIMIT?: number;
 }
 
 export function validateEnv(config: Record<string, unknown>) {
