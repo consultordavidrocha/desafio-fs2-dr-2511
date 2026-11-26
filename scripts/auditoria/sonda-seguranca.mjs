@@ -129,7 +129,8 @@ for (let i = 0; i < 6; i++) await req('/auth/login', { method: 'POST', body: { e
 // Um 429 sozinho não prova nada: em 26/11 ele apareceu "por sorte" com o IP errado (cada
 // balanceador interno do Render tinha o próprio contador). Exige-se UM contador por cliente:
 // o restante só diminui e, depois do primeiro 429, nenhuma tentativa volta a passar.
-const restantes = logins.filter((l) => l.status !== 429).map((l) => Number(l.restante))
+// 400/413 (JSON malformado, corpo gigante) são recusados antes do rate limit e vêm sem contador.
+const restantes = logins.filter((l) => l.status !== 429 && l.restante !== null).map((l) => Number(l.restante))
 const decrescente = restantes.every((v, i) => i === 0 || v < restantes[i - 1])
 const primeiro429 = logins.findIndex((l) => l.status === 429)
 const travou = primeiro429 >= 0 && logins.slice(primeiro429).every((l) => l.status === 429)
