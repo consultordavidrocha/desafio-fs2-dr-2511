@@ -1,0 +1,42 @@
+[
+  {
+    "sigla": "TJSP",
+    "nome": "Tribunal de Justiça de São Paulo"
+  },
+  {
+    "sigla": "TJRJ",
+    "nome": "Tribunal de Justiça do Rio de Janeiro"
+  },
+  {
+    "sigla": "TJMG",
+    "nome": "Tribunal de Justiça de Minas Gerais"
+  },
+  {
+    "sigla": "TJMS",
+    "nome": "Tribunal de Justiça de Mato Grosso do Sul"
+  },
+  {
+    "sigla": "TJPR",
+    "nome": "Tribunal de Justiça do Paraná"
+  },
+  {
+    "sigla": "TJRS",
+    "nome": "Tribunal de Justiça do Rio Grande do Sul"
+  },
+  {
+    "sigla": "TRF1",
+    "nome": "Tribunal Regional Federal da 1ª Região"
+  },
+  {
+    "sigla": "TRF3",
+    "nome": "Tribunal Regional Federal da 3ª Região"
+  },
+  {
+    "sigla": "TRF4",
+    "nome": "Tribunal Regional Federal da 4ª Região"
+  },
+  {
+    "sigla": "TRT2",
+    "nome": "Tribunal Regional do Trabalho da 2ª Região"
+  }
+]

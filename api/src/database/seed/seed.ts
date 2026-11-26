@@ -5,6 +5,8 @@
  * - Em lotes: não segura o arquivo inteiro numa única transação.
  * - Registros inválidos são pulados e contados, com o motivo, no log.
  *
+ * Também cria (ou atualiza) a conta de demonstração — ver demo-user.ts.
+ *
  * Uso: npm run seed (após o build) | npm run seed:dev (direto do TypeScript)
  * Pasta dos dados: SEED_DATA_DIR (padrão: ../dados, a partir de api/).
  */
@@ -22,6 +24,7 @@ import type {
   CnjCourtSource,
   CnjListFile,
 } from './cnj-source.types';
+import { seedDemoUser } from './demo-user';
 
 const BATCH_SIZE = 500;
 const prisma = new PrismaClient();
@@ -121,6 +124,9 @@ async function main(): Promise<void> {
   const communications = readJson<CnjCommunicationSource>(
     resolve(dataDir, 'comunicacoes.json'),
   );
+
+  const demoEmail = await seedDemoUser(prisma);
+  if (demoEmail) console.log(`[seed] Usuário de demonstração: ${demoEmail}`);
 
   if (!courts && !communications) {
     console.warn(

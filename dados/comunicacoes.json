@@ -1,0 +1,4131 @@
+{
+  "status": "success",
+  "message": "Sucesso",
+  "count": 120,
+  "items": [
+    {
+      "id": 418230064,
+      "data_disponibilizacao": "2025-06-10",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "11ª Vara - Comarca de Campo Grande",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Barbosa",
+            "numero_oab": "433565",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230120,
+      "data_disponibilizacao": "2025-06-10",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "6ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Fica a parte autora intimada para, no prazo de 10 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "35508681120194010462",
+      "numeroprocessocommascara": "3550868-11.2019.4.01.0462",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Carvalho",
+          "polo": "P"
+        },
+        {
+          "nome": "Paula Gomes",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Almeida Prado",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Patrícia Pereira",
+            "numero_oab": "178595",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230061,
+      "data_disponibilizacao": "2025-06-12",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "11ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "83864791420218260432",
+      "numeroprocessocommascara": "8386479-14.2021.8.26.0432",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Mariana Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Amélia Pereira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Marcos Barbosa",
+            "numero_oab": "355115",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230073,
+      "data_disponibilizacao": "2025-06-12",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "1ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a proposta de acordo apresentada pela parte contrária (ID 70967025). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "52354536320238260007",
+      "numeroprocessocommascara": "5235453-63.2023.8.26.0007",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Renata Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Lucas Rocha",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Costa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor Almeida Prado",
+            "numero_oab": "314485",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230019,
+      "data_disponibilizacao": "2025-06-13",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "4ª Vara - Seção Judiciária do Paraná",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a impugnação ao cumprimento de sentença. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "14020253820214040381",
+      "numeroprocessocommascara": "1402025-38.2021.4.04.0381",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Rocha",
+          "polo": "P"
+        },
+        {
+          "nome": "Gustavo de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Mascarenhas Macedo",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lucas Oliveira",
+            "numero_oab": "131330",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230067,
+      "data_disponibilizacao": "2025-06-13",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "9ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "64838901820214010175",
+      "numeroprocessocommascara": "6483890-18.2021.4.01.0175",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Mascarenhas Macedo",
+          "polo": "A"
+        },
+        {
+          "nome": "Sérgio Souza Lima",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Fernanda Martins",
+            "numero_oab": "444571",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230089,
+      "data_disponibilizacao": "2025-06-16",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "6ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte autora intimada para, no prazo de 10 dias úteis, manifestar-se sobre a proposta de acordo apresentada pela parte contrária. Ref.: a minuta do ofício precatório (ID 76890055).",
+      "numero_processo": "57966017320225020491",
+      "numeroprocessocommascara": "5796601-73.2022.5.02.0491",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Paula Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Natália Ribeiro",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Mariana Rocha",
+            "numero_oab": "96551",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230088,
+      "data_disponibilizacao": "2025-06-22",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "3ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre a planilha de atualização do débito. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Certifica-se que a presente decisão transitou em julgado em 10/06/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Oliveira",
+            "numero_oab": "28218",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230090,
+      "data_disponibilizacao": "2025-06-22",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "7ª Vara - Seção Judiciária do Paraná",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: a expedição de requisição de pequeno valor (RPV) (ID 42364848).",
+      "numero_processo": "14020253820214040381",
+      "numeroprocessocommascara": "1402025-38.2021.4.04.0381",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Rocha",
+          "polo": "A"
+        },
+        {
+          "nome": "Gustavo de Jesus",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Paula de Jesus",
+            "numero_oab": "416851",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230118,
+      "data_disponibilizacao": "2025-06-23",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre a minuta do ofício precatório. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: os cálculos apresentados pelo perito (ID 37643828).",
+      "numero_processo": "12608170620198120373",
+      "numeroprocessocommascara": "1260817-06.2019.8.12.0373",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Gomes",
+            "numero_oab": "495994",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230029,
+      "data_disponibilizacao": "2025-06-26",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "8ª Vara - Seção Judiciária do Paraná",
+      "texto": "Fica a parte ré intimada para, no prazo de 15 dias úteis, manifestar-se sobre os embargos de declaração opostos. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "76645190720214040459",
+      "numeroprocessocommascara": "7664519-07.2021.4.04.0459",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Lucas Costa",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Patrícia Oliveira",
+            "numero_oab": "327990",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230058,
+      "data_disponibilizacao": "2025-06-28",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "4ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "95872528920234030326",
+      "numeroprocessocommascara": "9587252-89.2023.4.03.0326",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Mascarenhas Macedo",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Patrícia Nogueira",
+            "numero_oab": "327289",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230081,
+      "data_disponibilizacao": "2025-07-01",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre os embargos de declaração opostos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "12608170620198120373",
+      "numeroprocessocommascara": "1260817-06.2019.8.12.0373",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Carlos Ribeiro",
+            "numero_oab": "327101",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230010,
+      "data_disponibilizacao": "2025-07-02",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "1ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "52174139620195020490",
+      "numeroprocessocommascara": "5217413-96.2019.5.02.0490",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Fernanda Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Nogueira",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Pereira",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael Almeida Prado",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Paula Mascarenhas Macedo",
+            "numero_oab": "10932",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230074,
+      "data_disponibilizacao": "2025-07-04",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "2ª Vara - Comarca da Capital",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "45269391820198190034",
+      "numeroprocessocommascara": "4526939-18.2019.8.19.0034",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Otávio Silva Santos",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Ribeiro",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Patrícia Martins",
+            "numero_oab": "406648",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230015,
+      "data_disponibilizacao": "2025-07-06",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "6ª Vara - Foro Central de Curitiba",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a proposta de acordo apresentada pela parte contrária. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: a minuta do ofício precatório (ID 90598377). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "80387090920248160453",
+      "numeroprocessocommascara": "8038709-09.2024.8.16.0453",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Barbosa",
+            "numero_oab": "142551",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230078,
+      "data_disponibilizacao": "2025-07-06",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "2ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Publique-se. Intimem-se. Cumpra-se. Ref.: a minuta do ofício precatório (ID 59231701). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "62807943320235020260",
+      "numeroprocessocommascara": "6280794-33.2023.5.02.0260",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Amélia de Jesus",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Helena de Jesus",
+            "numero_oab": "115781",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230006,
+      "data_disponibilizacao": "2025-07-07",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "2ª Vara - Comarca de Porto Alegre",
+      "texto": "Fica a parte ré intimada para, no prazo de 10 dias úteis, manifestar-se sobre a proposta de acordo apresentada pela parte contrária. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: a impugnação ao cumprimento de sentença (ID 96901932).",
+      "numero_processo": "47266515820208210402",
+      "numeroprocessocommascara": "4726651-58.2020.8.21.0402",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Beatriz Almeida Prado",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael Pereira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Almeida Prado",
+            "numero_oab": "366617",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230041,
+      "data_disponibilizacao": "2025-07-07",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "3ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte autora intimada para, no prazo de 10 dias úteis, manifestar-se sobre a impugnação ao cumprimento de sentença. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a proposta de acordo apresentada pela parte contrária (ID 12824702). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "14821224620208260241",
+      "numeroprocessocommascara": "1482122-46.2020.8.26.0241",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Sérgio Barbosa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Silva Santos",
+            "numero_oab": "142651",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230102,
+      "data_disponibilizacao": "2025-07-07",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 5 dias úteis, manifestar-se sobre os cálculos apresentados pelo perito. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "83864791420218260432",
+      "numeroprocessocommascara": "8386479-14.2021.8.26.0432",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Mariana Costa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Marcos Gomes",
+            "numero_oab": "55875",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230094,
+      "data_disponibilizacao": "2025-07-08",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "11ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "05596615320225020274",
+      "numeroprocessocommascara": "0559661-53.2022.5.02.0274",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Carlos Martins",
+            "numero_oab": "237513",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230014,
+      "data_disponibilizacao": "2025-07-11",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "2ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte autora intimada para, no prazo de 15 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "12608170620198120373",
+      "numeroprocessocommascara": "1260817-06.2019.8.12.0373",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Paula Martins",
+            "numero_oab": "446944",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230086,
+      "data_disponibilizacao": "2025-07-11",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "1ª Vara - Seção Judiciária do Paraná",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "14020253820214040381",
+      "numeroprocessocommascara": "1402025-38.2021.4.04.0381",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Rocha",
+          "polo": "P"
+        },
+        {
+          "nome": "Gustavo de Jesus",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor Oliveira",
+            "numero_oab": "299128",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230033,
+      "data_disponibilizacao": "2025-07-12",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre a impugnação ao cumprimento de sentença. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "52354536320238260007",
+      "numeroprocessocommascara": "5235453-63.2023.8.26.0007",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Renata Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Lucas Rocha",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Costa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Beatriz Martins",
+            "numero_oab": "431374",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230052,
+      "data_disponibilizacao": "2025-07-12",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Comarca da Capital",
+      "texto": "Fica a parte autora intimada para, no prazo de 15 dias úteis, manifestar-se sobre a proposta de acordo apresentada pela parte contrária. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "43158232420218190488",
+      "numeroprocessocommascara": "4315823-24.2021.8.19.0488",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Barbosa",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Mascarenhas Macedo",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Amélia Costa",
+            "numero_oab": "399500",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230070,
+      "data_disponibilizacao": "2025-07-12",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "3ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre os embargos de declaração opostos. Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Certifica-se que a presente decisão transitou em julgado em 10/07/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "65303013120205020406",
+      "numeroprocessocommascara": "6530301-31.2020.5.02.0406",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Juliana Pereira",
+          "polo": "P"
+        },
+        {
+          "nome": "Renata de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Fernanda Carvalho",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Mariana Mascarenhas Macedo",
+            "numero_oab": "375901",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230040,
+      "data_disponibilizacao": "2025-07-13",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre a minuta do ofício precatório. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Ref.: os embargos de declaração opostos (ID 15480016).",
+      "numero_processo": "91357232520194030492",
+      "numeroprocessocommascara": "9135723-25.2019.4.03.0492",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Gomes",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Paula Almeida Prado",
+            "numero_oab": "126445",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230034,
+      "data_disponibilizacao": "2025-07-15",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "7ª Vara - Comarca da Capital",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Publique-se. Intimem-se. Cumpra-se. Ref.: a impugnação ao cumprimento de sentença (ID 82681118). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "45269391820198190034",
+      "numeroprocessocommascara": "4526939-18.2019.8.19.0034",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Otávio Silva Santos",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Ribeiro",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Barbosa",
+            "numero_oab": "353761",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230021,
+      "data_disponibilizacao": "2025-07-16",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "4ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os embargos de declaração opostos. Ref.: os embargos de declaração opostos (ID 48265472). Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "83864791420218260432",
+      "numeroprocessocommascara": "8386479-14.2021.8.26.0432",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Mariana Costa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Otávio Rocha",
+            "numero_oab": "398222",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230112,
+      "data_disponibilizacao": "2025-07-16",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre os embargos de declaração opostos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a planilha de atualização do débito (ID 53281145). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "57966017320225020491",
+      "numeroprocessocommascara": "5796601-73.2022.5.02.0491",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Souza Lima",
+          "polo": "P"
+        },
+        {
+          "nome": "Paula Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Natália Ribeiro",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Costa",
+            "numero_oab": "269493",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230080,
+      "data_disponibilizacao": "2025-07-18",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "10ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a impugnação ao cumprimento de sentença. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: a expedição de requisição de pequeno valor (RPV) (ID 86077067).",
+      "numero_processo": "91357232520194030492",
+      "numeroprocessocommascara": "9135723-25.2019.4.03.0492",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Mascarenhas Macedo",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Amélia Almeida Prado",
+            "numero_oab": "433108",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230093,
+      "data_disponibilizacao": "2025-07-19",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "9ª Vara - Foro Central de Curitiba",
+      "texto": "Fica a parte executada intimada para, no prazo de 5 dias úteis, manifestar-se sobre os cálculos apresentados pelo perito. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "80387090920248160453",
+      "numeroprocessocommascara": "8038709-09.2024.8.16.0453",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Oliveira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Ribeiro",
+            "numero_oab": "468121",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230077,
+      "data_disponibilizacao": "2025-07-22",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "1ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Processo distribuído por sorteio à 20ª Vara da Fazenda Pública, nos termos do art. 284 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a minuta do ofício precatório (ID 91635226). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "05596615320225020274",
+      "numeroprocessocommascara": "0559661-53.2022.5.02.0274",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Lucas Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Silva Santos",
+            "numero_oab": "89392",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230050,
+      "data_disponibilizacao": "2025-07-25",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "12ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre a impugnação ao cumprimento de sentença. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "52174139620195020490",
+      "numeroprocessocommascara": "5217413-96.2019.5.02.0490",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Fernanda Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Nogueira",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Pereira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Gustavo Gomes",
+            "numero_oab": "236482",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230057,
+      "data_disponibilizacao": "2025-07-25",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "1ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os cálculos apresentados pelo perito. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "25899114120214010093",
+      "numeroprocessocommascara": "2589911-41.2021.4.01.0093",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Fernanda Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Amélia Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Juliana Nogueira",
+            "numero_oab": "21283",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230049,
+      "data_disponibilizacao": "2025-07-26",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "8ª Vara - Seção Judiciária do Paraná",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre a impugnação ao cumprimento de sentença. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "13860804420214040467",
+      "numeroprocessocommascara": "1386080-44.2021.4.04.0467",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Natália Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Ribeiro",
+            "numero_oab": "276147",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230111,
+      "data_disponibilizacao": "2025-07-26",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte autora intimada para, no prazo de 15 dias úteis, manifestar-se sobre os cálculos apresentados pelo perito. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "62807943320235020260",
+      "numeroprocessocommascara": "6280794-33.2023.5.02.0260",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Juliana Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Barbosa",
+            "numero_oab": "350186",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230066,
+      "data_disponibilizacao": "2025-07-30",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "2ª Vara - Comarca de Porto Alegre",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre o pedido de levantamento de valores. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "49263048420198210011",
+      "numeroprocessocommascara": "4926304-84.2019.8.21.0011",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Silva Santos",
+            "numero_oab": "203690",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230004,
+      "data_disponibilizacao": "2025-07-31",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "12ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte autora intimada para, no prazo de 5 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: os embargos de declaração opostos (ID 57591898). Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "96273208020238120493",
+      "numeroprocessocommascara": "9627320-80.2023.8.12.0493",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Martins",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Beatriz Silva Santos",
+            "numero_oab": "11215",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230108,
+      "data_disponibilizacao": "2025-07-31",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "5ª Vara - Comarca de Campo Grande",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se. Ref.: a planilha de atualização do débito (ID 66579030).",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Silva Santos",
+            "numero_oab": "470282",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230001,
+      "data_disponibilizacao": "2025-08-01",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 5 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "14821224620208260241",
+      "numeroprocessocommascara": "1482122-46.2020.8.26.0241",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Sérgio Barbosa",
+          "polo": "P"
+        },
+        {
+          "nome": "Fernanda Ribeiro",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Amélia Rocha",
+            "numero_oab": "413749",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230055,
+      "data_disponibilizacao": "2025-08-02",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "10ª Vara - Foro Central de Curitiba",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os embargos de declaração opostos. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: a minuta do ofício precatório (ID 31539976). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "80387090920248160453",
+      "numeroprocessocommascara": "8038709-09.2024.8.16.0453",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "João Costa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor de Jesus",
+            "numero_oab": "322900",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230119,
+      "data_disponibilizacao": "2025-08-03",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "12ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os embargos de declaração opostos. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Ref.: a impugnação ao cumprimento de sentença (ID 44845303). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "48420419420238260026",
+      "numeroprocessocommascara": "4842041-94.2023.8.26.0026",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "João Ribeiro",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lucas Gomes",
+            "numero_oab": "174455",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230022,
+      "data_disponibilizacao": "2025-08-04",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Comarca da Capital",
+      "texto": "Fica a parte autora intimada para, no prazo de 5 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: a expedição de requisição de pequeno valor (RPV) (ID 30480022). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "26222501320248190546",
+      "numeroprocessocommascara": "2622250-13.2024.8.19.0546",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Martins",
+          "polo": "P"
+        },
+        {
+          "nome": "Fernanda Pereira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Marcos Oliveira",
+            "numero_oab": "377560",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230085,
+      "data_disponibilizacao": "2025-08-04",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "1ª Vara - Comarca da Capital",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre os embargos de declaração opostos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: o pedido de levantamento de valores (ID 47007007).",
+      "numero_processo": "26222501320248190546",
+      "numeroprocessocommascara": "2622250-13.2024.8.19.0546",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Fernanda Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Carlos Souza Lima",
+            "numero_oab": "46689",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230117,
+      "data_disponibilizacao": "2025-08-04",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "6ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os embargos de declaração opostos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se. Ref.: o pedido de levantamento de valores (ID 76594100). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "14821224620208260241",
+      "numeroprocessocommascara": "1482122-46.2020.8.26.0241",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Sérgio Barbosa",
+          "polo": "P"
+        },
+        {
+          "nome": "Lucas Oliveira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor Almeida Prado",
+            "numero_oab": "167117",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230028,
+      "data_disponibilizacao": "2025-08-05",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "1ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre a minuta do ofício precatório. Ref.: os embargos de declaração opostos (ID 95666407).",
+      "numero_processo": "38249072720224030173",
+      "numeroprocessocommascara": "3824907-27.2022.4.03.0173",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Otávio Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "P"
+        },
+        {
+          "nome": "Mariana Carvalho",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Carvalho",
+            "numero_oab": "318448",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230071,
+      "data_disponibilizacao": "2025-08-05",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "1ª Vara - Comarca de Campo Grande",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "45003205120238120569",
+      "numeroprocessocommascara": "4500320-51.2023.8.12.0569",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Ribeiro",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor Ribeiro",
+            "numero_oab": "440022",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230036,
+      "data_disponibilizacao": "2025-08-06",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "5ª Vara - Comarca de Porto Alegre",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "87166030420228210110",
+      "numeroprocessocommascara": "8716603-04.2022.8.21.0110",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Rocha",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Fernanda Silva Santos",
+            "numero_oab": "240391",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230109,
+      "data_disponibilizacao": "2025-08-06",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "12ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre a minuta do ofício precatório. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: os embargos de declaração opostos (ID 67591382). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "05596615320225020274",
+      "numeroprocessocommascara": "0559661-53.2022.5.02.0274",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Lavínia Mascarenhas Macedo",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Juliana de Jesus",
+            "numero_oab": "316380",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230095,
+      "data_disponibilizacao": "2025-08-11",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "12ª Vara - Comarca de Campo Grande",
+      "texto": "Processo distribuído por sorteio à 19ª Vara Cível, nos termos do art. 284 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: a minuta do ofício precatório (ID 63387290).",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Otávio Nogueira",
+            "numero_oab": "478870",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230048,
+      "data_disponibilizacao": "2025-08-12",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 15 dias úteis, manifestar-se sobre a minuta do ofício precatório. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "71750729320194030484",
+      "numeroprocessocommascara": "7175072-93.2019.4.03.0484",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Ribeiro",
+          "polo": "P"
+        },
+        {
+          "nome": "Amélia Costa",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Helena Ribeiro",
+            "numero_oab": "165864",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230075,
+      "data_disponibilizacao": "2025-08-12",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "7ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Ref.: o pedido de levantamento de valores (ID 52865982).",
+      "numero_processo": "55403359620205020466",
+      "numeroprocessocommascara": "5540335-96.2020.5.02.0466",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Carvalho",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Costa",
+            "numero_oab": "238458",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230056,
+      "data_disponibilizacao": "2025-08-13",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "1ª Vara - Comarca de Porto Alegre",
+      "texto": "Fica a parte exequente intimada para, no prazo de 5 dias úteis, manifestar-se sobre os cálculos apresentados pelo perito. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: os cálculos apresentados pelo perito (ID 34724344).",
+      "numero_processo": "94817927520228210565",
+      "numeroprocessocommascara": "9481792-75.2022.8.21.0565",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Rocha",
+          "polo": "A"
+        },
+        {
+          "nome": "Mariana Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Mascarenhas Macedo",
+            "numero_oab": "127539",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230013,
+      "data_disponibilizacao": "2025-08-14",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Comarca de Belo Horizonte",
+      "texto": "Fica a parte autora intimada para, no prazo de 10 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: os embargos de declaração opostos (ID 90432349). Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "75555174620228130536",
+      "numeroprocessocommascara": "7555517-46.2022.8.13.0536",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Mariana Nogueira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Beatriz Rocha",
+            "numero_oab": "110425",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230027,
+      "data_disponibilizacao": "2025-08-14",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "5ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "64838901820214010175",
+      "numeroprocessocommascara": "6483890-18.2021.4.01.0175",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Mascarenhas Macedo",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Souza Lima",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "João Barbosa",
+            "numero_oab": "40734",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230087,
+      "data_disponibilizacao": "2025-08-19",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "4ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre a planilha de atualização do débito. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: o pedido de levantamento de valores (ID 97394575).",
+      "numero_processo": "55403359620205020466",
+      "numeroprocessocommascara": "5540335-96.2020.5.02.0466",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "João Mascarenhas Macedo",
+            "numero_oab": "208750",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230098,
+      "data_disponibilizacao": "2025-08-19",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "7ª Vara - Comarca da Capital",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Publique-se. Intimem-se. Cumpra-se. Certifica-se que a presente decisão transitou em julgado em 08/08/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "45269391820198190034",
+      "numeroprocessocommascara": "4526939-18.2019.8.19.0034",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Otávio Silva Santos",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Ribeiro",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Fernanda Mascarenhas Macedo",
+            "numero_oab": "190784",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230031,
+      "data_disponibilizacao": "2025-08-21",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "12ª Vara - Comarca de Campo Grande",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "45003205120238120569",
+      "numeroprocessocommascara": "4500320-51.2023.8.12.0569",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Martins",
+          "polo": "P"
+        },
+        {
+          "nome": "Renata Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Gustavo Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Barbosa",
+            "numero_oab": "332744",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230038,
+      "data_disponibilizacao": "2025-08-21",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "6ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre os embargos de declaração opostos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: o pedido de levantamento de valores (ID 43250267). Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "62807943320235020260",
+      "numeroprocessocommascara": "6280794-33.2023.5.02.0260",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia de Jesus",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Silva Santos",
+            "numero_oab": "486868",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230053,
+      "data_disponibilizacao": "2025-08-21",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "12ª Vara - Comarca de Belo Horizonte",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre a planilha de atualização do débito. Publique-se. Intimem-se. Cumpra-se. Ref.: o pedido de levantamento de valores (ID 60456524). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "75555174620228130536",
+      "numeroprocessocommascara": "7555517-46.2022.8.13.0536",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Martins",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Paula Mascarenhas Macedo",
+            "numero_oab": "323173",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230044,
+      "data_disponibilizacao": "2025-08-22",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "3ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre a planilha de atualização do débito. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "96273208020238120493",
+      "numeroprocessocommascara": "9627320-80.2023.8.12.0493",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "João Almeida Prado",
+            "numero_oab": "307840",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230007,
+      "data_disponibilizacao": "2025-08-26",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Fica a parte exequente intimada para, no prazo de 5 dias úteis, manifestar-se sobre a proposta de acordo apresentada pela parte contrária. Ref.: o laudo pericial juntado aos autos (ID 22772563). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Certifica-se que a presente decisão transitou em julgado em 14/08/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "35508681120194010462",
+      "numeroprocessocommascara": "3550868-11.2019.4.01.0462",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Carvalho",
+          "polo": "P"
+        },
+        {
+          "nome": "Paula Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Juliana Rocha",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Helena Pereira",
+            "numero_oab": "212186",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230051,
+      "data_disponibilizacao": "2025-08-26",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "1ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre a proposta de acordo apresentada pela parte contrária. Ref.: os embargos de declaração opostos (ID 35162966). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "48420419420238260026",
+      "numeroprocessocommascara": "4842041-94.2023.8.26.0026",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "João Ribeiro",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor Nogueira",
+            "numero_oab": "113952",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230079,
+      "data_disponibilizacao": "2025-08-26",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Comarca de Belo Horizonte",
+      "texto": "Fica a parte autora intimada para, no prazo de 15 dias úteis, manifestar-se sobre a minuta do ofício precatório. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "79197135920198130114",
+      "numeroprocessocommascara": "7919713-59.2019.8.13.0114",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Gustavo Souza Lima",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Marcos Martins",
+            "numero_oab": "497298",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230110,
+      "data_disponibilizacao": "2025-08-29",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Foro Central de Curitiba",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre a minuta do ofício precatório. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "80387090920248160453",
+      "numeroprocessocommascara": "8038709-09.2024.8.16.0453",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Patrícia Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Oliveira",
+            "numero_oab": "218627",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230002,
+      "data_disponibilizacao": "2025-08-31",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "8ª Vara - Comarca da Capital",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "68089152720218190012",
+      "numeroprocessocommascara": "6808915-27.2021.8.19.0012",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Nogueira",
+          "polo": "P"
+        },
+        {
+          "nome": "João Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Fernanda de Jesus",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Silva Santos",
+            "numero_oab": "99264",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230114,
+      "data_disponibilizacao": "2025-08-31",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "9ª Vara - Comarca de Porto Alegre",
+      "texto": "Fica a parte autora intimada para, no prazo de 15 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "94817927520228210565",
+      "numeroprocessocommascara": "9481792-75.2022.8.21.0565",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Rocha",
+          "polo": "A"
+        },
+        {
+          "nome": "Mariana Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Souza Lima",
+            "numero_oab": "361029",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230003,
+      "data_disponibilizacao": "2025-09-01",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "9ª Vara - Comarca de Belo Horizonte",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a impugnação ao cumprimento de sentença. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a impugnação ao cumprimento de sentença (ID 34005243). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "51870433220238130137",
+      "numeroprocessocommascara": "5187043-32.2023.8.13.0137",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Otávio Mascarenhas Macedo",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Gomes",
+            "numero_oab": "286681",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230063,
+      "data_disponibilizacao": "2025-09-02",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "10ª Vara - Comarca de Belo Horizonte",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "17847014420218130135",
+      "numeroprocessocommascara": "1784701-44.2021.8.13.0135",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Paula Gomes",
+          "polo": "A"
+        },
+        {
+          "nome": "Helena Souza Lima",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Juliana Gomes",
+            "numero_oab": "375766",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230099,
+      "data_disponibilizacao": "2025-09-02",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "6ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 10 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Certifica-se que a presente decisão transitou em julgado em 19/08/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "57966017320225020491",
+      "numeroprocessocommascara": "5796601-73.2022.5.02.0491",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Souza Lima",
+          "polo": "P"
+        },
+        {
+          "nome": "Paula Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Natália Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael Souza Lima",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Pereira",
+            "numero_oab": "84217",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230069,
+      "data_disponibilizacao": "2025-09-03",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Seção Judiciária do Paraná",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Ref.: a planilha de atualização do débito (ID 82930238). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "76645190720214040459",
+      "numeroprocessocommascara": "7664519-07.2021.4.04.0459",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Souza Lima",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Barbosa",
+            "numero_oab": "496168",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230091,
+      "data_disponibilizacao": "2025-09-03",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "1ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 10 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Ref.: o pedido de levantamento de valores (ID 52235374). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "52354536320238260007",
+      "numeroprocessocommascara": "5235453-63.2023.8.26.0007",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Renata Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Lucas Rocha",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Costa",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Amélia Costa",
+            "numero_oab": "319612",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230023,
+      "data_disponibilizacao": "2025-09-04",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "9ª Vara - Comarca de Belo Horizonte",
+      "texto": "Processo distribuído por sorteio à 30ª Vara do Trabalho, nos termos do art. 284 do CPC. Ref.: o pedido de levantamento de valores (ID 66125302). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "17847014420218130135",
+      "numeroprocessocommascara": "1784701-44.2021.8.13.0135",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Paula Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Helena Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos Barbosa",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Almeida Prado",
+            "numero_oab": "92878",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230100,
+      "data_disponibilizacao": "2025-09-06",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte executada intimada para, no prazo de 5 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "12608170620198120373",
+      "numeroprocessocommascara": "1260817-06.2019.8.12.0373",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "P"
+        },
+        {
+          "nome": "Otávio Rocha",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Oliveira",
+            "numero_oab": "16020",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230083,
+      "data_disponibilizacao": "2025-09-07",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "7ª Vara - Seção Judiciária do Paraná",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Ref.: o pedido de levantamento de valores (ID 52038303). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Certifica-se que a presente decisão transitou em julgado em 21/08/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "76645190720214040459",
+      "numeroprocessocommascara": "7664519-07.2021.4.04.0459",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Souza Lima",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "João de Jesus",
+            "numero_oab": "188142",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230030,
+      "data_disponibilizacao": "2025-09-08",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "9ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre os embargos de declaração opostos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "65303013120205020406",
+      "numeroprocessocommascara": "6530301-31.2020.5.02.0406",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Juliana Pereira",
+          "polo": "P"
+        },
+        {
+          "nome": "Renata de Jesus",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "João de Jesus",
+            "numero_oab": "91956",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230101,
+      "data_disponibilizacao": "2025-09-08",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "3ª Vara - Comarca de Campo Grande",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a proposta de acordo apresentada pela parte contrária (ID 28679022). Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Amélia Barbosa",
+            "numero_oab": "430457",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230016,
+      "data_disponibilizacao": "2025-09-09",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "3ª Vara - Comarca de Porto Alegre",
+      "texto": "Fica a parte autora intimada para, no prazo de 10 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: os embargos de declaração opostos (ID 40971872). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "94817927520228210565",
+      "numeroprocessocommascara": "9481792-75.2022.8.21.0565",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Rocha",
+          "polo": "P"
+        },
+        {
+          "nome": "Mariana Pereira",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos Carvalho",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Carlos Oliveira",
+            "numero_oab": "379551",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230115,
+      "data_disponibilizacao": "2025-09-10",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Seção Judiciária do Paraná",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: a proposta de acordo apresentada pela parte contrária (ID 71023316). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "13860804420214040467",
+      "numeroprocessocommascara": "1386080-44.2021.4.04.0467",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia Carvalho",
+          "polo": "P"
+        },
+        {
+          "nome": "Natália Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Gomes",
+            "numero_oab": "180823",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230025,
+      "data_disponibilizacao": "2025-09-12",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "7ª Vara - Foro Central de Curitiba",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a impugnação ao cumprimento de sentença. Ref.: o pedido de levantamento de valores (ID 28362337). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "61588105020248160311",
+      "numeroprocessocommascara": "6158810-50.2024.8.16.0311",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Gomes",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Amélia de Jesus",
+            "numero_oab": "41332",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230104,
+      "data_disponibilizacao": "2025-09-12",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre o pedido de levantamento de valores. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "55403359620205020466",
+      "numeroprocessocommascara": "5540335-96.2020.5.02.0466",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Paula Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Carlos de Jesus",
+            "numero_oab": "33730",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230065,
+      "data_disponibilizacao": "2025-09-15",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "12ª Vara - Foro Central de Curitiba",
+      "texto": "Fica a parte autora intimada para, no prazo de 15 dias úteis, manifestar-se sobre a expedição de requisição de pequeno valor (RPV). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "61588105020248160311",
+      "numeroprocessocommascara": "6158810-50.2024.8.16.0311",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Gomes",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Mascarenhas Macedo",
+            "numero_oab": "220184",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230105,
+      "data_disponibilizacao": "2025-09-15",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "3ª Vara - Comarca de Belo Horizonte",
+      "texto": "Fica a parte exequente intimada para, no prazo de 5 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Ref.: a proposta de acordo apresentada pela parte contrária (ID 15982153). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "79197135920198130114",
+      "numeroprocessocommascara": "7919713-59.2019.8.13.0114",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Gustavo Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Nogueira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lucas Rocha",
+            "numero_oab": "19016",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230059,
+      "data_disponibilizacao": "2025-09-17",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "1ª Vara - Seção Judiciária do Paraná",
+      "texto": "Processo distribuído por sorteio à 19ª Vara Cível, nos termos do art. 284 do CPC. Ref.: a proposta de acordo apresentada pela parte contrária (ID 33917579). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "14020253820214040381",
+      "numeroprocessocommascara": "1402025-38.2021.4.04.0381",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Rocha",
+          "polo": "A"
+        },
+        {
+          "nome": "Gustavo de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Sérgio Pereira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Martins",
+            "numero_oab": "331506",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230116,
+      "data_disponibilizacao": "2025-09-18",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "1ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os cálculos apresentados pelo perito. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "35508681120194010462",
+      "numeroprocessocommascara": "3550868-11.2019.4.01.0462",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Paula Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Souza Lima",
+            "numero_oab": "142094",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230045,
+      "data_disponibilizacao": "2025-09-19",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Foro Central de Curitiba",
+      "texto": "Fica a parte exequente intimada para, no prazo de 15 dias úteis, manifestar-se sobre a impugnação ao cumprimento de sentença. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "91473864220228160080",
+      "numeroprocessocommascara": "9147386-42.2022.8.16.0080",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Silva Santos",
+          "polo": "A"
+        },
+        {
+          "nome": "Patrícia Martins",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Martins",
+            "numero_oab": "117803",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230092,
+      "data_disponibilizacao": "2025-09-19",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "8ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte executada intimada para, no prazo de 5 dias úteis, manifestar-se sobre o pedido de levantamento de valores. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Juliana Mascarenhas Macedo",
+            "numero_oab": "388316",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230020,
+      "data_disponibilizacao": "2025-09-22",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre a planilha de atualização do débito. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "57966017320225020491",
+      "numeroprocessocommascara": "5796601-73.2022.5.02.0491",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Paula Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Natália Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Patrícia Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Costa",
+            "numero_oab": "162602",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230047,
+      "data_disponibilizacao": "2025-09-22",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "1ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Ref.: a planilha de atualização do débito (ID 97983728). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "35508681120194010462",
+      "numeroprocessocommascara": "3550868-11.2019.4.01.0462",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Paula Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Carlos Oliveira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Ribeiro",
+            "numero_oab": "144223",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230046,
+      "data_disponibilizacao": "2025-09-23",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "10ª Vara - Comarca de Porto Alegre",
+      "texto": "Processo distribuído por sorteio à 2ª Vara da Fazenda Pública, nos termos do art. 284 do CPC. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "47266515820208210402",
+      "numeroprocessocommascara": "4726651-58.2020.8.21.0402",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Beatriz Almeida Prado",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Patrícia Nogueira",
+            "numero_oab": "143104",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230060,
+      "data_disponibilizacao": "2025-09-26",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "2ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a impugnação ao cumprimento de sentença. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "57966017320225020491",
+      "numeroprocessocommascara": "5796601-73.2022.5.02.0491",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Souza Lima",
+          "polo": "P"
+        },
+        {
+          "nome": "Paula Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Natália Ribeiro",
+          "polo": "P"
+        },
+        {
+          "nome": "Juliana Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Otávio Martins",
+            "numero_oab": "356861",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230012,
+      "data_disponibilizacao": "2025-09-27",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Comarca da Capital",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Ref.: os cálculos apresentados pelo perito (ID 72866028).",
+      "numero_processo": "43158232420218190488",
+      "numeroprocessocommascara": "4315823-24.2021.8.19.0488",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Barbosa",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Mascarenhas Macedo",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Otávio Nogueira",
+            "numero_oab": "459096",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230082,
+      "data_disponibilizacao": "2025-09-27",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "7ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Fica a parte executada intimada para, no prazo de 5 dias úteis, manifestar-se sobre a proposta de acordo apresentada pela parte contrária. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "64838901820214010175",
+      "numeroprocessocommascara": "6483890-18.2021.4.01.0175",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Carlos Mascarenhas Macedo",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Mariana Barbosa",
+            "numero_oab": "54231",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230024,
+      "data_disponibilizacao": "2025-09-29",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "3ª Vara - Comarca de Campo Grande",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a planilha de atualização do débito. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "54490243320218120119",
+      "numeroprocessocommascara": "5449024-33.2021.8.12.0119",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Gustavo Ribeiro",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Beatriz Silva Santos",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Marcos Barbosa",
+            "numero_oab": "374243",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230017,
+      "data_disponibilizacao": "2025-09-30",
+      "siglaTribunal": "TRF1",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "2ª Vara - Seção Judiciária do Distrito Federal",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre a planilha de atualização do débito. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "25899114120214010093",
+      "numeroprocessocommascara": "2589911-41.2021.4.01.0093",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Fernanda Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael Gomes",
+          "polo": "P"
+        },
+        {
+          "nome": "Amélia Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata Oliveira",
+            "numero_oab": "356616",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230084,
+      "data_disponibilizacao": "2025-09-30",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre os embargos de declaração opostos. Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Ref.: a impugnação ao cumprimento de sentença (ID 59022249). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "95872528920234030326",
+      "numeroprocessocommascara": "9587252-89.2023.4.03.0326",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Mascarenhas Macedo",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Souza Lima",
+            "numero_oab": "308357",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230032,
+      "data_disponibilizacao": "2025-10-01",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "10ª Vara - Foro Central de Curitiba",
+      "texto": "Fica a parte executada intimada para, no prazo de 15 dias úteis, manifestar-se sobre os cálculos apresentados pelo perito. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: o pedido de levantamento de valores (ID 19152705). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "77837725120198160342",
+      "numeroprocessocommascara": "7783772-51.2019.8.16.0342",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Pereira",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos de Jesus",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lucas Souza Lima",
+            "numero_oab": "208203",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230043,
+      "data_disponibilizacao": "2025-10-01",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "11ª Vara - Comarca de Belo Horizonte",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a expedição de requisição de pequeno valor (RPV). Ref.: os cálculos apresentados pelo perito (ID 79030902). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "51870433220238130137",
+      "numeroprocessocommascara": "5187043-32.2023.8.13.0137",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Otávio Mascarenhas Macedo",
+          "polo": "A"
+        },
+        {
+          "nome": "Otávio Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Mariana Nogueira",
+            "numero_oab": "423408",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230076,
+      "data_disponibilizacao": "2025-10-01",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "4ª Vara - Comarca de Porto Alegre",
+      "texto": "Fica a parte executada intimada para, no prazo de 10 dias úteis, manifestar-se sobre os embargos de declaração opostos. Ref.: o pedido de levantamento de valores (ID 82960395). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "87166030420228210110",
+      "numeroprocessocommascara": "8716603-04.2022.8.21.0110",
+      "nomeClasse": "Cumprimento de sentença",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Rocha",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Paula Pereira",
+            "numero_oab": "64150",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230068,
+      "data_disponibilizacao": "2025-10-03",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "6ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "38249072720224030173",
+      "numeroprocessocommascara": "3824907-27.2022.4.03.0173",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Otávio Oliveira",
+          "polo": "A"
+        },
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "A"
+        },
+        {
+          "nome": "Mariana Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Beatriz Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Pereira",
+            "numero_oab": "168272",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230097,
+      "data_disponibilizacao": "2025-10-04",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "1ª Vara - Comarca de Campo Grande",
+      "texto": "Processo distribuído por sorteio à 6ª Vara Cível, nos termos do art. 284 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "45003205120238120569",
+      "numeroprocessocommascara": "4500320-51.2023.8.12.0569",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Juliana Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Renata Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos de Jesus",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Silva Santos",
+            "numero_oab": "26452",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230008,
+      "data_disponibilizacao": "2025-10-05",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "4ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Processo distribuído por sorteio à 17ª Vara da Fazenda Pública, nos termos do art. 284 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Ref.: os embargos de declaração opostos (ID 20785643).",
+      "numero_processo": "71750729320194030484",
+      "numeroprocessocommascara": "7175072-93.2019.4.03.0484",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Amélia Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Juliana Carvalho",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Fernanda Barbosa",
+            "numero_oab": "156006",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230039,
+      "data_disponibilizacao": "2025-10-08",
+      "siglaTribunal": "TJMG",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "9ª Vara - Comarca de Belo Horizonte",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre o laudo pericial juntado aos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: a planilha de atualização do débito (ID 27665210). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Certifica-se que a presente decisão transitou em julgado em 25/09/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "79197135920198130114",
+      "numeroprocessocommascara": "7919713-59.2019.8.13.0114",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "P"
+        },
+        {
+          "nome": "Igor Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Gustavo Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos Barbosa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lucas Ribeiro",
+            "numero_oab": "31080",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230103,
+      "data_disponibilizacao": "2025-10-09",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "10ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Processo distribuído por sorteio à 13ª Vara da Fazenda Pública, nos termos do art. 284 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "52174139620195020490",
+      "numeroprocessocommascara": "5217413-96.2019.5.02.0490",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Fernanda Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Igor Nogueira",
+          "polo": "P"
+        },
+        {
+          "nome": "Renata Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Carvalho",
+            "numero_oab": "459156",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230042,
+      "data_disponibilizacao": "2025-10-11",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "5ª Vara - Comarca da Capital",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Ref.: a minuta do ofício precatório (ID 85652995). Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "68089152720218190012",
+      "numeroprocessocommascara": "6808915-27.2021.8.19.0012",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Nogueira",
+          "polo": "A"
+        },
+        {
+          "nome": "João Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Fernanda de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Otávio Barbosa",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Gustavo Nogueira",
+            "numero_oab": "43786",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230107,
+      "data_disponibilizacao": "2025-10-11",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "10ª Vara - Foro Central de Curitiba",
+      "texto": "Edital de intimação com prazo de 20 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre a minuta do ofício precatório. Ref.: a planilha de atualização do débito (ID 82929651). Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "77837725120198160342",
+      "numeroprocessocommascara": "7783772-51.2019.8.16.0342",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Pereira",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Lavínia Pereira",
+            "numero_oab": "283774",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230113,
+      "data_disponibilizacao": "2025-10-11",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 15 dias úteis, manifestar-se sobre os cálculos apresentados pelo perito. Ref.: a expedição de requisição de pequeno valor (RPV) (ID 81270611).",
+      "numero_processo": "57966017320225020491",
+      "numeroprocessocommascara": "5796601-73.2022.5.02.0491",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Natália Souza Lima",
+          "polo": "A"
+        },
+        {
+          "nome": "Paula Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Natália Ribeiro",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Igor Souza Lima",
+            "numero_oab": "303872",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230035,
+      "data_disponibilizacao": "2025-10-14",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 5 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "55403359620205020466",
+      "numeroprocessocommascara": "5540335-96.2020.5.02.0466",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Igor Carvalho",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Martins",
+            "numero_oab": "112307",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230005,
+      "data_disponibilizacao": "2025-10-17",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "7ª Vara - Foro Central de Curitiba",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos.",
+      "numero_processo": "91473864220228160080",
+      "numeroprocessocommascara": "9147386-42.2022.8.16.0080",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Silva Santos",
+          "polo": "A"
+        },
+        {
+          "nome": "Otávio Gomes",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Almeida Prado",
+            "numero_oab": "393677",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230018,
+      "data_disponibilizacao": "2025-10-17",
+      "siglaTribunal": "TRF3",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "9ª Vara - Seção Judiciária de São Paulo",
+      "texto": "Fica a parte exequente intimada para, no prazo de 5 dias úteis, manifestar-se sobre o pedido de levantamento de valores. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: a proposta de acordo apresentada pela parte contrária (ID 69820269).",
+      "numero_processo": "95872528920234030326",
+      "numeroprocessocommascara": "9587252-89.2023.4.03.0326",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "João Mascarenhas Macedo",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Beatriz Souza Lima",
+            "numero_oab": "242496",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230106,
+      "data_disponibilizacao": "2025-10-19",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Lista de distribuição",
+      "nomeOrgao": "3ª Vara - Comarca de Porto Alegre",
+      "texto": "Processo distribuído por sorteio à 7ª Vara Cível, nos termos do art. 284 do CPC. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "47266515820208210402",
+      "numeroprocessocommascara": "4726651-58.2020.8.21.0402",
+      "nomeClasse": "Procedimento do Juizado Especial Cível",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Beatriz Almeida Prado",
+          "polo": "P"
+        },
+        {
+          "nome": "Rafael Pereira",
+          "polo": "A"
+        },
+        {
+          "nome": "Amélia Nogueira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Rafael Pereira",
+            "numero_oab": "160056",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230011,
+      "data_disponibilizacao": "2025-10-20",
+      "siglaTribunal": "TJSP",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Foro Central Cível de São Paulo",
+      "texto": "Fica a parte autora intimada para, no prazo de 5 dias úteis, manifestar-se sobre a planilha de atualização do débito. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "48420419420238260026",
+      "numeroprocessocommascara": "4842041-94.2023.8.26.0026",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "João Ribeiro",
+          "polo": "A"
+        },
+        {
+          "nome": "Lavínia Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "João Pereira",
+            "numero_oab": "385312",
+            "uf_oab": "RS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230096,
+      "data_disponibilizacao": "2025-10-23",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "11ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Fica a parte ré intimada para, no prazo de 10 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Ref.: a proposta de acordo apresentada pela parte contrária (ID 59821426). As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Publique-se. Intimem-se. Cumpra-se.",
+      "numero_processo": "62807943320235020260",
+      "numeroprocessocommascara": "6280794-33.2023.5.02.0260",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Costa",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia de Jesus",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Renata de Jesus",
+            "numero_oab": "438308",
+            "uf_oab": "DF"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230072,
+      "data_disponibilizacao": "2025-10-24",
+      "siglaTribunal": "TJPR",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "5ª Vara - Foro Central de Curitiba",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre o pedido de levantamento de valores. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Ref.: a impugnação ao cumprimento de sentença (ID 71614481).",
+      "numero_processo": "77837725120198160342",
+      "numeroprocessocommascara": "7783772-51.2019.8.16.0342",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Pereira",
+          "polo": "A"
+        },
+        {
+          "nome": "Carlos de Jesus",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Otávio Oliveira",
+            "numero_oab": "404461",
+            "uf_oab": "MS"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230009,
+      "data_disponibilizacao": "2025-10-28",
+      "siglaTribunal": "TRF4",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "12ª Vara - Seção Judiciária do Paraná",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação.",
+      "numero_processo": "13860804420214040467",
+      "numeroprocessocommascara": "1386080-44.2021.4.04.0467",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Amélia Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Lavínia Carvalho",
+          "polo": "A"
+        },
+        {
+          "nome": "Natália Oliveira",
+          "polo": "P"
+        },
+        {
+          "nome": "Sérgio Mascarenhas Macedo",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Carlos Ribeiro",
+            "numero_oab": "385468",
+            "uf_oab": "PR"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230026,
+      "data_disponibilizacao": "2025-10-29",
+      "siglaTribunal": "TJRS",
+      "tipoComunicacao": "Edital",
+      "nomeOrgao": "8ª Vara - Comarca de Porto Alegre",
+      "texto": "Edital de intimação com prazo de 30 dias, expedido nos autos em epígrafe, para ciência de terceiros interessados sobre os embargos de declaração opostos. Publique-se. Intimem-se. Cumpra-se. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "49263048420198210011",
+      "numeroprocessocommascara": "4926304-84.2019.8.21.0011",
+      "nomeClasse": "Procedimento comum",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Rafael Nogueira",
+          "polo": "P"
+        },
+        {
+          "nome": "Marcos Silva Santos",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Natália Silva Santos",
+            "numero_oab": "271828",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230054,
+      "data_disponibilizacao": "2025-10-30",
+      "siglaTribunal": "TJMS",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "2ª Vara - Comarca de Campo Grande",
+      "texto": "Fica a parte exequente intimada para, no prazo de 10 dias úteis, manifestar-se sobre a minuta do ofício precatório. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Ref.: a proposta de acordo apresentada pela parte contrária (ID 18951382). Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC.",
+      "numero_processo": "12608170620198120373",
+      "numeroprocessocommascara": "1260817-06.2019.8.12.0373",
+      "nomeClasse": "Cumprimento de sentença contra a Fazenda Pública",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Marcos Costa",
+          "polo": "A"
+        },
+        {
+          "nome": "Marcos Martins",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Sérgio Costa",
+            "numero_oab": "47220",
+            "uf_oab": "SP"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230062,
+      "data_disponibilizacao": "2025-10-30",
+      "siglaTribunal": "TJRJ",
+      "tipoComunicacao": "Intimação",
+      "nomeOrgao": "5ª Vara - Comarca da Capital",
+      "texto": "Fica a parte ré intimada para, no prazo de 5 dias úteis, manifestar-se sobre o laudo pericial juntado aos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação. Publique-se. Intimem-se. Cumpra-se. Decorrido o prazo sem manifestação, certifique-se e venham os autos conclusos para deliberação. Certifica-se que a presente decisão transitou em julgado em 11/10/2025, tendo decorrido o prazo recursal sem manifestação das partes.",
+      "numero_processo": "26222501320248190546",
+      "numeroprocessocommascara": "2622250-13.2024.8.19.0546",
+      "nomeClasse": "Execução de título extrajudicial",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Patrícia Martins",
+          "polo": "A"
+        },
+        {
+          "nome": "Fernanda Pereira",
+          "polo": "A"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Otávio Souza Lima",
+            "numero_oab": "453158",
+            "uf_oab": "RJ"
+          }
+        }
+      ]
+    },
+    {
+      "id": 418230037,
+      "data_disponibilizacao": "2025-10-31",
+      "siglaTribunal": "TRT2",
+      "tipoComunicacao": "Citação",
+      "nomeOrgao": "5ª Vara - Fórum Trabalhista de São Paulo",
+      "texto": "Cite-se a parte ré para, querendo, apresentar contestação no prazo legal, sob pena de revelia e presunção de veracidade dos fatos alegados na petição inicial. Publique-se. Intimem-se. Cumpra-se. Considerando o pedido formulado pela parte, determino a juntada dos documentos e a posterior conclusão dos autos. Advirta-se que o descumprimento poderá ensejar a aplicação de multa, nos termos do art. 77 do CPC. As partes deverão observar o calendário processual fixado na decisão anterior, sem prejuízo de eventual designação de audiência de conciliação.",
+      "numero_processo": "05596615320225020274",
+      "numeroprocessocommascara": "0559661-53.2022.5.02.0274",
+      "nomeClasse": "Ação trabalhista - rito ordinário",
+      "meio": "D",
+      "meiocompleto": "Diário de Justiça Eletrônico Nacional",
+      "destinatarios": [
+        {
+          "nome": "Lucas Oliveira",
+          "polo": "P"
+        }
+      ],
+      "destinatarioadvogados": [
+        {
+          "advogado": {
+            "nome": "Gustavo Souza Lima",
+            "numero_oab": "227548",
+            "uf_oab": "MG"
+          }
+        }
+      ]
+    }
+  ]
+}
