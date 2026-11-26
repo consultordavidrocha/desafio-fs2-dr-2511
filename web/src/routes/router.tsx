@@ -33,6 +33,12 @@ export const router = createBrowserRouter([
             .CommunicationsPage,
         }),
       },
+      {
+        path: '/processos/:numero',
+        lazy: async () => ({
+          Component: (await import('@/features/lawsuits/pages/LawsuitPage')).LawsuitPage,
+        }),
+      },
     ],
   },
   { path: '*', element: <Navigate to="/comunicacoes" replace /> },
