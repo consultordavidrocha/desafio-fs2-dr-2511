@@ -1,77 +1,89 @@
 # Uso de IA
 
-> Rascunho em andamento: a estrutura definitiva segue o template do repositório do case.
-> Atualizado ao longo do desenvolvimento, não só no fim.
+> Seja específico e honesto. Um relato real, com os erros, vale mais do que um texto bonito.
 
 ## Ferramentas
+<!-- assistentes, modelos, IDE -->
+- **Claude Code** (modelo Claude Opus 5.5), na extensão do VS Code, como par de programação durante
+  todo o case: leitura do enunciado, plano, código, testes, documentação e revisão.
+- **API do Figma** (token pessoal só de leitura): extração de textos, estados, medidas e renders das
+  telas, usados para construir e conferir o front.
+- **Playwright + Chrome**: screenshots automatizados para comparar o front com o Figma e testar fluxos
+  em produção.
+- Skills e MCP oficiais do **Neon** (banco), lidos/instalados durante o deploy.
 
-- **Claude Code** (modelo Claude Opus 5.5), no VS Code: leitura do enunciado, planejamento,
-  geração de código, testes e revisão.
-- **API do Figma** (token pessoal só de leitura): extração de textos, estados e medidas das
-  telas para o front.
-
-## O que deleguei e o que ficou comigo
-
-| Delegado à IA | Decidido/validado por mim |
-|---|---|
-| Leitura do PDF e montagem do plano por dia | Prioridades pelos pesos da avaliação (Parte 2 = 30) e ordem de execução |
-| Scaffold do NestJS, Prisma, Docker | Convenções: identificadores em inglês, contrato em português, comentários em pt-BR |
-| Código de autenticação, filtros, seed e testes | Regras de negócio e casos de borda a testar (ver abaixo) |
-| Rascunho de P5 e P7 | Conteúdo final e limite de 150 palavras |
-
-## Prompts importantes
-
-- _"Leia o PDF do desafio e vamos criar um plano para executar esse desafio."_
-- _"Coloque os dados em inglês, interno, na API; vamos seguir as boas práticas de
-  desenvolvimento, cuidar com arquivos grandes, documentar bem."_ Isso mudou o schema e os DTOs
-  já escritos.
-- Definição de portas para não conflitar com outros projetos locais: API 8888, front 3099,
-  Postgres 5434.
-
-## Onde a IA errou (e como foi pego)
-
-| Erro | Como foi detectado | Correção |
+## O que você delegou e o que fez sozinho
+| Parte | Delegado à IA | Feito/decidido por você |
 |---|---|---|
-| Concluiu que o Figma só tinha a capa e sugeriu avisar o recrutamento | Eu abri os links diretos dos nós e as telas estavam lá | Mensagem ao recrutamento corrigida antes do envio |
-| Tentou instalar `@nestjs/swagger@12` num projeto Nest 11 | Erro de dependências do npm (ERESOLVE) | Versões fixadas compatíveis com o Nest 11 |
-| Subiu o Postgres numa porta já usada por outro projeto meu | Falha de autenticação ao migrar (estava falando com outro banco) | Porta própria e configurável; nada foi alterado no outro banco |
-| Usou `@Validate` com uma função (API inexistente no class-validator) | Revisão do código antes de rodar | Regra `dataInicio <= dataFim` movida para o serviço, com teste |
-| Exemplo errado de "máscara parcial" num teste de CNJ | O próprio teste falharia; revisado antes de rodar | Exemplo corrigido |
-| Tipagens `any` em testes e transformações | ESLint (`no-unsafe-*`) | Funções nomeadas e tipadas |
-| Code splitting das rotas quebrou o dev server ("React duplicado": o Vite reotimizou dependências no meio da sessão) | Screenshot automatizado mostrou a tela de erro em vez do login | `optimizeDeps.include` com as dependências das páginas lazy |
-| Cadastro mostrava "Mínimo de 8 caracteres" junto com "As senhas não coincidem" | Comparação lado a lado do screenshot com o render do Figma | Texto de apoio some no estado de senhas diferentes, como no Figma |
-| Cards 2px mais altos que no Figma (borda do Figma é interna; no CSS soma ao padding) | Comparação lado a lado da tela de Comunicações | Padding de 23px nos cards (1px de borda + 23px = 24px) |
-| Breakpoints responsivos "chutados" (filtros em linha a partir de 768px) | Extração das regras dos frames "Responsivos" do Figma | Filtros em linha só ≥1024px, card em 2 colunas ≥768px, celular sem logo/sidebar |
-| Regex de frases quebrava em "art. 4º" (lookbehind sem o ponto) | Teste unitário do resumidor falhou | Lookbehind incluindo o ponto da abreviação |
-| Smoke test contra o Neon rodou um `dist/` antigo, sem o módulo de processos (404) | O próprio smoke test acusou a rota faltando | Recompilar antes de testar; a imagem Docker compila no build e não tem o problema |
-| Primeiro CI falhou no `npm ci` do front: lockfile gerado no Windows sem dependências opcionais do Linux | Job do GitHub Actions ("Missing: @emnapi/core from lock file") | Lockfile regenerado do zero; CI verde nos 3 jobs |
-| Teste do 429 usava `import()` dinâmico, não suportado pelo Jest do projeto | Execução do e2e | Opções do throttler sobrescritas no módulo de teste (`overrideProvider`) |
-| A CLI do Neon gravou a configuração do MCP no perfil padrão do Claude, ignorando a pasta de configuração em uso | Conferência de onde cada arquivo foi gravado, comparando com backup | Registro no lugar certo via `claude mcp add`; o arquivo do outro perfil voltou a ser idêntico ao original |
+| API | Scaffold NestJS/Prisma/Docker; código de auth, filtros, seed, bônus e rate limit; testes unitários e e2e | Prioridades pelos pesos da avaliação; convenções (código em inglês, contrato e mensagens em português); portas; casos de borda a cobrir; escolha de Neon/Render/Vercel |
+| Front | Componentes a partir das medidas do Figma; estados; responsivo; comparação lado a lado | Achei as telas no Figma (a IA concluiu que só havia a capa); conferência visual final; o que fazer onde o Figma não define (estado de erro, menu do usuário) |
+| Problemas (Parte 2) | Primeira versão das respostas e do código da P1, com conferência dos limites de tamanho e dos números de linha citados | Revisão e ajuste de cada resposta; decisões da P1 que dependem de critério (o que rejeitar × corrigir com aviso) |
 
-## Como validei
+## Prompts mais importantes
+<!-- 2 a 4 prompts (pode resumir): objetivo, o que voltou, como você iterou -->
+1. **"Leia o PDF do desafio e vamos criar um plano."** Voltou um plano por dia, pesos da avaliação
+   e bloqueios (repositório privado). Iterei pedindo para começar pelo que não dependia do acesso:
+   API, P5 e P7.
+2. **"Coloque os dados em inglês, interno, na API; boas práticas, cuidar com arquivos grandes,
+   documentar bem."** Mudou o schema e os DTOs já escritos e virou regra do projeto (depois
+   reforçada no CI com a trava de 500 linhas por arquivo).
+3. **Comparação com o Figma** — "extraia as medidas do frame X, gere screenshots nos 5 tamanhos e
+   compare lado a lado". Cada rodada achava diferenças (texto de apoio a mais no cadastro, cards 2 px
+   mais altos, breakpoints errados) e voltava para correção.
+4. **"Fetch the Neon skill … instale o que falta e preserve minha configuração."** A IA leu a skill,
+   instalou skills e MCP, e descobriu que a CLI tinha gravado no perfil errado; corrigiu e provou,
+   comparando com backup, que o arquivo do outro perfil ficou idêntico ao original.
 
-- **Testes automatizados**: unitários (serviço de auth, utilitários CNJ, mapper do seed) e e2e
-  contra um Postgres real separado (`juscash_test`), cobrindo os status do contrato
-  (200/201/400/401/409), filtros, paginação e casos de borda.
-- **Lint e build** a cada etapa, sem avisos.
-- **Execução real**: `docker compose up` do zero, com cadastro, login e consultas via `curl`,
-  e o seed rodado duas vezes para comprovar a idempotência.
-- **Fidelidade ao Figma**: telas renderizadas pela API do Figma e comparadas lado a lado com
-  screenshots do front (Playwright + Chrome) nos 5 tamanhos do protótipo.
-- **Fluxo do front contra a API real**: script automatizado cobrindo rota protegida, cadastro,
-  sessão após recarregar, logout, e-mail duplicado, senha errada e mostrar/ocultar senha.
-- **Banco de produção (Neon)**: migrations e todas as rotas testadas primeiro num *branch*
-  temporário do banco (cópia isolada), com massa fictícia; só depois as migrations foram
-  aplicadas em produção, que segue sem dados de teste.
-- **Leitura do código** gerado antes de cada commit; o que eu não conseguia explicar não entrava.
+## Onde a IA errou
+<!-- pelo menos um caso concreto: o que ela sugeriu, como você percebeu, o que fez -->
+| Erro | Como foi percebido | O que foi feito |
+|---|---|---|
+| Concluiu que o Figma só tinha a capa e sugeriu avisar o recrutamento | **Eu** abri os links diretos dos nós e as telas estavam lá | Mensagem ao recrutamento corrigida antes do envio |
+| Tentou instalar `@nestjs/swagger@12` num projeto Nest 11 | Erro de dependências do npm | Versões fixadas compatíveis com o Nest 11 |
+| Subiu o Postgres numa porta já usada por outro projeto meu | Falha de autenticação ao migrar (era outro banco) | Porta própria e configurável; nada foi alterado no outro banco |
+| Usou `@Validate` com uma função (API inexistente no class-validator) | Revisão antes de rodar | Regra `dataInicio <= dataFim` no serviço, com teste |
+| Code splitting quebrou o dev server ("React duplicado") | Screenshot automatizado mostrou a tela de erro | `optimizeDeps.include` com as dependências das páginas lazy |
+| Cadastro mostrava "Mínimo de 8 caracteres" junto com "As senhas não coincidem" | Comparação com o render do Figma | Texto de apoio some nesse estado, como no Figma |
+| Cards 2 px mais altos que no Figma (borda interna no Figma, somada no CSS) | Comparação lado a lado | Padding de 23 px (1 px de borda + 23 = 24) |
+| Breakpoints responsivos "chutados" | Extração das regras dos frames "Responsivos" | Filtros em linha só ≥ 1024 px; celular sem logo/sidebar |
+| Regex de frases do resumo quebrava em "art. 4º" | Teste unitário falhou | Lookbehind incluindo o ponto da abreviação |
+| Teste contra o banco de produção rodou um build antigo (rota 404) | O próprio teste acusou a rota faltando | Recompilar antes de testar |
+| Primeiro CI falhou: lockfile gerado no Windows sem dependências do Linux | Job do GitHub Actions | Lockfile regenerado; CI verde |
+| A CLI do Neon gravou o MCP no perfil errado do Claude | Conferência dos arquivos contra backup | Registro no lugar certo; outro perfil restaurado |
+| Contou errado as palavras da P5 (149 → 155 com contagem rigorosa) | Script de conferência dos limites | Resposta enxugada para 147 |
 
-## O que eu ensinaria ao time
+## Como você validou o que foi gerado
+<!-- testes, execução, comparação com o Figma, leitura de documentação... -->
+- **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 51 e2e
+  contra Postgres real (todos os status do contrato, filtros, paginação, rate limit), front com 33
+  unitários, P1 com 37 testes pytest, e a trava de 500 linhas por arquivo.
+- **Lint e build** sem avisos a cada etapa.
+- **Fidelidade ao Figma**: renders do Figma × screenshots do front, lado a lado, nos 5 tamanhos.
+- **Execução real**: `docker compose up` do zero; fluxo completo no navegador contra a produção
+  (Vercel + Render + Neon), inclusive com CORS restrito; seed rodado duas vezes (idempotência).
+- **Banco de produção**: migrations testadas antes num branch temporário do Neon.
+- **Parte 2**: números de linha citados conferidos contra o diff e o código; limites de palavras e
+  linhas conferidos por script; a P1 roda sobre o `legado.csv` real.
+- **Leitura do código** antes de cada commit: o que eu não conseguia explicar não entrava.
 
-1. **IA acelera, mas o teste é o juiz**: peça os testes junto com o código e rode-os de verdade.
-   Vários erros acima só não chegaram ao repositório por causa disso.
-2. **Dê contexto e restrições cedo** (convenções, portas, versões); corrigir depois custa
-   retrabalho.
-3. **Nunca cole segredos ou dados pessoais** em prompts (ver P7). O token do Figma, por
-   exemplo, ficou num arquivo local e nunca entrou na conversa.
-4. **Desconfie de conclusões "negativas"** da IA (ex.: "não tem acesso") e verifique por
-   conta própria.
+## Onde você preferiu não usar IA, e por quê
+- **Segredos**: a connection string do banco, o token do Figma e as chaves nunca passaram pela
+  conversa — foram colados direto nos painéis (Render, Vercel) ou em arquivos locais. Pelo mesmo
+  motivo criei o serviço no Render pelo painel, e não pelo MCP: a própria Render avisa que o MCP não
+  garante que segredos fiquem fora do contexto da IA (o mesmo raciocínio da P7).
+- **Contas e permissões**: criar contas, escolher a conta do GitHub, liberar escopos e tornar o
+  Kanban público foram ações minhas.
+- **Decisões que não são técnicas**: nome do repositório diante de instruções conflitantes,
+  prioridades, e o que fica como melhoria futura em vez de ser implementado.
+- **Revisão automática de PR com IA**: documentada como melhoria, mas não ligada — exigiria uma chave
+  de API e custo, e o PDF pede o essencial.
+
+## O que você ensinaria ao time sobre usar IA neste tipo de trabalho
+1. **O teste é o juiz**: peça os testes junto com o código e rode de verdade — quase todos os erros
+   acima foram pegos por teste, lint, CI ou comparação automática.
+2. **Dê contexto e restrições cedo** (convenções, portas, versões): corrigir depois custa retrabalho.
+3. **Verifique visualmente o que é visual**: "pixel perfect" sem screenshot lado a lado é opinião.
+4. **Segredos e dados pessoais nunca entram no prompt** — use variável de ambiente, arquivo local ou
+   o painel da plataforma.
+5. **Desconfie de conclusões negativas** ("não tem", "não dá") e confira por conta própria.
+6. **Você responde pelo que entrega**: leia tudo, entenda as decisões e saiba explicá-las.
