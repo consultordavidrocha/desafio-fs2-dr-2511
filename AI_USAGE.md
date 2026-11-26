@@ -58,7 +58,7 @@
 
 ## Como você validou o que foi gerado
 <!-- testes, execução, comparação com o Figma, leitura de documentação... -->
-- **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 56 e2e
+- **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 58 e2e
   contra Postgres real (todos os status do contrato, filtros, paginação, rate limit), front com 33
   unitários, **24 testes de navegador com Playwright** contra a stack real (Postgres + API + front),
   P1 com 37 testes pytest, e a trava de 500 linhas por arquivo.
