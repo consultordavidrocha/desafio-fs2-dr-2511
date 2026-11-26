@@ -49,6 +49,7 @@
 | Regex de frases do resumo quebrava em "art. 4º" | Teste unitário falhou | Lookbehind incluindo o ponto da abreviação |
 | Teste contra o banco de produção rodou um build antigo (rota 404) | O próprio teste acusou a rota faltando | Recompilar antes de testar |
 | Primeiro CI falhou: lockfile gerado no Windows sem dependências do Linux | Job do GitHub Actions | Lockfile regenerado; CI verde |
+| O mesmo erro **voltou** ao adicionar o Playwright: regenerar no Windows não resolve de vez (o npm resolve a dependência *peer* do `@napi-rs/wasm-runtime` de forma diferente por plataforma) | CI falhou de novo no `npm ci` | Causa investigada no lock; agora o lock é gerado num container Linux (`scripts/regenerar-lock.sh`), validado com `npm ci` no Linux e no Windows, e documentado no README |
 | A CLI do Neon gravou o MCP no perfil errado do Claude | Conferência dos arquivos contra backup | Registro no lugar certo; outro perfil restaurado |
 | Contou errado as palavras da P5 (149 → 155 com contagem rigorosa) | Script de conferência dos limites | Resposta enxugada para 147 |
 
@@ -56,7 +57,10 @@
 <!-- testes, execução, comparação com o Figma, leitura de documentação... -->
 - **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 51 e2e
   contra Postgres real (todos os status do contrato, filtros, paginação, rate limit), front com 33
-  unitários, P1 com 37 testes pytest, e a trava de 500 linhas por arquivo.
+  unitários, **19 testes de navegador com Playwright** contra a stack real (Postgres + API + front),
+  P1 com 37 testes pytest, e a trava de 500 linhas por arquivo.
+- **Teste manual** (meu): roteiro com checklist em `docs/roteiro-testes-manuais.md` — fidelidade ao
+  Figma, teclado, celular real, produção e Swagger. O automático vem primeiro; o manual confirma.
 - **Lint e build** sem avisos a cada etapa.
 - **Fidelidade ao Figma**: renders do Figma × screenshots do front, lado a lado, nos 5 tamanhos.
 - **Execução real**: `docker compose up` do zero; fluxo completo no navegador contra a produção

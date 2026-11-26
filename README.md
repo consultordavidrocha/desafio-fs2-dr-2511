@@ -140,6 +140,11 @@ npm run test:e2e                                           # builda o front, sob
 Os testes e2e da API exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
 criado automaticamente e o `api/.env.test` já está versionado (sem segredos reais).
 
+> **Dependências novas no front/API:** depois de `npm install <pacote>`, rode
+> `bash scripts/regenerar-lock.sh web` (ou `api`). Ele regenera o `package-lock.json` num container
+> Linux: o lock gerado no Windows pode não ter as dependências opcionais que o Linux do CI, do Render
+> e da Vercel esperam, e o `npm ci` falha.
+
 > **Windows:** se o projeto for aberto com a letra do drive em minúsculo (`c:\…`), o Vitest pode
 > carregar duas instâncias de si mesmo e falhar com `reading 'config'`. Rode a partir de `C:\…`.
 
