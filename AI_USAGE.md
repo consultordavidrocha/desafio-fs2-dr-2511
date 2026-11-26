@@ -44,6 +44,8 @@
 | Breakpoints responsivos "chutados" (filtros em linha a partir de 768px) | Extração das regras dos frames "Responsivos" do Figma | Filtros em linha só ≥1024px, card em 2 colunas ≥768px, celular sem logo/sidebar |
 | Regex de frases quebrava em "art. 4º" (lookbehind sem o ponto) | Teste unitário do resumidor falhou | Lookbehind incluindo o ponto da abreviação |
 | Smoke test contra o Neon rodou um `dist/` antigo, sem o módulo de processos (404) | O próprio smoke test acusou a rota faltando | Recompilar antes de testar; a imagem Docker compila no build e não tem o problema |
+| Primeiro CI falhou no `npm ci` do front: lockfile gerado no Windows sem dependências opcionais do Linux | Job do GitHub Actions ("Missing: @emnapi/core from lock file") | Lockfile regenerado do zero; CI verde nos 3 jobs |
+| Teste do 429 usava `import()` dinâmico, não suportado pelo Jest do projeto | Execução do e2e | Opções do throttler sobrescritas no módulo de teste (`overrideProvider`) |
 | A CLI do Neon gravou a configuração do MCP no perfil padrão do Claude, ignorando a pasta de configuração em uso | Conferência de onde cada arquivo foi gravado, comparando com backup | Registro no lugar certo via `claude mcp add`; o arquivo do outro perfil voltou a ser idêntico ao original |
 
 ## Como validei
