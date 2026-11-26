@@ -222,6 +222,7 @@ já na ordem da listagem (`availability_date DESC, id DESC`).
 | **Guard JWT global** + `@Public()` | Rota nova nasce protegida; esquecer o decorator gera 401, não vazamento |
 | **bcrypt** (custo 10), senha de 8 a 72 caracteres | bcrypt ignora bytes após o 72º; rejeitar evita senha "truncada" sem aviso |
 | **Mesma resposta** para e-mail inexistente e senha errada (com hash "dummy") | Não revela quais e-mails estão cadastrados, nem pelo tempo de resposta |
+| **Rate limit** em login e cadastro (5/min por IP, `@nestjs/throttler`) + `trust proxy` | Freia força bruta; atrás do proxy do Render, o limite vale por IP real do cliente |
 | **409 pela constraint única** do banco | Sem corrida entre dois cadastros simultâneos ("consultar e inserir" teria) |
 | `ValidationPipe` com `whitelist` + `forbidNonWhitelisted` | Campo não previsto → 400; nada inesperado chega ao serviço |
 | Variáveis de ambiente validadas na subida | Configuração faltando derruba a API logo, não em produção às 3h |
@@ -281,6 +282,11 @@ web/src/
 | API — unitários | `cd api && npm test` | AuthService, máscara/normalização CNJ, mapper do seed, resumidor, detecção de trânsito em julgado |
 | API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos e resumo |
 | Front — unitários | `cd web && npm test` | máscara CNJ, datas/grade do calendário, iniciais, paginação |
+| Tamanho de arquivo | `node scripts/check-file-size.mjs` | nenhum arquivo de código acima de 500 linhas |
+
+**CI (GitHub Actions):** a cada push na `main` e em todo PR rodam, em paralelo, lint + testes
+unitários + e2e com Postgres 16 + build da API, lint + testes + build do front e a trava de 500
+linhas por arquivo ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
 
 Os testes e2e exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
 criado automaticamente e o `api/.env.test` já está versionado (sem segredos reais).
