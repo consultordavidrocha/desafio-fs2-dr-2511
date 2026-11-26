@@ -428,9 +428,13 @@ abaixo incluem leitura do enunciado, decisões, revisão do que foi gerado e val
 
 | Data | Horas | Atividades |
 |---|---|---|
-| 25/11/2026 | ~4 h | Leitura do case e do Figma, plano; API completa (auth, filtros, seed, bônus); front (login, cadastro, comunicações, processo, resumo); testes; README; PDFs; preparação do deploy |
-| 26/11/2026 | ~4 h | Neon, Render e Vercel (deploy completo, CORS); rate limit; CI; dados reais e usuário demo; Parte 2 (P1 em Python com testes, P2, P3, P4, P6); README, AI_USAGE e PDFs nos templates |
-| **Total** | **~8 h** | _atualizado até a entrega_ |
+| 25/11/2026 | ~4 h | **Desenvolvimento:** leitura do case e do Figma, plano; API (auth, filtros, seed, bônus); front (login, cadastro, comunicações, processo, resumo); testes; README; PDFs |
+| 26/11/2026 | ~4 h | **Desenvolvimento:** deploy (Neon, Render, Vercel, CORS); rate limit; CI; dados reais e usuário demo; Parte 2 (P1 em Python com testes, P2–P7); E2E com Playwright; README, AI_USAGE e PDFs nos templates |
+| 26–27/11/2026 | ~8 h | **Validação e estudo:** teste manual pelo roteiro (`docs/roteiro-testes-manuais.md`), revisão das respostas da Parte 2, leitura do código e das decisões para a conversa técnica |
+| **Total** | **~16 h** | |
+
+A validação pesa o mesmo que o desenvolvimento de propósito: com a IA gerando boa parte do código, o
+trabalho que mais importa é revisar, testar e entender o que foi entregue (ver [AI_USAGE.md](AI_USAGE.md)).
 
 ---
 
