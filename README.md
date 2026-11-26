@@ -403,7 +403,8 @@ abaixo incluem leitura do enunciado, decisões, revisão do que foi gerado e val
 | Data | Horas | Atividades |
 |---|---|---|
 | 25/11/2026 | ~4 h | Leitura do case e do Figma, plano; API completa (auth, filtros, seed, bônus); front (login, cadastro, comunicações, processo, resumo); testes; README; PDFs; preparação do deploy |
-| **Total** | **~4 h** | _atualizado até a entrega_ |
+| 26/11/2026 | ~4 h | Neon, Render e Vercel (deploy completo, CORS); rate limit; CI; dados reais e usuário demo; Parte 2 (P1 em Python com testes, P2, P3, P4, P6); README, AI_USAGE e PDFs nos templates |
+| **Total** | **~8 h** | _atualizado até a entrega_ |
 
 ---
 
