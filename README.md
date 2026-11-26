@@ -137,6 +137,15 @@ cd web && npx playwright install chromium                  # só na primeira vez
 npm run test:e2e                                           # builda o front, sobe o preview na 3099 e roda os 19 testes
 ```
 
+Contra a **produção**, rode arquivos isolados — a suíte inteira faz dezenas de logins e o rate limit de
+produção (5/min por IP) bloqueia, como deve:
+
+```bash
+E2E_BASE_URL=https://desafio-fs2-dr-2511.vercel.app npx playwright test e2e/processo.spec.ts
+```
+
+Nesse modo os tempos de espera são maiores, para cobrir os ~50 s da API acordando no plano gratuito.
+
 Os testes e2e da API exigem o Postgres do compose (`docker compose up -d db`); o banco de teste é
 criado automaticamente e o `api/.env.test` já está versionado (sem segredos reais).
 

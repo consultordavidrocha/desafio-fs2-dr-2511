@@ -12,7 +12,8 @@ export async function login(page: Page, email = DEMO.email, password = DEMO.pass
   await page.getByLabel('E-mail').fill(email)
   await page.getByLabel('Senha', { exact: true }).fill(password)
   await page.getByRole('button', { name: 'Entrar' }).click()
-  await expect(page).toHaveURL(/\/comunicacoes/)
+  // Folga para a API acordar quando a suíte roda contra a produção (plano gratuito do Render).
+  await expect(page).toHaveURL(/\/comunicacoes/, { timeout: 90_000 })
   await expect(page.getByRole('heading', { name: 'Comunicações' })).toBeVisible()
 }
 

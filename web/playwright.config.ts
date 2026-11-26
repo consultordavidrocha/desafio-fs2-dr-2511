@@ -12,6 +12,8 @@ import { defineConfig, devices } from '@playwright/test'
  */
 const PORT = 3099
 const baseURL = process.env.E2E_BASE_URL ?? `http://localhost:${PORT}`
+// Contra a produção, a API do Render (plano gratuito) pode estar "dormindo": ~50 s para acordar.
+const remote = Boolean(process.env.E2E_BASE_URL)
 const apiURL = process.env.VITE_API_URL ?? 'http://localhost:8888'
 
 export default defineConfig({
@@ -21,7 +23,8 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   forbidOnly: Boolean(process.env.CI),
   reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
-  timeout: 30_000,
+  timeout: remote ? 120_000 : 30_000,
+  expect: { timeout: remote ? 15_000 : 5_000 },
   use: {
     baseURL,
     trace: 'retain-on-failure',
