@@ -262,16 +262,26 @@ criado automaticamente e o `api/.env.test` já está versionado (sem segredos re
 
 ## 6. Fluxo de trabalho (Kanban)
 
-_Seção a completar com o link do quadro._
+**Quadro:** <https://github.com/users/consultordavidrocha/projects/1> (GitHub Projects, ligado
+a este repositório; cada cartão é uma issue).
 
 Colunas: **Backlog → A fazer → Em andamento → Em revisão → Concluído**.
 
-1. Cada entrega do enunciado vira um cartão (ex.: "API: filtros de /comunicacoes",
-   "Front: estados do login", "P5").
+| Coluna | Significado |
+|---|---|
+| Backlog | Mapeado, ainda não priorizado — ou bloqueado (label `bloqueado`) |
+| A fazer | Priorizado para a próxima etapa |
+| Em andamento | Em execução (um cartão por vez) |
+| Em revisão | Pronto, passando por testes, lint e comparação com o Figma |
+| Concluído | Validado e commitado; a issue é fechada |
+
+1. Cada entrega do enunciado vira um cartão/issue com labels de área (`api`, `web`, `docs`,
+   `infra`, `parte-2`, `bonus`), por exemplo "API: GET /tribunais e GET /comunicacoes" ou "P5".
 2. Prioridade pelos pesos da avaliação e pelas dependências: obrigatórios antes de bônus.
 3. Um cartão por vez em "Em andamento"; ele só vai para "Concluído" com testes passando,
    lint limpo e (no front) comparação com o Figma.
-4. Commits pequenos e temáticos (`feat(api): …`, `feat(web): …`, `docs: …`), um ou mais por cartão.
+4. Commits pequenos e temáticos (`feat(api): …`, `feat(web): …`, `docs: …`), um ou mais por
+   cartão; a issue lista os commits que a entregaram.
 
 ---
 
