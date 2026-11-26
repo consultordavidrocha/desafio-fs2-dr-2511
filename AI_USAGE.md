@@ -43,6 +43,8 @@
 | Cards 2px mais altos que no Figma (borda do Figma é interna; no CSS soma ao padding) | Comparação lado a lado da tela de Comunicações | Padding de 23px nos cards (1px de borda + 23px = 24px) |
 | Breakpoints responsivos "chutados" (filtros em linha a partir de 768px) | Extração das regras dos frames "Responsivos" do Figma | Filtros em linha só ≥1024px, card em 2 colunas ≥768px, celular sem logo/sidebar |
 | Regex de frases quebrava em "art. 4º" (lookbehind sem o ponto) | Teste unitário do resumidor falhou | Lookbehind incluindo o ponto da abreviação |
+| Smoke test contra o Neon rodou um `dist/` antigo, sem o módulo de processos (404) | O próprio smoke test acusou a rota faltando | Recompilar antes de testar; a imagem Docker compila no build e não tem o problema |
+| A CLI do Neon gravou a configuração do MCP no perfil padrão do Claude, ignorando a pasta de configuração em uso | Conferência de onde cada arquivo foi gravado, comparando com backup | Registro no lugar certo via `claude mcp add`; o arquivo do outro perfil voltou a ser idêntico ao original |
 
 ## Como validei
 
@@ -56,6 +58,9 @@
   screenshots do front (Playwright + Chrome) nos 5 tamanhos do protótipo.
 - **Fluxo do front contra a API real**: script automatizado cobrindo rota protegida, cadastro,
   sessão após recarregar, logout, e-mail duplicado, senha errada e mostrar/ocultar senha.
+- **Banco de produção (Neon)**: migrations e todas as rotas testadas primeiro num *branch*
+  temporário do banco (cópia isolada), com massa fictícia; só depois as migrations foram
+  aplicadas em produção, que segue sem dados de teste.
 - **Leitura do código** gerado antes de cada commit; o que eu não conseguia explicar não entrava.
 
 ## O que eu ensinaria ao time
