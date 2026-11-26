@@ -254,6 +254,8 @@
     <tr><td>prisma / @prisma/client 6</td><td>ORM, migrations</td></tr>
     <tr><td>class-validator, class-transformer</td><td>Validação dos DTOs</td></tr>
     <tr><td>bcryptjs</td><td>Hash de senha (JS puro, sem build nativo)</td></tr>
+    <tr><td>@nestjs/throttler 6</td><td>Rate limit no login e no cadastro</td></tr>
+    <tr><td>helmet 8</td><td>Cabeçalhos de segurança (CSP, nosniff, anti-frame, HSTS)</td></tr>
     <tr><td>jest, supertest (dev)</td><td>Testes unitários e e2e</td></tr>
   </table>
   <h3>Front (<code>web/package.json</code>)</h3>
@@ -332,6 +334,8 @@ npm run start:dev</pre>
     <tr><td>API unitários</td><td><code>cd api &amp;&amp; npm test</code></td><td>AuthService, CNJ, mapper do seed, resumidor, trânsito em julgado</td></tr>
     <tr><td>API e2e</td><td><code>cd api &amp;&amp; npm run test:e2e</code></td><td>Postgres real (<code>juscash_test</code>): status do contrato, filtros, limites inclusivos, paginação estável, processos, resumo</td></tr>
     <tr><td>Front unitários</td><td><code>cd web &amp;&amp; npm test</code></td><td>Máscara CNJ, calendário, iniciais, paginação</td></tr>
+    <tr><td>E2E no navegador</td><td><code>cd web &amp;&amp; npm run test:e2e</code></td><td>Playwright contra a stack real: login, cadastro, sessão, filtros, paginação, resumo, processo, celular, servidor lento, cabeçalhos e nenhuma violação da CSP</td></tr>
+    <tr><td>Sonda de segurança</td><td><code>node scripts/auditoria/sonda-seguranca.mjs</code></td><td>Contra o ambiente vivo: rotas sem token, JWT forjado, injeção, CORS, rate limit, cabeçalhos, segredos no bundle</td></tr>
   </table>
   <p>Os testes e2e usam um banco separado, criado na inicialização do Postgres do compose, e o
     arquivo <code>api/.env.test</code> (versionado, sem segredos reais).</p>
@@ -345,9 +349,18 @@ npm run start:dev</pre>
     <li>Segredos só por variável de ambiente; validação na subida.</li>
     <li>Container da API roda como usuário sem privilégios.</li>
     <li>O resumo não envia dados de processos a serviços externos.</li>
+    <li>Rate limit de 5 tentativas por minuto por IP no login e no cadastro (429 depois disso).</li>
+    <li>SQL sempre parametrizado; CORS restrito à origem do front; paginação com teto (<code>page</code> até 10 mil,
+      <code>pageSize</code> até 50).</li>
+    <li>Cabeçalhos de segurança: <code>helmet</code> na API (sem <code>x-powered-by</code>); no front, CSP estrita
+      (<code>script-src 'self'</code>, sem <code>unsafe-inline</code>), <code>frame-ancestors 'none'</code>, nosniff.</li>
     <li>Front: token em <code>localStorage</code> (trade-off documentado: o contrato devolve o token no corpo do
-      login); sessão encerrada automaticamente em qualquer 401.</li>
+      login; a CSP reduz o risco de XSS, que é o que poderia roubá-lo); sessão encerrada automaticamente em qualquer 401.</li>
   </ul>
+  <p><strong>Auditoria de 26/11:</strong> cada proteção foi medida contra o sistema no ar, com chamada de
+    controle (a credencial fraca falha e a forte funciona). Encontrou e corrigiu 3 problemas: <code>page</code>
+    gigante devolvia 500, a API não tinha cabeçalhos de segurança e o front não tinha CSP. Também registrou
+    os riscos aceitos e o que não foi coberto. Relatório: <code>docs/auditoria-seguranca.md</code>.</p>
 </section>
 
 </body>

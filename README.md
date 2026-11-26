@@ -117,10 +117,11 @@ sem ele), `JWT_EXPIRES_IN` (padrão `1d`), `CORS_ORIGIN` (origens separadas por 
 | Onde | Comando | O que cobre |
 |---|---|---|
 | API — unitários | `cd api && npm test` | AuthService, máscara/normalização CNJ, mapper do seed, resumidor, detecção de trânsito em julgado |
-| API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos e resumo |
+| API — e2e | `cd api && npm run test:e2e` | Postgres real (`juscash_test`): todos os status do contrato, filtros isolados e combinados, limites inclusivos, paginação estável, processos, resumo, rate limit e cabeçalhos de segurança |
 | Front — unitários | `cd web && npm test` | máscara CNJ, datas/grade do calendário, iniciais, paginação |
-| **E2E no navegador** | `cd web && npm run test:e2e` | Playwright contra a stack real (Postgres + API + build do front): login, erros e validações do cadastro, sessão e logout, lista e paginação, filtros (número com máscara, tribunal, calendário de 2 meses), vazio, erro com "Tentar novamente", "Ler mais", modal de resumo, detalhes do processo com selo, celular, aviso de servidor lento (aparece só com a API demorando) |
+| **E2E no navegador** | `cd web && npm run test:e2e` | Playwright contra a stack real (Postgres + API + build do front): login, erros e validações do cadastro, sessão e logout, lista e paginação, filtros (número com máscara, tribunal, calendário de 2 meses), vazio, erro com "Tentar novamente", "Ler mais", modal de resumo, detalhes do processo com selo, celular, aviso de servidor lento (aparece só com a API demorando), cabeçalhos de segurança e **nenhuma violação da CSP** (o preview aplica os mesmos cabeçalhos da Vercel) |
 | P1 — migração | `cd problemas/01-migracao/solucao && python -m pytest` | regras de dinheiro, deságio, status, CPF/CNJ e o `legado.csv` completo |
+| Segurança (sonda) | `node scripts/auditoria/sonda-seguranca.mjs` | contra o ambiente vivo: rotas sem token, JWT forjado, injeção, CORS, rate limit, cabeçalhos, segredos no bundle ([relatório](docs/auditoria-seguranca.md)) |
 | Tamanho de arquivo | `node scripts/check-file-size.mjs` | nenhum arquivo de código acima de 500 linhas |
 | **Manual** | [`docs/roteiro-testes-manuais.md`](docs/roteiro-testes-manuais.md) | roteiro com checklist: fidelidade ao Figma, teclado, celular real, produção e Swagger |
 
@@ -134,7 +135,7 @@ e2e com Postgres 16, build), front (lint, unitários, build), **e2e no navegador
 ```bash
 AUTH_RATE_LIMIT=1000 docker compose up -d --build --wait   # banco + API com os dados (limite alto: a suíte faz vários logins)
 cd web && npx playwright install chromium                  # só na primeira vez (ou use o Chrome instalado)
-npm run test:e2e                                           # builda o front, sobe o preview na 3099 e roda os 22 testes
+npm run test:e2e                                           # builda o front, sobe o preview na 3099 e roda os 24 testes
 ```
 
 Contra a **produção**, rode arquivos isolados — a suíte inteira faz dezenas de logins e o rate limit de
@@ -222,6 +223,22 @@ nos minutos 7, 17, 27…, longe da virada de hora. Ele também é pausado após 
 cron-job.org fica fora do repositório (configurado no painel dele). Em produção paga, nada disso
 seria preciso, porque o plano pago do Render não dorme. De madrugada, o primeiro acesso volta a
 levar ~50 s, com o aviso na tela.
+
+### Segurança
+
+Auditoria feita com o sistema no ar, medindo cada proteção contra o ambiente vivo
+([relatório completo](docs/auditoria-seguranca.md), sonda reproduzível em
+[`scripts/auditoria/`](scripts/auditoria/sonda-seguranca.mjs)).
+
+- **Já existia:** JWT em todas as rotas, exceto as marcadas `@Public()` (*guard* global); bcrypt; a mesma
+  mensagem e o mesmo tempo para e-mail inexistente e senha errada; rate limit no login e no cadastro;
+  whitelist que recusa campos extras; SQL só parametrizado; CORS restrito à origem da Vercel.
+- **Corrigido na auditoria:** `page` gigante devolvia 500 (agora 400, com teto de 10 mil); a API ganhou
+  cabeçalhos de segurança (`helmet`) e deixou de expor o `x-powered-by`; o front ganhou CSP estrita
+  (`script-src 'self'`, sem `unsafe-inline`), anti-frame e nosniff. A suíte Playwright roda sob a mesma CSP.
+- **Riscos aceitos, com motivo:** CVEs no CLI do Prisma (só roda nas migrations, sem entrada de usuário;
+  a correção exige o Prisma 7), token no `localStorage` (mitigado pela CSP), JWT sem revogação e cadastro
+  aberto (exigido pelo case). Os detalhes estão no relatório.
 
 ### Front
 

@@ -7,16 +7,18 @@ import {
 } from '../../communications/dto/communication.dto';
 import {
   DEFAULT_PAGE_SIZE,
+  MAX_PAGE,
   MAX_PAGE_SIZE,
 } from '../../communications/dto/list-communications.query';
 
 /** Query de GET /processos/:numero: mesma paginação de /comunicacoes. */
 export class LawsuitQuery {
-  @ApiPropertyOptional({ default: 1, minimum: 1 })
+  @ApiPropertyOptional({ default: 1, minimum: 1, maximum: MAX_PAGE })
   @IsOptional()
   @Type(() => Number)
   @IsInt({ message: 'page deve ser um número inteiro.' })
   @Min(1, { message: 'page deve ser maior ou igual a 1.' })
+  @Max(MAX_PAGE, { message: `page deve ser no máximo ${MAX_PAGE}.` })
   page: number = 1;
 
   @ApiPropertyOptional({

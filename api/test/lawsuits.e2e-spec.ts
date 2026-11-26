@@ -29,7 +29,10 @@ describe('GET /processos/:numero (e2e, bônus)', () => {
     await app.close();
   });
 
-  const get = async (numero: string, query: Record<string, number> = {}) => {
+  const get = async (
+    numero: string,
+    query: Record<string, number | string> = {},
+  ) => {
     const res = await request(app.getHttpServer())
       .get(`/processos/${encodeURIComponent(numero)}`)
       .query(query)
@@ -88,6 +91,9 @@ describe('GET /processos/:numero (e2e, bônus)', () => {
   it('responde 400 para número inválido ou pageSize acima de 50', async () => {
     expect((await get('123')).status).toBe(400);
     expect((await get(LAWSUIT_SP, { pageSize: 51 })).status).toBe(400);
+    expect(
+      (await get(LAWSUIT_SP, { page: '99999999999999999999' })).status,
+    ).toBe(400);
   });
 
   it('responde 401 sem token', async () => {

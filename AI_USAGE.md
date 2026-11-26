@@ -52,12 +52,14 @@
 | O mesmo erro **voltou** ao adicionar o Playwright: regenerar no Windows não resolve de vez (o npm resolve a dependência *peer* do `@napi-rs/wasm-runtime` de forma diferente por plataforma) | CI falhou de novo no `npm ci` | Causa investigada no lock; agora o lock é gerado num container Linux (`scripts/regenerar-lock.sh`), validado com `npm ci` no Linux e no Windows, e documentado no README |
 | A CLI do Neon gravou o MCP no perfil errado do Claude | Conferência dos arquivos contra backup | Registro no lugar certo; outro perfil restaurado |
 | Contou errado as palavras da P5 (149 → 155 com contagem rigorosa) | Script de conferência dos limites | Resposta enxugada para 147 |
+| Na auditoria de segurança, a sonda leu como "vazamento" o 403 em HTML que a Cloudflare devolve ao barrar SQL injection | O texto da resposta era a página da Cloudflare, não da API | Resultado tratado como **inconclusivo** (barrado na borda); os mesmos payloads repetidos na API local, sem o WAF, deram 400 pela validação |
+| Keep-alive confiado só ao agendador do GitHub | **Eu** vi o primeiro acesso lento de novo; o GitHub não tinha rodado nenhum agendamento em 1h20 | Ping principal num pinger externo (cron-job.org); GitHub Actions como reserva, documentado no README |
 
 ## Como você validou o que foi gerado
 <!-- testes, execução, comparação com o Figma, leitura de documentação... -->
-- **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 51 e2e
+- **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 56 e2e
   contra Postgres real (todos os status do contrato, filtros, paginação, rate limit), front com 33
-  unitários, **19 testes de navegador com Playwright** contra a stack real (Postgres + API + front),
+  unitários, **24 testes de navegador com Playwright** contra a stack real (Postgres + API + front),
   P1 com 37 testes pytest, e a trava de 500 linhas por arquivo.
 - **Teste manual** (meu): roteiro com checklist em `docs/roteiro-testes-manuais.md` — fidelidade ao
   Figma, teclado, celular real, produção e Swagger. O automático vem primeiro; o manual confirma.
@@ -68,6 +70,9 @@
 - **Banco de produção**: migrations testadas antes num branch temporário do Neon.
 - **Parte 2**: números de linha citados conferidos contra o diff e o código; limites de palavras e
   linhas conferidos por script; a P1 roda sobre o `legado.csv` real.
+- **Auditoria de segurança** (`docs/auditoria-seguranca.md`): cada proteção medida contra o sistema
+  no ar, com chamada de controle (a credencial fraca falha e a forte funciona). Achou 3 problemas
+  (500 com `page` gigante, API sem cabeçalhos de segurança, front sem CSP), todos corrigidos com teste.
 - **Leitura do código** antes de cada commit: o que eu não conseguia explicar não entrava.
 
 ## Onde você preferiu não usar IA, e por quê

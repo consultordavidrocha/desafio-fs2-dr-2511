@@ -17,6 +17,12 @@ import { IsDateOnly } from '../../common/validators/is-date-only.validator';
 
 export const DEFAULT_PAGE_SIZE = 10;
 export const MAX_PAGE_SIZE = 50;
+/**
+ * Teto da página: sem ele, `page=99999999999999999999` passava no @IsInt (1e20 é
+ * "inteiro" para o JavaScript) e o Prisma recusava o offset com 500. Achado na
+ * auditoria de segurança; 10 mil páginas dão folga para qualquer volume realista.
+ */
+export const MAX_PAGE = 10_000;
 
 /**
  * Query string de GET /comunicacoes.
@@ -63,11 +69,12 @@ export class ListCommunicationsQuery {
   @IsDateOnly()
   dataFim?: string;
 
-  @ApiPropertyOptional({ default: 1, minimum: 1 })
+  @ApiPropertyOptional({ default: 1, minimum: 1, maximum: MAX_PAGE })
   @IsOptional()
   @Type(() => Number)
   @IsInt({ message: 'page deve ser um número inteiro.' })
   @Min(1, { message: 'page deve ser maior ou igual a 1.' })
+  @Max(MAX_PAGE, { message: `page deve ser no máximo ${MAX_PAGE}.` })
   page: number = 1;
 
   @ApiPropertyOptional({

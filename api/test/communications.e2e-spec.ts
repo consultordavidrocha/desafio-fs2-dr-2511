@@ -169,6 +169,9 @@ describe('Comunicações e tribunais (e2e)', () => {
       ['pageSize acima de 50', { pageSize: 51 }],
       ['pageSize zero', { pageSize: 0 }],
       ['page zero', { page: 0 }],
+      // Auditoria: 1e20 passava no @IsInt e o Prisma devolvia 500.
+      ['page gigante', { page: '99999999999999999999' }],
+      ['page acima do teto', { page: 10_001 }],
       ['page não numérica', { page: 'abc' }],
       ['número de processo inválido', { numeroProcesso: '123' }],
       ['data em formato errado', { dataInicio: '15/08/2025' }],

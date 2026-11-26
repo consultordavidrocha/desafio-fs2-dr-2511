@@ -32,4 +32,16 @@ describe('Saúde da API (e2e)', () => {
     expect(spy).not.toHaveBeenCalled(); // o keep-alive não pode acordar o Neon
     spy.mockRestore();
   });
+
+  it('envia cabeçalhos de segurança e esconde o x-powered-by (auditoria)', async () => {
+    const res = await request(app.getHttpServer()).get('/live');
+
+    expect(res.headers['x-powered-by']).toBeUndefined();
+    expect(res.headers['x-content-type-options']).toBe('nosniff');
+    expect(res.headers['x-frame-options']).toBe('SAMEORIGIN');
+    expect(res.headers['strict-transport-security']).toContain('max-age=');
+    expect(res.headers['content-security-policy']).toContain(
+      "default-src 'self'",
+    );
+  });
 });

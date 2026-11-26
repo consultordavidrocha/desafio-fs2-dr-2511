@@ -79,6 +79,11 @@ Marque cada item. Se algo falhar, anote o passo, o que esperava e o que acontece
 - [ ] "Authorize" com o token e `GET /comunicacoes?pageSize=51` → 400; sem token → 401.
 - [ ] `GET /comunicacoes?numeroProcesso=26222501320248190546` (sem máscara) e com máscara retornam o mesmo resultado.
 
+## 10. Segurança (rápido)
+- [ ] DevTools → aba **Network** → clique no documento da página → em *Response Headers* aparecem `content-security-policy`, `x-frame-options: DENY` e `x-content-type-options: nosniff`.
+- [ ] Navegando por login, lista, resumo e processo, a aba **Console** não mostra nenhum erro "Content Security Policy".
+- [ ] Opcional: `node scripts/auditoria/sonda-seguranca.mjs` termina com "0 falharam" (ele bloqueia o seu login por ~1 minuto).
+
 ---
 
 **Resultado:** ☐ aprovado  ☐ aprovado com ressalvas  ☐ reprovado — **Observações:**
