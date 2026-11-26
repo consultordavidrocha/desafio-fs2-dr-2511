@@ -1,0 +1,169 @@
+{
+  "clientes": [
+    {
+      "cpf": "15184715606",
+      "nome": "Beatriz Rocha"
+    },
+    {
+      "cpf": "17777786890",
+      "nome": "Rafael Gomes"
+    },
+    {
+      "cpf": "26197306948",
+      "nome": "Paula Silva Santos"
+    },
+    {
+      "cpf": "44771278202",
+      "nome": "Amélia Mascarenhas Macedo"
+    },
+    {
+      "cpf": "79893557283",
+      "nome": "Carlos Pereira"
+    }
+  ],
+  "processos": [
+    {
+      "numero_cnj": "36020383720218130089",
+      "tribunal_sigla": "TJMG",
+      "classe": "Execução de título extrajudicial"
+    },
+    {
+      "numero_cnj": "40376561720214030565",
+      "tribunal_sigla": "TRF3",
+      "classe": "Cumprimento de sentença contra a Fazenda Pública"
+    },
+    {
+      "numero_cnj": "71222519020215020580",
+      "tribunal_sigla": "TRT2",
+      "classe": "Ação trabalhista - rito ordinário"
+    },
+    {
+      "numero_cnj": "89906097220218260375",
+      "tribunal_sigla": "TJSP",
+      "classe": "Procedimento comum"
+    },
+    {
+      "numero_cnj": "97775615820218190520",
+      "tribunal_sigla": "TJRJ",
+      "classe": "Cumprimento de sentença"
+    }
+  ],
+  "negocios": [
+    {
+      "legado_id": 1001,
+      "processo_numero_cnj": "89906097220218260375",
+      "cliente_cpf": "44771278202",
+      "valor_bruto_centavos": 1500000,
+      "desagio_percentual": "30.00",
+      "status": "CONCLUIDO",
+      "data_compra": "2025-08-15"
+    },
+    {
+      "legado_id": 1002,
+      "processo_numero_cnj": "89906097220218260375",
+      "cliente_cpf": "26197306948",
+      "valor_bruto_centavos": 1500000,
+      "desagio_percentual": "25.00",
+      "status": "EM_ANDAMENTO",
+      "data_compra": "2025-09-02"
+    },
+    {
+      "legado_id": 1003,
+      "processo_numero_cnj": "97775615820218190520",
+      "cliente_cpf": "44771278202",
+      "valor_bruto_centavos": 123450,
+      "desagio_percentual": "30.00",
+      "status": "CONCLUIDO",
+      "data_compra": "2025-08-15"
+    },
+    {
+      "legado_id": 1005,
+      "processo_numero_cnj": "36020383720218130089",
+      "cliente_cpf": "79893557283",
+      "valor_bruto_centavos": 4230010,
+      "desagio_percentual": "35.00",
+      "status": "EM_ANDAMENTO",
+      "data_compra": "2025-07-30"
+    },
+    {
+      "legado_id": 1007,
+      "processo_numero_cnj": "40376561720214030565",
+      "cliente_cpf": "26197306948",
+      "valor_bruto_centavos": 250000,
+      "desagio_percentual": "30.00",
+      "status": "CANCELADO",
+      "data_compra": null
+    },
+    {
+      "legado_id": 1008,
+      "processo_numero_cnj": "71222519020215020580",
+      "cliente_cpf": "17777786890",
+      "valor_bruto_centavos": null,
+      "desagio_percentual": "15.00",
+      "status": "PERDIDO",
+      "data_compra": null
+    },
+    {
+      "legado_id": 1011,
+      "processo_numero_cnj": "97775615820218190520",
+      "cliente_cpf": "15184715606",
+      "valor_bruto_centavos": 475000,
+      "desagio_percentual": "30.50",
+      "status": "EM_ANDAMENTO",
+      "data_compra": "2025-09-05"
+    },
+    {
+      "legado_id": 1012,
+      "processo_numero_cnj": "36020383720218130089",
+      "cliente_cpf": "79893557283",
+      "valor_bruto_centavos": 1200000,
+      "desagio_percentual": "30.00",
+      "status": "EM_ANDAMENTO",
+      "data_compra": "2025-09-15"
+    }
+  ],
+  "rejeitados": [
+    {
+      "legado_id": "1004",
+      "motivo": "número do processo não é um número CNJ: 'ver anexo'"
+    },
+    {
+      "legado_id": "1006",
+      "motivo": "CPF inválido (dígitos repetidos): '111.111.111-11'"
+    },
+    {
+      "legado_id": "1009",
+      "motivo": "status sem de-para no sistema novo: 'Aguardando assistente'"
+    },
+    {
+      "legado_id": "1010",
+      "motivo": "duplicata do legado 1001"
+    },
+    {
+      "legado_id": "1013",
+      "motivo": "número do processo incompleto (16 de 20 dígitos): '0001234-56.2021.8.26'"
+    }
+  ],
+  "avisos": [
+    {
+      "legado_id": 1003,
+      "mensagem": "deságio '0,3' lido como fração (30%)"
+    },
+    {
+      "legado_id": 1005,
+      "mensagem": "tribunal 'TJXX' não existe; usado TJMG, do número CNJ"
+    },
+    {
+      "legado_id": 1007,
+      "mensagem": "data de compra inválida '0000-00-00'; gravada como NULL"
+    },
+    {
+      "legado_id": 1008,
+      "mensagem": "data de compra inválida '31/02/2025'; gravada como NULL"
+    },
+    {
+      "legado_id": 1008,
+      "mensagem": "valor bruto vazio; gravado como NULL"
+    }
+  ]
+}

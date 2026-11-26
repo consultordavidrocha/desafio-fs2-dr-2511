@@ -1,0 +1,166 @@
+PR #142 — feat(clientes): buscar comunicações pelo CPF do cliente
+
+Autor: dev-exemplo · Revisor: você
+
+> Implementei com ajuda do assistente de IA. Endpoint para o CS achar rápido as comunicações de um
+> cliente pelo CPF, mais uma rota por período para o relatório mensal. Também adicionei o CPF no
+> destinatário e documentei os endpoints no Swagger. Testei no Postman e está funcionando ✅
+
+ prisma/schema.prisma                             |  2 ++
+ src/app.module.ts                                |  3 +-
+ src/clientes/clientes-comunicacoes.controller.ts | 29 ++++++++++++++++
+ src/clientes/clientes-comunicacoes.service.ts    | 43 ++++++++++++++++++++++++
+ src/clientes/clientes.module.ts                  |  9 +++++
+ src/comunicacoes/comunicacoes.controller.ts      |  2 ++
+ 6 files changed, 87 insertions(+), 1 deletion(-)
+
+diff --git a/prisma/schema.prisma b/prisma/schema.prisma
+index 084eed8..3f5738a 100644
+--- a/prisma/schema.prisma
++++ b/prisma/schema.prisma
+@@ -1,6 +1,7 @@
+ model Comunicacao {
+   id                   Int            @id @default(autoincrement())
+   processoId           Int            @map("processo_id")
++  /// data e hora em que a comunicação foi disponibilizada no DJEN
+   dataDisponibilizacao DateTime       @map("data_disponibilizacao")
+   tipo                 String
+   conteudo             String
+@@ -13,6 +14,7 @@ model Destinatario {
+   id            Int         @id @default(autoincrement())
+   comunicacaoId Int         @map("comunicacao_id")
+   nome          String
++  cpf           String?     @db.Char(11)
+   comunicacao   Comunicacao @relation(fields: [comunicacaoId], references: [id])
+ 
+   @@map("destinatario")
+diff --git a/src/app.module.ts b/src/app.module.ts
+index 3207871..47aa113 100644
+--- a/src/app.module.ts
++++ b/src/app.module.ts
+@@ -1,9 +1,10 @@
+ import { Module } from '@nestjs/common';
+ import { AuthModule } from './auth/auth.module';
++import { ClientesModule } from './clientes/clientes.module';
+ import { ComunicacoesModule } from './comunicacoes/comunicacoes.module';
+ import { PrismaModule } from './prisma/prisma.module';
+ 
+ @Module({
+-  imports: [PrismaModule, AuthModule, ComunicacoesModule],
++  imports: [PrismaModule, AuthModule, ComunicacoesModule, ClientesModule],
+ })
+ export class AppModule {}
+diff --git a/src/clientes/clientes-comunicacoes.controller.ts b/src/clientes/clientes-comunicacoes.controller.ts
+new file mode 100644
+index 0000000..4dc8e4b
+--- /dev/null
++++ b/src/clientes/clientes-comunicacoes.controller.ts
+@@ -0,0 +1,29 @@
++import { Controller, Get, Logger, Query, Req } from '@nestjs/common';
++import { ApiTags } from '@nestjs/swagger';
++import { Request } from 'express';
++import { ClientesComunicacoesService } from './clientes-comunicacoes.service';
++
++@ApiTags('clientes')
++@Controller('clientes')
++export class ClientesComunicacoesController {
++  private readonly logger = new Logger(ClientesComunicacoesController.name);
++
++  constructor(private readonly service: ClientesComunicacoesService) {}
++
++  // Busca as comunicações em que o cliente (CPF) aparece como destinatário
++  @Get('comunicacoes')
++  async buscarPorCpf(@Query('cpf') cpf: any, @Req() req: Request) {
++    this.logger.log(`Busca por CPF ${cpf} - headers: ${JSON.stringify(req.headers)}`);
++    return this.service.buscarPorCpf(cpf);
++  }
++
++  // Comunicações do cliente no período (usado no relatório mensal)
++  @Get('comunicacoes/periodo')
++  async listarPorPeriodo(
++    @Query('cpf') cpf: any,
++    @Query('dataInicio') dataInicio: string,
++    @Query('dataFim') dataFim: string,
++  ) {
++    return this.service.listarPorPeriodo(cpf, dataInicio, dataFim);
++  }
++}
+diff --git a/src/clientes/clientes-comunicacoes.service.ts b/src/clientes/clientes-comunicacoes.service.ts
+new file mode 100644
+index 0000000..03efdea
+--- /dev/null
++++ b/src/clientes/clientes-comunicacoes.service.ts
+@@ -0,0 +1,43 @@
++import { Injectable } from '@nestjs/common';
++import { PrismaService } from '../prisma/prisma.service';
++
++@Injectable()
++export class ClientesComunicacoesService {
++  constructor(private readonly prisma: PrismaService) {}
++
++  async buscarPorCpf(cpf: any) {
++    try {
++      const comunicacoes: any[] = await this.prisma.$queryRawUnsafe(
++        `SELECT c.* FROM comunicacao c
++           JOIN destinatario d ON d.comunicacao_id = c.id
++          WHERE d.cpf = '${cpf}'
++          ORDER BY c.data_disponibilizacao DESC`,
++      );
++
++      for (const comunicacao of comunicacoes) {
++        comunicacao.destinatarios = await this.prisma.destinatario.findMany({
++          where: { comunicacaoId: comunicacao.id },
++        });
++      }
++
++      return comunicacoes;
++    } catch (e) {
++      return [];
++    }
++  }
++
++  async listarPorPeriodo(cpf: any, dataInicio: string, dataFim: string) {
++    return this.prisma.comunicacao.findMany({
++      where: {
++        destinatarios: { some: { cpf } },
++        dataDisponibilizacao: {
++          gte: new Date(dataInicio),
++          lte: new Date(dataFim),
++        },
++      },
++      include: { destinatarios: true },
++      orderBy: { dataDisponibilizacao: 'desc' },
++      take: 100,
++    });
++  }
++}
+diff --git a/src/clientes/clientes.module.ts b/src/clientes/clientes.module.ts
+new file mode 100644
+index 0000000..413aa28
+--- /dev/null
++++ b/src/clientes/clientes.module.ts
+@@ -0,0 +1,9 @@
++import { Module } from '@nestjs/common';
++import { ClientesComunicacoesController } from './clientes-comunicacoes.controller';
++import { ClientesComunicacoesService } from './clientes-comunicacoes.service';
++
++@Module({
++  controllers: [ClientesComunicacoesController],
++  providers: [ClientesComunicacoesService],
++})
++export class ClientesModule {}
+diff --git a/src/comunicacoes/comunicacoes.controller.ts b/src/comunicacoes/comunicacoes.controller.ts
+index dd01994..d2dab29 100644
+--- a/src/comunicacoes/comunicacoes.controller.ts
++++ b/src/comunicacoes/comunicacoes.controller.ts
+@@ -1,8 +1,10 @@
+ import { Controller, Get, Query, UseGuards } from '@nestjs/common';
++import { ApiTags } from '@nestjs/swagger';
+ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+ import { ListarComunicacoesDto } from './dto/listar-comunicacoes.dto';
+ import { ComunicacoesService } from './comunicacoes.service';
+ 
++@ApiTags('comunicacoes')
+ @UseGuards(JwtAuthGuard)
+ @Controller('comunicacoes')
+ export class ComunicacoesController {

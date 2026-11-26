@@ -1,0 +1,47 @@
+# Deployment da API de comunicações em produção (valores e credenciais fictícios)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-comunicacoes
+  namespace: comunicacoes
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-comunicacoes
+  template:
+    metadata:
+      labels:
+        app: api-comunicacoes
+    spec:
+      containers:
+        - name: api
+          image: registry.exemplo.com/comunicacoes/api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://app:S3nh4Forte!@postgres.interno:5432/app?connection_limit=20"
+            - name: NODE_OPTIONS
+              value: "--max-old-space-size=1024"
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 256Mi
+          livenessProbe:
+            httpGet:
+              path: /health          # faz "SELECT 1" no Postgres
+              port: 3000
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            periodSeconds: 10
+            timeoutSeconds: 1

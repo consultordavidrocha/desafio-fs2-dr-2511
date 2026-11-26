@@ -26,6 +26,22 @@ jobs:
           node-version: 24
       - run: node scripts/check-file-size.mjs 500
 
+  migracao:
+    name: P1 — migração (pytest)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: problemas/01-migracao/solucao
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+      - name: saida.json versionado está atualizado
+        run: python migrar.py --saida /tmp/saida.json && diff saida.json /tmp/saida.json
+
   api:
     name: API — lint, testes unitários, e2e e build
     runs-on: ubuntu-latest
