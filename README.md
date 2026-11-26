@@ -216,6 +216,23 @@ já na ordem da listagem (`availability_date DESC, id DESC`).
 | **Resumo extrativo** (sem LLM) | Não envia dados de processos (nomes, CPF) a terceiros; sem chave/custo; determinístico e testável. Seleciona as frases mais relevantes por termos jurídicos e destaca prazo, audiência e trânsito em julgado |
 | Trânsito em julgado detectado por regex (no Postgres com `~*` e em JS) | O selo do processo considera **todas** as comunicações, não só a página exibida |
 
+### Infraestrutura e deploy
+
+| Peça | Escolha | Motivo |
+|---|---|---|
+| Banco | **Neon** (Postgres serverless, `aws-us-east-1`) | Do provedor só preciso de Postgres (auth e regras ficam na API). Plano gratuito que religa sozinho após ociosidade e **branching** (cópia do banco em segundos) para testar migrations. Usado como Postgres puro — só `DATABASE_URL` + Prisma —, então trocar de provedor é um `pg_dump`/restore |
+| API | **Render** (Docker, `virginia`) | Roda a mesma imagem do `docker compose`; na **mesma região do banco**, porque cada requisição faz várias consultas em sequência e a distância API ↔ banco é o que mais pesa na latência |
+| Front | **Vercel** | Build do Vite e SPA estática com rewrite para o `index.html` |
+
+**Alternativa considerada — Supabase:** excelente quando se usa a plataforma inteira (Auth,
+Storage, Realtime, API automática via PostgREST + RLS). Aqui não usaria nada disso, e no plano
+gratuito o projeto pausa após uma semana sem uso. As Edge Functions (Supabase) e as Neon Functions
+também não se aplicam: a API é NestJS. Em produção para usuários no Brasil, o ideal seria API e
+banco em São Paulo (o Neon tem Postgres em `aws-sa-east-1`; o Render não tem região no Brasil).
+
+> **Plano gratuito do Render:** a API "dorme" após ~15 min sem uso; a primeira requisição depois
+> disso leva ~50 s para acordar.
+
 ### Front
 
 ```
