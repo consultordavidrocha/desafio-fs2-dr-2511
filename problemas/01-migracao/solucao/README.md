@@ -21,3 +21,6 @@ python -m venv .venv                # testes (pytest)
 enunciado) e também `avisos`: correções que **não** invalidam a linha (ex.: data impossível vira
 NULL) e devem passar por revisão humana. Negócios referenciam processo e cliente pela chave natural
 (CNJ e CPF), porque os `id` SERIAL só existem depois do INSERT.
+
+Diagrama do **antes e depois** (a `transacao` do legado → `cliente`, `processo` e `negocio`), com o
+de-para coluna a coluna: [`docs/banco-de-dados.md`](../../../docs/banco-de-dados.md).

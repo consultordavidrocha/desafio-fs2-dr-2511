@@ -179,7 +179,9 @@ api/src/
 **Modelo de dados** (`api/prisma/schema.prisma`): `users`, `courts`, `lawsuits`,
 `communications`, `recipients`. Identificadores em inglês; tabelas em `snake_case`. O número
 CNJ é guardado só com dígitos (máscara aplicada na saída). Índices compostos cobrem os filtros
-já na ordem da listagem (`availability_date DESC, id DESC`).
+já na ordem da listagem (`availability_date DESC, id DESC`). Diagramas de **antes e depois**
+(o JSON do CNJ → estas tabelas, e o legado da P1 → o banco novo) em
+[`docs/banco-de-dados.md`](docs/banco-de-dados.md).
 
 | Decisão | Motivo |
 |---|---|
@@ -478,7 +480,7 @@ trabalho que mais importa é revisar, testar e entender o que foi entregue (ver 
 ├── web/                 Front React
 ├── dados/               comunicacoes.json e tribunais.json (lidos pelo seed)
 ├── problemas/           Parte 2 (01-migracao/solucao/ …)
-├── docs/                Manual do usuário e documentação técnica (PDF)
+├── docs/                Manual, documentação técnica (PDF) e banco de dados: antes e depois
 ├── docker-compose.yml
 ├── RESPOSTAS.md         Parte 2
 └── AI_USAGE.md          Uso de IA
