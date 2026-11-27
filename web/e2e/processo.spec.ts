@@ -28,6 +28,16 @@ test.describe('Detalhes do processo', () => {
     await expect(page).toHaveURL(/\/comunicacoes$/)
   })
 
+  test('logo do topo leva à página inicial (mesmo destino do ícone Home do menu)', async ({ page }) => {
+    await page.goto('/processos/26222501320248190546')
+    const logo = page.getByRole('banner').getByRole('link', { name: 'JusCash — página inicial' })
+    await expect(logo.getByAltText('JusCash')).toBeVisible()
+    const home = await page.getByRole('navigation', { name: 'Menu principal' }).getByRole('link').first().getAttribute('href')
+    await expect(logo).toHaveAttribute('href', home!)
+    await logo.click()
+    await expect(page).toHaveURL(/\/comunicacoes$/)
+  })
+
   test('processo inexistente mostra "Processo não encontrado"', async ({ page }) => {
     await page.goto('/processos/99999999999999999999')
     await expect(page.getByText('Processo não encontrado')).toBeVisible()

@@ -1,6 +1,6 @@
 import { House, PanelLeft, Send, type LucideIcon } from 'lucide-react'
 import { useState, type ReactNode } from 'react'
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import logoDark from '@/assets/images/logo-dark.webp'
 import { cn } from '@/lib/cn'
 import { UserMenu } from './UserMenu'
@@ -11,8 +11,11 @@ interface NavItem {
   to?: string
 }
 
+/** Página inicial das telas logadas: o ícone Home do menu e o logo levam a ela. */
+const HOME_PATH = '/comunicacoes'
+
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Comunicações', icon: House, to: '/comunicacoes' },
+  { label: 'Comunicações', icon: House, to: HOME_PATH },
   // No Figma, mas fora do escopo do case: exibido como "em breve".
   { label: 'Enviar processo (em breve)', icon: Send },
 ]
@@ -40,7 +43,13 @@ export function AppShell({ children }: { children: ReactNode }) {
             <PanelLeft className="size-4" strokeWidth={1.75} aria-hidden />
           </button>
           {/* Figma: no celular a barra mostra só o botão do menu, sem o logo. */}
-          <img src={logoDark} alt="JusCash" width={124} height={19} className="hidden md:block" />
+          <Link
+            to={HOME_PATH}
+            aria-label="JusCash — página inicial"
+            className="hidden rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:block"
+          >
+            <img src={logoDark} alt="JusCash" width={124} height={19} className="block" />
+          </Link>
         </div>
         <UserMenu />
       </header>
