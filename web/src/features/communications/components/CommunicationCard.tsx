@@ -42,7 +42,7 @@ export function CommunicationCard({ communication: c, onSummarize }: Communicati
         <div className="flex flex-col-reverse gap-4 md:flex-row md:items-start">
           <div className="grid flex-1 grid-cols-1 gap-4 md:grid-cols-2">
             <Field icon={Scale} label="Processo" id={`communication-${c.id}`}>
-              {/* Figma: o card leva aos detalhes do processo (bônus). */}
+              {/* Figma: o número leva aos detalhes do processo (tela obrigatória no ENUNCIADO). */}
               <Link
                 to={`/processos/${cnjDigits(c.lawsuitNumber)}`}
                 className="break-words hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-primary"

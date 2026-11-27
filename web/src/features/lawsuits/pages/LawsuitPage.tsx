@@ -15,7 +15,7 @@ import { formatDateBR } from '@/lib/dates'
 import { lawsuitsApi, type LawsuitCommunication, type LawsuitDetail } from '../api'
 import { FinalJudgmentBadge, HighlightFinalJudgment } from '../components/FinalJudgment'
 
-/** Tela "Detalhes do processo" (/processos/:numero, bônus). */
+/** Tela "Detalhes do processo" (/processos/:numero, obrigatória no ENUNCIADO; a rota da API é bônus). */
 export function LawsuitPage() {
   const { numero = '' } = useParams()
   const [params, setParams] = useSearchParams()
