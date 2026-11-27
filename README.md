@@ -343,7 +343,7 @@ produção. Com time maior, o melhor é um "trem" com horário fixo:
 | Login | `/login` | padrão · erro "E-mail ou senha incorretos…" · carregando · mostrar/ocultar senha |
 | Cadastro | `/cadastro` | padrão · e-mail inválido · senha curta · senhas diferentes · e-mail já cadastrado · carregando |
 | Comunicações (protegida) | `/comunicacoes` | lista · filtros (número, tribunal, período com calendário de 2 meses) · paginação · "Ler mais" · skeleton · vazio · erro · iniciais no avatar |
-| Detalhes do processo (bônus) | `/processos/:numero` | selo "Transitou em julgado" · movimentações · skeleton · não encontrado · erro |
+| Detalhes do processo (protegida; a rota `GET /processos/:numero` da API é bônus) | `/processos/:numero` | selo "Transitou em julgado" no cabeçalho, só quando identificado · movimentações · skeleton · não encontrado · erro |
 | Resumo com IA (bônus) | modal | carregando · resumo com destaques · erro |
 
 - Sem sessão, rotas protegidas redirecionam para o login (e voltam para a página pedida após entrar).
