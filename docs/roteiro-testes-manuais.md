@@ -35,7 +35,7 @@ Marque cada item. Se algo falhar, anote o passo, o que esperava e o que acontece
 ## 3. Comunicações (`/comunicacoes`)
 - [ ] Sem estar logado, abrir `/comunicacoes` leva ao login; depois de entrar, volta para a página pedida.
 - [ ] Primeira carga mostra o skeleton (blocos cinza) e depois a lista, da mais recente para a mais antiga.
-- [ ] **Servidor dormindo** (teste de madrugada, ou pelo menos 15 min sem uso fora da janela do keep-alive): passados ~5 s aparece "Estamos ligando o servidor…"; o aviso some quando os dados chegam. Com o servidor acordado, o aviso não aparece.
+- [ ] **Servidor dormindo** (pause o cron-job.org e o workflow de keep-alive e espere 15 min sem uso; depois reative os dois): passados ~5 s aparece "Estamos ligando o servidor…"; o aviso some quando os dados chegam. Com o servidor acordado, o aviso não aparece.
 - [ ] Cada card mostra processo e classe, data, tribunal, tipo, destinatários e conteúdo truncado em 3 linhas.
 - [ ] "Ler mais" mostra o texto completo; "Ler menos" recolhe.
 - [ ] **Busca:** digitar o número aplica a máscara; com menos de 20 dígitos aparece a dica e não busca; com 20 dígitos (ex.: `2622250-13.2024.8.19.0546`) mostra só esse processo (3 comunicações).

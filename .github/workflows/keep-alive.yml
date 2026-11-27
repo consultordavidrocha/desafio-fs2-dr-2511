@@ -1,9 +1,10 @@
 # Mantém a API acordada no plano gratuito do Render, que desliga o serviço após
 # ~15 min sem tráfego (o primeiro acesso depois disso leva ~50 s).
 #
-# Janela: 07:00–23:59 (horário de Brasília). À noite o ping para, para economizar as
-# horas gratuitas; o primeiro acesso da madrugada volta a ter o "acordar" de ~50 s.
-# O GitHub agenda em UTC (Brasília = UTC−3): 07:00–23:59 BRT = 10:00–02:59 UTC.
+# Janela: 24 h. Antes parava à noite (07:00–23:59 BRT), mas o primeiro acesso da
+# madrugada levava ~50 s; um avaliador pode abrir o sistema a qualquer hora. Ligado o
+# mês inteiro, um serviço gasta 720–744 h, dentro das 750 h gratuitas do Render por
+# workspace (vale enquanto esta for a única instância gratuita no workspace).
 #
 # Usa GET /live, que NÃO consulta o banco: o Neon continua desligando quando
 # ocioso (scale-to-zero) e o ping não consome a cota gratuita de processamento dele.
@@ -16,8 +17,7 @@ name: Keep-alive da API
 
 on:
   schedule:
-    - cron: "7-59/10 10-23 * * *" # 07:00–20:59 BRT
-    - cron: "7-59/10 0-2 * * *" #   21:00–23:59 BRT
+    - cron: "7-59/10 * * * *" # 24 h (UTC ou BRT, tanto faz: roda todas as horas)
   workflow_dispatch: # permite disparar manualmente pela aba Actions
 
 permissions: {}
