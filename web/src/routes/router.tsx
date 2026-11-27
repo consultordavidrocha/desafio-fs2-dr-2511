@@ -45,6 +45,13 @@ export const router = createBrowserRouter([
           },
         ],
       },
+      {
+        // Pública (sem login): guia para quem avalia o case.
+        path: '/guia',
+        lazy: async () => ({
+          Component: (await import('@/features/guide/pages/GuidePage')).GuidePage,
+        }),
+      },
       { path: '*', element: <Navigate to="/comunicacoes" replace /> },
     ],
   },

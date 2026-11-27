@@ -63,6 +63,11 @@ Marque cada item. Se algo falhar, anote o passo, o que esperava e o que acontece
 - [ ] "Diário Oficial" (breadcrumb) volta para Comunicações.
 - [ ] Número inexistente na URL mostra "Processo não encontrado".
 
+## 5b. Guia do avaliador (`/guia`)
+- [ ] Abre **sem login** (aba anônima), no computador e no celular, sem rolagem lateral.
+- [ ] Todos os links abrem em nova aba e funcionam; nenhum aponta para arquivo local.
+- [ ] "Abrir a aplicação" leva ao login; a conta de demonstração mostrada entra.
+
 ## 6. Menu, sessão e avatar
 - [ ] O avatar mostra as iniciais (conta demo: "UD"); o menu mostra nome e e-mail.
 - [ ] "Sair" volta ao login; depois disso, `/comunicacoes` exige login de novo.

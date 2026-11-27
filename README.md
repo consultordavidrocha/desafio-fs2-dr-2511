@@ -20,10 +20,11 @@ filtrar comunicações, ver o detalhe de um processo e gerar um resumo do conte�
 | **API** | <https://juscash-api-3xep.onrender.com> |
 | **Swagger** | <https://juscash-api-3xep.onrender.com/docs> |
 | **Kanban** | <https://github.com/users/consultordavidrocha/projects/1> |
+| **Guia do avaliador** | <https://desafio-fs2-dr-2511.vercel.app/guia>: onde avaliar cada bloco, sem precisar de login |
 
-> A API está no plano gratuito do Render, que "dorme" após ~15 min sem uso: **o primeiro acesso
-> pode levar ~50 s**. Para não esperar no login, abra antes
-> <https://juscash-api-3xep.onrender.com/health> e aguarde `{"status":"ok"}`.
+> A API está no plano gratuito do Render, que "dorme" após ~15 min sem uso. Um ping a cada 10 min
+> a mantém acordada (ver [Infraestrutura e deploy](#infraestrutura-e-deploy)); se ainda assim o
+> primeiro acesso demorar (~50 s), a tela avisa que o servidor está ligando.
 
 ---
 
@@ -347,6 +348,7 @@ produção. Com time maior, o melhor é um "trem" com horário fixo:
 | Comunicações (protegida) | `/comunicacoes` | lista · filtros (número, tribunal, período com calendário de 2 meses) · paginação · "Ler mais" · skeleton · vazio · erro · iniciais no avatar |
 | Detalhes do processo (protegida; a rota `GET /processos/:numero` da API é bônus) | `/processos/:numero` | selo "Transitou em julgado" no cabeçalho, só quando identificado · movimentações · skeleton · não encontrado · erro |
 | Resumo com IA (bônus) | modal | carregando · resumo com destaques · erro |
+| Guia do avaliador (pública, extra) | `/guia` | mapa da entrega para quem avalia: links, blocos, Parte 2, testes |
 
 - Sem sessão, rotas protegidas redirecionam para o login (e voltam para a página pedida após entrar).
 - Filtros ficam na URL: link compartilhável, recarregar mantém o estado, botão "voltar" funciona.
