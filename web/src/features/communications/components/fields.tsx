@@ -1,5 +1,6 @@
 import { Sparkles, type LucideIcon } from 'lucide-react'
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import type { ExpandableTextState } from './useExpandableText'
 
 /** Peças compartilhadas pelos cards de comunicação e de movimentação do processo. */
 
@@ -36,34 +37,18 @@ export function Field({ icon, label, id, children }: { icon: LucideIcon; label: 
   )
 }
 
-/**
- * Texto limitado a 3 linhas com "Ler mais". O botão só aparece se o texto
- * realmente passar de 3 linhas (medido no DOM, não por contagem de caracteres).
- */
-export function ExpandableText({ text }: { text: string }) {
-  const ref = useRef<HTMLParagraphElement>(null)
-  const [expanded, setExpanded] = useState(false)
-  const [overflows, setOverflows] = useState(false)
-
-  useLayoutEffect(() => {
-    const element = ref.current
-    if (!element || expanded) return
-    const measure = () => setOverflows(element.scrollHeight > element.clientHeight + 1)
-    measure()
-    const observer = new ResizeObserver(measure)
-    observer.observe(element)
-    return () => observer.disconnect()
-  }, [text, expanded])
-
+/** Texto limitado a 3 linhas com "Ler mais" / "Ler menos". */
+export function ExpandableText({ text, state }: { text: string; state: ExpandableTextState }) {
+  const { ref, expanded, canToggle, toggle } = state
   return (
     <div className="flex flex-col items-start gap-1">
       <p ref={ref} className={`text-label whitespace-pre-line break-words ${expanded ? '' : 'line-clamp-3'}`}>
         {text}
       </p>
-      {(overflows || expanded) && (
+      {canToggle && (
         <button
           type="button"
-          onClick={() => setExpanded((value) => !value)}
+          onClick={toggle}
           aria-expanded={expanded}
           className="text-link hover:underline focus-visible:outline-2 focus-visible:outline-primary"
         >

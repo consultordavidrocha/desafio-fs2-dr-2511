@@ -38,6 +38,8 @@ Marque cada item. Se algo falhar, anote o passo, o que esperava e o que acontece
 - [ ] **Servidor dormindo** (pause o cron-job.org e o workflow de keep-alive e espere 15 min sem uso; depois reative os dois): passados ~5 s aparece "Estamos ligando o servidor…"; o aviso some quando os dados chegam. Com o servidor acordado, o aviso não aparece.
 - [ ] Cada card mostra processo e classe, data, tribunal, tipo, destinatários e conteúdo truncado em 3 linhas.
 - [ ] "Ler mais" mostra o texto completo; "Ler menos" recolhe.
+- [ ] Clicar em qualquer parte do card (fora dos botões e do link) faz o mesmo que "Ler mais"/"Ler menos"; o cursor vira "mãozinha" só nos cards com texto longo.
+- [ ] No card, "Resumir" abre o modal **sem** expandir o card; o número do processo abre os detalhes; selecionar um trecho do conteúdo (arrastando o mouse) **não** expande nem recolhe.
 - [ ] **Busca:** digitar o número aplica a máscara; com menos de 20 dígitos aparece a dica e não busca; com 20 dígitos (ex.: `2622250-13.2024.8.19.0546`) mostra só esse processo (3 comunicações).
 - [ ] **Tribunal:** escolher TRT2 mostra só TRT2 (23 comunicações, 3 páginas).
 - [ ] **Período:** o calendário abre com 2 meses; escolher 01/08/2025 e 31/08/2025 marca início e fim em verde e o intervalo em cinza; a lista só tem datas de agosto/2025; o "X" limpa o período.
