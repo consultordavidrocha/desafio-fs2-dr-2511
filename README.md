@@ -263,7 +263,8 @@ web/src/
 | Medidas extraídas da **API do Figma** e validação por **screenshots lado a lado** | Pixel perfect verificável, não "no olho" |
 | Cards com padding 23px | No Figma a borda é interna; no CSS soma ao padding (1px + 23px = 24px) |
 | Busca por número dispara só com os **20 dígitos** (máscara ao digitar) | Sem chamada por tecla e sem 400 de número parcial |
-| **Calendário próprio** (sem biblioteca) | Visual idêntico ao Figma; datas como string ISO/`Date.UTC`, sem bug de fuso |
+| **Calendário próprio** (sem biblioteca) | Visual idêntico ao Figma; datas como string ISO/`Date.UTC`, sem bug de fuso. Depois da data inicial, o mouse mostra a prévia do período no mesmo cinza do Figma |
+| **Selo "Transitou em julgado" também no card da lista** (o Figma só o tem no processo) | Pedido de produto: o advogado vê a situação sem abrir o processo. É a situação **do processo** (campo `lawsuitFinalJudgment`, mesma regra do selo do processo), não só do texto do card; uma consulta por página |
 | Filtros na **URL** | Link compartilhável e navegação do navegador funcionando |
 | Retry só em 5xx/rede | Repetir um 4xx não muda o resultado |
 | **Code splitting por rota** | Bundle inicial ~112 KB gzip; ilustração do login em WebP com `srcset` (2,9 MB → 7–46 KB) |
@@ -405,7 +406,7 @@ curl "$API/comunicacoes?tribunal=TJSP&dataInicio=2025-08-01&dataFim=2025-08-31&p
 # Formato da resposta:
 # {"data":[{"id":…,"lawsuitNumber":"NNNNNNN-DD.AAAA.J.TR.OOOO","lawsuitClass":"Procedimento comum",
 #   "court":"TJSP","availabilityDate":"2025-08-15","type":"Intimação","content":"…",
-#   "recipients":[{"name":"…","side":"P"}], …}],
+#   "recipients":[{"name":"…","side":"P"}],"lawsuitFinalJudgment":false, …}],
 #  "meta":{"page":1,"pageSize":10,"total":…,"totalPages":…}}
 
 # Por número do processo (com ou sem máscara)

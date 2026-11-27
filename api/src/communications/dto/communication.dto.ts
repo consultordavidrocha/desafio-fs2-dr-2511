@@ -53,6 +53,16 @@ export class CommunicationDto {
   recipients!: RecipientDto[];
 }
 
+/** Item de GET /comunicacoes: a comunicação + a situação do processo dela. */
+export class CommunicationListItemDto extends CommunicationDto {
+  @ApiProperty({
+    example: false,
+    description:
+      'O processo desta comunicação transitou em julgado: alguma comunicação do processo (não só esta) menciona o trânsito',
+  })
+  lawsuitFinalJudgment!: boolean;
+}
+
 export class PaginationMetaDto {
   @ApiProperty({ example: 1 })
   page!: number;
@@ -68,8 +78,8 @@ export class PaginationMetaDto {
 }
 
 export class CommunicationPageDto {
-  @ApiProperty({ type: CommunicationDto, isArray: true })
-  data!: CommunicationDto[];
+  @ApiProperty({ type: CommunicationListItemDto, isArray: true })
+  data!: CommunicationListItemDto[];
 
   @ApiProperty({ type: PaginationMetaDto })
   meta!: PaginationMetaDto;

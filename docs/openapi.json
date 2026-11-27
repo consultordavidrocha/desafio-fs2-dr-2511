@@ -516,7 +516,7 @@
           "name"
         ]
       },
-      "CommunicationDto": {
+      "CommunicationListItemDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -571,6 +571,11 @@
             "items": {
               "$ref": "#/components/schemas/RecipientDto"
             }
+          },
+          "lawsuitFinalJudgment": {
+            "type": "boolean",
+            "example": false,
+            "description": "O processo desta comunicação transitou em julgado: alguma comunicação do processo (não só esta) menciona o trânsito"
           }
         },
         "required": [
@@ -580,7 +585,8 @@
           "availabilityDate",
           "type",
           "content",
-          "recipients"
+          "recipients",
+          "lawsuitFinalJudgment"
         ]
       },
       "PaginationMetaDto": {
@@ -617,7 +623,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CommunicationDto"
+              "$ref": "#/components/schemas/CommunicationListItemDto"
             }
           },
           "meta": {

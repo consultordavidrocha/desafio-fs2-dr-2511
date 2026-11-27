@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { addMonths, buildMonthGrid, formatDateBR, isValidIsoDate } from '../dates'
+import { addMonths, buildMonthGrid, formatDateBR, isValidIsoDate, rangeEndToShow } from '../dates'
 
 describe('formatDateBR', () => {
   it('converte ISO para dd/mm/aaaa sem passar por fuso horário', () => {
@@ -43,5 +43,22 @@ describe('buildMonthGrid', () => {
     const weeks = buildMonthGrid({ year: 2025, month: 1 })
     expect(weeks[0].map((d) => d.day)).toEqual([26, 27, 28, 29, 30, 31, 1])
     expect(weeks.flat().filter((d) => !d.outside)).toHaveLength(28)
+  })
+})
+
+describe('rangeEndToShow (prévia do período ao passar o mouse)', () => {
+  it('com as duas datas escolhidas, desenha até a data final (ignora o mouse)', () => {
+    expect(rangeEndToShow('2025-08-01', '2025-08-10', '2025-08-20')).toBe('2025-08-10')
+  })
+  it('com só a inicial, desenha até o dia sob o mouse', () => {
+    expect(rangeEndToShow('2025-08-01', undefined, '2025-09-15')).toBe('2025-09-15')
+  })
+  it('sem prévia com o mouse na própria data inicial, antes dela ou fora do calendário', () => {
+    expect(rangeEndToShow('2025-08-10', undefined, '2025-08-10')).toBeUndefined()
+    expect(rangeEndToShow('2025-08-10', undefined, '2025-08-01')).toBeUndefined()
+    expect(rangeEndToShow('2025-08-10', undefined, undefined)).toBeUndefined()
+  })
+  it('sem data inicial, não há prévia', () => {
+    expect(rangeEndToShow(undefined, undefined, '2025-08-10')).toBeUndefined()
   })
 })

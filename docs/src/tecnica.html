@@ -108,13 +108,15 @@
   </table>
   <p>Ordem <code>availability_date DESC, id DESC</code>: o <code>id</code> desempata comunicações do
     mesmo dia e mantém a paginação estável. Parâmetro vazio equivale a ausente; parâmetro
-    desconhecido → 400.</p>
+    desconhecido → 400. <code>lawsuitFinalJudgment</code> diz se o <em>processo</em> da comunicação
+    transitou em julgado (alguma comunicação dele menciona o trânsito), para o selo no card.</p>
   <pre>→ 200 {
   "data": [{
     "id": 101, "lawsuitNumber": "1234567-89.2024.8.26.0100", "lawsuitClass": "Procedimento comum",
     "court": "TJSP", "availabilityDate": "2025-08-15", "type": "Intimação",
     "documentType": null, "courtUnit": "1ª Vara Cível", "content": "…", "link": null,
-    "recipients": [{ "name": "Amélia Macedo", "side": "A" }]
+    "recipients": [{ "name": "Amélia Macedo", "side": "A" }],
+    "lawsuitFinalJudgment": false
   }],
   "meta": { "page": 1, "pageSize": 10, "total": 1, "totalPages": 1 }
 }</pre>

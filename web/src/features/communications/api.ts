@@ -26,6 +26,12 @@ export interface Communication {
   recipients: Recipient[]
 }
 
+/** Item de GET /comunicacoes: inclui a situação do processo da comunicação. */
+export interface CommunicationListItem extends Communication {
+  /** O processo transitou em julgado (alguma comunicação dele menciona, não só esta). */
+  lawsuitFinalJudgment: boolean
+}
+
 export interface Page<T> {
   data: T[]
   meta: { page: number; pageSize: number; total: number; totalPages: number }
@@ -49,7 +55,7 @@ export const PAGE_SIZE = 10
 
 export const communicationsApi = {
   list: (filters: CommunicationFilters, signal?: AbortSignal) =>
-    apiRequest<Page<Communication>>('/comunicacoes', {
+    apiRequest<Page<CommunicationListItem>>('/comunicacoes', {
       query: { ...filters, pageSize: PAGE_SIZE },
       signal,
     }),

@@ -6,6 +6,7 @@ import {
   buildMonthGrid,
   formatDateBR,
   MONTH_NAMES,
+  rangeEndToShow,
   todayIso,
   WEEKDAY_NAMES,
   type CalendarDay,
@@ -36,6 +37,8 @@ const monthOf = (iso: IsoDate): YearMonth => ({
 export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
   const [open, setOpen] = useState(false)
   const [draft, setDraft] = useState<DateRange>(value)
+  // Dia sob o mouse (ou com foco): com só a data inicial, desenha a prévia do período.
+  const [hovered, setHovered] = useState<IsoDate>()
   const [visibleMonth, setVisibleMonth] = useState<YearMonth>(() =>
     monthOf(value.start ?? todayIso()),
   )
@@ -43,6 +46,7 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
 
   const openPicker = () => {
     setDraft(value)
+    setHovered(undefined)
     setVisibleMonth(monthOf(value.start ?? todayIso()))
     setOpen(true)
   }
@@ -72,6 +76,10 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
     onChange(range)
     setOpen(false)
   }
+
+  // O que o calendário desenha: o rascunho, com a prévia até o dia sob o mouse.
+  const shown: DateRange = { start: draft.start, end: rangeEndToShow(draft.start, draft.end, hovered) }
+  const isPreview = Boolean(draft.start && !draft.end && shown.end)
 
   const hasValue = Boolean(value.start && value.end)
   const label = hasValue
@@ -129,10 +137,16 @@ export function DateRangePicker({ value, onChange }: DateRangePickerProps) {
               </div>
               <MonthNavButton direction="next" onClick={() => setVisibleMonth((m) => addMonths(m, 1))} />
             </div>
-            <div className="flex gap-4">
-              <MonthGrid month={visibleMonth} range={draft} onSelect={selectDay} />
+            <div className="flex gap-4" onMouseLeave={() => setHovered(undefined)}>
+              <MonthGrid month={visibleMonth} range={shown} preview={isPreview} onSelect={selectDay} onHover={setHovered} />
               <div className="hidden sm:block">
-                <MonthGrid month={addMonths(visibleMonth, 1)} range={draft} onSelect={selectDay} />
+                <MonthGrid
+                  month={addMonths(visibleMonth, 1)}
+                  range={shown}
+                  preview={isPreview}
+                  onSelect={selectDay}
+                  onHover={setHovered}
+                />
               </div>
             </div>
             {draft.start && !draft.end && (
@@ -162,10 +176,13 @@ function MonthNavButton({ direction, onClick }: { direction: 'prev' | 'next'; on
 interface MonthGridProps {
   month: YearMonth
   range: DateRange
+  /** `range.end` ainda não foi escolhido: é o dia sob o mouse. */
+  preview: boolean
   onSelect: (iso: IsoDate) => void
+  onHover: (iso: IsoDate) => void
 }
 
-function MonthGrid({ month, range, onSelect }: MonthGridProps) {
+function MonthGrid({ month, range, preview, onSelect, onHover }: MonthGridProps) {
   const weeks = buildMonthGrid(month)
   return (
     <table className="border-separate border-spacing-y-px" role="grid">
@@ -183,7 +200,7 @@ function MonthGrid({ month, range, onSelect }: MonthGridProps) {
           <tr key={week[0].iso}>
             {week.map((day) => (
               <td key={day.iso} className="p-0">
-                <DayButton day={day} range={range} onSelect={onSelect} />
+                <DayButton day={day} range={range} preview={preview} onSelect={onSelect} onHover={onHover} />
               </td>
             ))}
           </tr>
@@ -193,10 +210,20 @@ function MonthGrid({ month, range, onSelect }: MonthGridProps) {
   )
 }
 
-function DayButton({ day, range, onSelect }: { day: CalendarDay; range: DateRange; onSelect: (iso: IsoDate) => void }) {
+interface DayButtonProps {
+  day: CalendarDay
+  range: DateRange
+  preview: boolean
+  onSelect: (iso: IsoDate) => void
+  onHover: (iso: IsoDate) => void
+}
+
+function DayButton({ day, range, preview, onSelect, onHover }: DayButtonProps) {
   const { start, end } = range
   const isStart = day.iso === start
-  const isEnd = day.iso === end
+  const isEnd = day.iso === end && !preview
+  // Prévia: o dia sob o mouse fecha a faixa cinza, com contorno verde de "data final".
+  const isPreviewEnd = preview && day.iso === end
   const inRange = Boolean(start && end && day.iso > start && day.iso < end)
   // Dias de fora do mês só aparecem para completar a grade (como no Figma).
   const showSelection = !day.outside
@@ -205,16 +232,19 @@ function DayButton({ day, range, onSelect }: { day: CalendarDay; range: DateRang
     <button
       type="button"
       onClick={() => onSelect(day.iso)}
+      onMouseEnter={() => onHover(day.iso)}
+      onFocus={() => onHover(day.iso)}
       aria-label={formatDateBR(day.iso)}
       aria-pressed={showSelection && (isStart || isEnd)}
       className={cn(
         'flex size-8 items-center justify-center text-body',
         day.outside ? 'text-neutral-400' : 'text-ink',
         showSelection && inRange && 'bg-neutral-200',
+        showSelection && isPreviewEnd && 'rounded-r-[5px] bg-neutral-200 ring-1 ring-inset ring-[#008633]',
         showSelection && (isStart || isEnd) && 'bg-[#008633] text-surface',
         showSelection && isStart && 'rounded-l-[5px]',
         showSelection && isEnd && 'rounded-r-[5px]',
-        !(showSelection && (isStart || isEnd || inRange)) && 'rounded-[5px] hover:bg-page',
+        !(showSelection && (isStart || isEnd || inRange || isPreviewEnd)) && 'rounded-[5px] hover:bg-page',
       )}
     >
       {day.day}

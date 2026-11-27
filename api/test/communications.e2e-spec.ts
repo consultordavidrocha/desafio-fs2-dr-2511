@@ -87,7 +87,28 @@ describe('Comunicações e tribunais (e2e)', () => {
         content: 'Conteúdo de teste.',
         link: null,
         recipients: [{ name: 'Destinatário 5', side: 'P' }],
+        lawsuitFinalJudgment: false,
       });
+    });
+
+    it('marca o trânsito em julgado pelo processo, não só pelo texto da comunicação', async () => {
+      const { body } = await list();
+
+      // Só a 3 menciona o trânsito; a 4 é do mesmo processo (TJMS) e também é marcada.
+      expect(body.data.map((c) => [c.id, c.lawsuitFinalJudgment])).toEqual([
+        [5, false],
+        [4, true],
+        [3, true],
+        [2, false],
+        [1, false],
+      ]);
+    });
+
+    it('detecta o trânsito do processo mesmo fora da página atual', async () => {
+      const { body } = await list({ tribunal: 'TJMS', pageSize: 1 });
+
+      expect(ids(body)).toEqual([4]);
+      expect(body.data[0].lawsuitFinalJudgment).toBe(true);
     });
 
     it.each([

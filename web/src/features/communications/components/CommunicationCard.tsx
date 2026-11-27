@@ -4,11 +4,12 @@ import { Link, useNavigate } from 'react-router'
 import { Card } from '@/components/ui/Card'
 import { cnjDigits } from '@/lib/cnj'
 import { formatDateBR } from '@/lib/dates'
-import type { Communication } from '../api'
+import { FinalJudgmentBadge } from '@/features/lawsuits/components/FinalJudgment'
+import type { Communication, CommunicationListItem } from '../api'
 import { ExpandableText, Field, FieldLabel, SummarizeButton } from './fields'
 
 interface CommunicationCardProps {
-  communication: Communication
+  communication: CommunicationListItem
   onSummarize?: (communication: Communication) => void
 }
 
@@ -57,7 +58,11 @@ export function CommunicationCard({ communication: c, onSummarize }: Communicati
             <Field icon={Gavel} label="Tribunal">{c.court}</Field>
             <Field icon={Info} label="Tipo da comunicação">{c.type}</Field>
           </div>
-          {onSummarize && <SummarizeButton onClick={() => onSummarize(c)} />}
+          {/* Selo do processo ao lado do "Resumir", como na movimentação do Figma (no card, pedido além do Figma). */}
+          <div className="flex flex-wrap items-start gap-2">
+            {c.lawsuitFinalJudgment && <FinalJudgmentBadge />}
+            {onSummarize && <SummarizeButton onClick={() => onSummarize(c)} />}
+          </div>
         </div>
 
         <Field icon={Users} label="Destinatários">{recipients}</Field>

@@ -78,3 +78,14 @@ export function buildMonthGrid({ year, month }: YearMonth): CalendarDay[][] {
   }
   return weeks
 }
+
+/**
+ * Fim do período a desenhar no calendário. Com as duas datas escolhidas, é a
+ * data final. Com só a inicial, é o dia sob o mouse (prévia do período, como no
+ * Airbnb), desde que depois da inicial: antes dela, o clique recomeça a seleção.
+ */
+export function rangeEndToShow(start?: IsoDate, end?: IsoDate, hovered?: IsoDate): IsoDate | undefined {
+  if (end) return end
+  if (start && hovered && hovered > start) return hovered
+  return undefined
+}

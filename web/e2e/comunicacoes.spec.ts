@@ -62,6 +62,46 @@ test.describe('Comunicações', () => {
     await expect(page).not.toHaveURL(/dataInicio/)
   })
 
+  test('calendário: depois da data inicial, o mouse mostra a prévia do período em cinza', async ({ page }) => {
+    await page.getByRole('button', { name: 'Filtrar por período' }).click()
+    const dialogo = page.getByRole('dialog', { name: 'Selecionar período' })
+    while (!(await dialogo.getByText('Agosto 2025').isVisible())) {
+      await dialogo.getByRole('button', { name: 'Mês anterior' }).click()
+    }
+    const dia = (data: string) => dialogo.getByRole('button', { name: data }).first()
+    await dia('01/08/2025').click()
+
+    // Mouse no dia 10: os dias 2 a 9 ficam cinza; o 10 é a data final candidata; o 15 fica de fora.
+    await dia('10/08/2025').hover()
+    await expect(dia('05/08/2025')).toHaveClass(/bg-neutral-200/)
+    await expect(dia('10/08/2025')).toHaveClass(/ring-\[#008633\]/)
+    await expect(dia('15/08/2025')).not.toHaveClass(/bg-neutral-200/)
+
+    // Mouse fora dos dias: a prévia some (nada foi escolhido ainda).
+    await dialogo.getByText('Selecione a data final').hover()
+    await expect(dia('05/08/2025')).not.toHaveClass(/bg-neutral-200/)
+
+    // Mouse antes da data inicial: sem prévia (o clique ali recomeçaria a seleção).
+    await dia('31/07/2025').hover()
+    await expect(dia('05/08/2025')).not.toHaveClass(/bg-neutral-200/)
+
+    await dia('10/08/2025').click()
+    await expect(page).toHaveURL(/dataFim=2025-08-10/)
+  })
+
+  test('selo "Transitou em julgado" no card vem do processo, não só do texto do card', async ({ page }) => {
+    const selo = page.getByText('Transitou em julgado', { exact: true })
+    // Sem filtro: há cards sem o selo (a maioria dos processos não transitou).
+    await expect(cards(page).filter({ hasNot: selo }).first()).toBeVisible()
+
+    // 2622250-13.2024.8.19.0546: só uma das 3 comunicações menciona o trânsito, mas as 3 levam o selo.
+    await page.getByLabel('Número do processo').fill('26222501320248190546')
+    await expect(cards(page)).toHaveCount(3)
+    for (const card of await cards(page).all()) await expect(card.getByText('Transitou em julgado', { exact: true })).toBeVisible()
+    const mencionaNoTexto = page.locator('p.whitespace-pre-line', { hasText: /tr[âa]nsit\w*\s+em\s+julgado/i })
+    await expect(cards(page).filter({ has: mencionaNoTexto })).toHaveCount(1)
+  })
+
   test('estado vazio', async ({ page }) => {
     await page.getByLabel('Número do processo').fill('00000000000000000000')
     await expect(page.getByText('Nenhuma comunicação encontrada')).toBeVisible()

@@ -15,6 +15,7 @@ import type {
   CommunicationSummaryDto,
 } from './dto/communication.dto';
 import { summarize } from './summary/summarizer';
+import { FINAL_JUDGMENT_SQL_PATTERN } from '../lawsuits/final-judgment';
 import type { ListCommunicationsQuery } from './dto/list-communications.query';
 
 @Injectable()
@@ -41,8 +42,15 @@ export class CommunicationsService {
       }),
     ]);
 
+    const finalJudgment = await this.lawsuitsWithFinalJudgment(
+      rows.map((row) => row.lawsuitNumber),
+    );
+
     return {
-      data: rows.map(toCommunicationDto),
+      data: rows.map((row) => ({
+        ...toCommunicationDto(row),
+        lawsuitFinalJudgment: finalJudgment.has(row.lawsuitNumber),
+      })),
       meta: {
         page,
         pageSize,
@@ -62,6 +70,24 @@ export class CommunicationsService {
       throw new NotFoundException('Comunicação não encontrada.');
     }
     return summarize(communication.content);
+  }
+
+  /**
+   * Dos processos da página, quais transitaram em julgado: basta uma comunicação
+   * do processo (qualquer uma, não só as da página) mencionar o trânsito. Mesma
+   * regra do selo de GET /processos/:numero. Uma consulta por página, usando o
+   * índice (lawsuit_number, availability_date).
+   */
+  private async lawsuitsWithFinalJudgment(
+    numbers: string[],
+  ): Promise<Set<string>> {
+    const unique = [...new Set(numbers)];
+    if (unique.length === 0) return new Set();
+    const rows = await this.prisma.$queryRaw<{ lawsuit_number: string }[]>`
+      SELECT DISTINCT lawsuit_number FROM communications
+      WHERE lawsuit_number = ANY(${unique})
+        AND content ~* ${FINAL_JUDGMENT_SQL_PATTERN}`;
+    return new Set(rows.map((row) => row.lawsuit_number));
   }
 
   private buildWhere(
