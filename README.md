@@ -1,4 +1,4 @@
-# JusCash Comunicações — Case FS2
+# JusCash Comunicações — David Rocha - FS2
 
 [![CI](https://github.com/consultordavidrocha/desafio-fs2-dr-2511/actions/workflows/ci.yml/badge.svg)](https://github.com/consultordavidrocha/desafio-fs2-dr-2511/actions/workflows/ci.yml)
 
@@ -469,10 +469,10 @@ abaixo incluem leitura do enunciado, decisões, revisão do que foi gerado e val
 |---|---|---|
 | 25/11/2026 | ~4 h | **Desenvolvimento:** leitura do case e do Figma, plano; API (auth, filtros, seed, bônus); front (login, cadastro, comunicações, processo, resumo); testes; README; PDFs |
 | 26/11/2026 | ~4 h | **Desenvolvimento:** deploy (Neon, Render, Vercel, CORS); rate limit; CI; dados reais e usuário demo; Parte 2 (P1 em Python com testes, P2–P7); E2E com Playwright; README, AI_USAGE e PDFs nos templates |
-| 26–27/11/2026 | ~8 h | **Validação e estudo:** teste manual pelo roteiro (`docs/roteiro-testes-manuais.md`), revisão das respostas da Parte 2, leitura do código e das decisões para a conversa técnica |
-| **Total** | **~16 h** | |
+| 26–27/11/2026 | ~11 h | **Validação, ajustes e estudo:** teste manual pelo roteiro (`docs/roteiro-testes-manuais.md`) e os ajustes que ele revelou (clique no card abrindo o processo, selo no card, prévia do período no calendário, rolagem ao abrir um processo, keep-alive 24 h, Guia do avaliador); revisão das respostas da Parte 2; leitura do código e das decisões para a conversa técnica |
+| **Total** | **~19 h** | |
 
-A validação pesa o mesmo que o desenvolvimento de propósito: com a IA gerando boa parte do código, o
+A validação pesa mais que o desenvolvimento de propósito: com a IA gerando boa parte do código, o
 trabalho que mais importa é revisar, testar e entender o que foi entregue (ver [AI_USAGE.md](AI_USAGE.md)).
 
 ---

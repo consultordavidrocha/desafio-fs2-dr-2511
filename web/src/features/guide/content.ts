@@ -23,9 +23,9 @@ export const DEMO_ACCOUNT = { email: 'demo@exemplo.com', password: 'demo12345' }
 
 export const PRODUCTION_LINKS: (GuideLink & { note: string })[] = [
   { label: 'Aplicação', href: 'https://desafio-fs2-dr-2511.vercel.app', note: 'Front na Vercel' },
-  { label: 'API', href: API, note: 'NestJS no Render, banco no Neon' },
+  // A raiz da API não tem rota (404): o link da API vai para o health check.
+  { label: 'API', href: `${API}/health`, note: 'NestJS no Render, banco no Neon; responde {"status":"ok"}' },
   { label: 'Swagger', href: `${API}/docs`, note: 'Rotas, contratos e "Try it out"' },
-  { label: 'Health check', href: `${API}/health`, note: 'API + banco' },
   { label: 'Repositório', href: REPO, note: 'Código, documentação e Parte 2' },
   { label: 'Kanban', href: 'https://github.com/users/consultordavidrocha/projects/1', note: '32 cards, Backlog → Concluído' },
   { label: 'CI', href: `${REPO}/actions`, note: '5 jobs a cada push' },
