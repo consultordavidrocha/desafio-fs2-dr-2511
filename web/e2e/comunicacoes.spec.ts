@@ -88,7 +88,7 @@ test.describe('Comunicações', () => {
     await expect(page.getByRole('button', { name: 'Ler mais' }).first()).toBeVisible()
   })
 
-  test('clique no card expande e recolhe; "Resumir" e o link do processo não expandem', async ({ page }) => {
+  test('clique no card abre o processo; "Ler mais", "Resumir" e seleção de texto não navegam', async ({ page }) => {
     // Fixa o card pela posição: um filtro por "Ler mais" pularia para outro card assim que este expandisse.
     await expect(cards(page).first()).toBeVisible()
     const todos = await cards(page).all()
@@ -97,39 +97,36 @@ test.describe('Comunicações', () => {
     const card = cards(page).nth(indice)
     const toggle = card.getByRole('button', { name: /Ler (mais|menos)/ })
 
-    // Clique numa área sem controle (o rótulo "Conteúdo") faz o mesmo que "Ler mais"/"Ler menos".
-    await card.getByText('Conteúdo', { exact: true }).click()
-    await expect(toggle).toHaveText('Ler menos')
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true')
-    await card.getByText('Destinatários', { exact: true }).click()
-    await expect(toggle).toHaveText('Ler mais')
-
-    // O botão "Ler mais" não alterna duas vezes (clique do botão + clique do card).
+    // "Ler mais" só expande e recolhe: continua na lista.
     await toggle.click()
     await expect(toggle).toHaveText('Ler menos')
     await toggle.click()
     await expect(toggle).toHaveText('Ler mais')
+    await expect(page).toHaveURL(/\/comunicacoes/)
 
-    // "Resumir" abre o modal sem expandir o card.
+    // "Resumir" abre o modal sem navegar.
     await card.getByRole('button', { name: 'Resumir' }).click()
     const modal = page.getByRole('dialog', { name: 'Resumo com IA' })
     await expect(modal).toBeVisible()
     await modal.getByRole('button', { name: 'Fechar' }).last().click()
     await expect(modal).toBeHidden()
-    await expect(toggle).toHaveText('Ler mais')
+    await expect(page).toHaveURL(/\/comunicacoes/)
 
-    // Selecionar um trecho do conteúdo (para copiar) não alterna o card.
+    // Selecionar um trecho do conteúdo (para copiar) não navega.
     const texto = card.locator('p.whitespace-pre-line')
     const box = (await texto.boundingBox())!
     await page.mouse.move(box.x + 2, box.y + 4)
     await page.mouse.down()
     await page.mouse.move(box.x + box.width / 2, box.y + 4, { steps: 5 })
     await page.mouse.up()
-    await expect(toggle).toHaveText('Ler mais')
+    await expect(page).toHaveURL(/\/comunicacoes/)
 
-    // O link do processo continua levando aos detalhes.
-    await card.getByRole('link').first().click()
-    await expect(page).toHaveURL(/\/processos\/\d{20}/)
+    // Figma (protótipo): clique numa área sem controle leva aos detalhes do processo daquele card.
+    const numero = (await card.getByRole('link').first().textContent())!.split(' - ')[0].replace(/\D/g, '')
+    await page.mouse.click(0, 0) // desfaz a seleção do passo anterior
+    await card.getByText('Destinatários', { exact: true }).click()
+    await expect(page).toHaveURL(new RegExp(`/processos/${numero}$`))
+    await expect(page.getByText('Detalhes do processo')).toBeVisible()
   })
 
   test('modal "Resumo com IA" abre, mostra o resumo e fecha', async ({ page }) => {

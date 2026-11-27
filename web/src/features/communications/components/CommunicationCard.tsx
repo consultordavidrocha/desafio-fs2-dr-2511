@@ -1,12 +1,11 @@
 import { CalendarDays, FileText, Gavel, Info, Scale, Users } from 'lucide-react'
 import type { MouseEvent } from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { Card } from '@/components/ui/Card'
 import { cnjDigits } from '@/lib/cnj'
 import { formatDateBR } from '@/lib/dates'
 import type { Communication } from '../api'
 import { ExpandableText, Field, FieldLabel, SummarizeButton } from './fields'
-import { useExpandableText } from './useExpandableText'
 
 interface CommunicationCardProps {
   communication: Communication
@@ -17,34 +16,36 @@ interface CommunicationCardProps {
 export function CommunicationCard({ communication: c, onSummarize }: CommunicationCardProps) {
   const lawsuit = c.lawsuitClass ? `${c.lawsuitNumber} - ${c.lawsuitClass}` : c.lawsuitNumber
   const recipients = c.recipients.map((r) => r.name).join(', ') || '—'
-  const content = useExpandableText(c.content)
+  const navigate = useNavigate()
+  const lawsuitPath = `/processos/${cnjDigits(c.lawsuitNumber)}`
 
   /**
-   * Clique em qualquer parte do card faz o mesmo que "Ler mais"/"Ler menos".
-   * Fica de fora: botões e links (Resumir, o próprio Ler mais, o link do processo)
+   * Figma (protótipo): o card inteiro leva aos detalhes do processo.
+   * Fica de fora: botões e links ("Resumir", "Ler mais", o próprio link do número)
    * e o fim de uma seleção de texto, para quem quer copiar um trecho.
-   * Teclado e leitor de tela continuam usando o botão "Ler mais", que é o controle acessível.
+   * Ctrl/Cmd + clique abre em outra aba, como num link.
+   * Teclado e leitor de tela usam o link do número, que é o controle acessível.
    */
   function handleCardClick(event: MouseEvent<HTMLDivElement>) {
-    if (!content.canToggle) return
     if ((event.target as Element).closest('a, button, input, select, textarea')) return
     if (window.getSelection()?.toString()) return
-    content.toggle()
+    if (event.ctrlKey || event.metaKey) window.open(lawsuitPath, '_blank', 'noopener')
+    else navigate(lawsuitPath)
   }
 
   return (
     <Card
       onClick={handleCardClick}
-      className={`transition-shadow hover:shadow-md ${content.canToggle ? 'cursor-pointer' : ''}`}
+      className="cursor-pointer transition-shadow hover:shadow-md"
     >
       <article className="flex flex-col gap-4" aria-labelledby={`communication-${c.id}`}>
         {/* Figma: no celular o "Resumir" vem primeiro (topo, à esquerda) e os campos em 1 coluna. */}
         <div className="flex flex-col-reverse gap-4 md:flex-row md:items-start">
           <div className="grid flex-1 grid-cols-1 gap-4 md:grid-cols-2">
             <Field icon={Scale} label="Processo" id={`communication-${c.id}`}>
-              {/* Figma: o número leva aos detalhes do processo (tela obrigatória no ENUNCIADO). */}
+              {/* Link de verdade: teclado, leitor de tela e "abrir em nova aba" (o clique no card é atalho de mouse/toque). */}
               <Link
-                to={`/processos/${cnjDigits(c.lawsuitNumber)}`}
+                to={lawsuitPath}
                 className="break-words hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-primary"
               >
                 {lawsuit}
@@ -63,7 +64,7 @@ export function CommunicationCard({ communication: c, onSummarize }: Communicati
 
         <div className="flex flex-col gap-2">
           <FieldLabel icon={FileText} label="Conteúdo" gap="gap-2" />
-          <ExpandableText text={c.content} state={content} />
+          <ExpandableText text={c.content} />
         </div>
       </article>
     </Card>
