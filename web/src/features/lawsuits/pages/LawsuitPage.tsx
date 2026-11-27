@@ -29,7 +29,7 @@ export function LawsuitPage() {
   })
 
   const goToPage = (next: number) => {
-    setParams(next > 1 ? { page: String(next) } : {})
+    setParams(next > 1 ? { page: String(next) } : {}, { preventScrollReset: true })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

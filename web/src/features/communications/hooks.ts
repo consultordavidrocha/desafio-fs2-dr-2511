@@ -39,7 +39,7 @@ export function useCommunicationFilters() {
         if (!('page' in changes)) next.delete('page')
         if (next.get('page') === '1') next.delete('page')
         return next
-      })
+      }, { preventScrollReset: true }) // a mudança de filtro não leva ao topo (ver RootLayout)
     },
     [setParams],
   )

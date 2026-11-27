@@ -62,7 +62,7 @@
 <!-- testes, execução, comparação com o Figma, leitura de documentação... -->
 - **Testes automatizados** rodando no CI (GitHub Actions) a cada push: API com 37 unitários e 60 e2e
   contra Postgres real (todos os status do contrato, filtros, paginação, rate limit), front com 37
-  unitários, **28 testes de navegador com Playwright** contra a stack real (Postgres + API + front),
+  unitários, **30 testes de navegador com Playwright** contra a stack real (Postgres + API + front),
   P1 com 37 testes pytest, e a trava de 500 linhas por arquivo.
 - **Teste manual** (meu): roteiro com checklist em `docs/roteiro-testes-manuais.md` — fidelidade ao
   Figma, teclado, celular real, produção e Swagger. O automático vem primeiro; o manual confirma.

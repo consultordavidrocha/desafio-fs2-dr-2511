@@ -67,6 +67,7 @@ Marque cada item. Se algo falhar, anote o passo, o que esperava e o que acontece
 - [ ] O avatar mostra as iniciais (conta demo: "UD"); o menu mostra nome e e-mail.
 - [ ] "Sair" volta ao login; depois disso, `/comunicacoes` exige login de novo.
 - [ ] O botão do painel (canto superior esquerdo) expande e recolhe o menu lateral.
+- [ ] **Celular:** rolar até um card do meio da lista e tocar nele → o processo abre **no topo**; "voltar" devolve a lista ao mesmo card; trocar o tribunal não pula para o topo.
 - [ ] Clicar no logo **JusCash** do topo (desktop) leva para Comunicações, o mesmo destino do ícone Home do menu (testar a partir de um processo).
 
 ## 7. Responsivo (celular de verdade ou DevTools: 360, 430, 768, 1024, 1920)

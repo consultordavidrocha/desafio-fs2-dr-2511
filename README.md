@@ -266,6 +266,7 @@ web/src/
 | **Calendário próprio** (sem biblioteca) | Visual idêntico ao Figma; datas como string ISO/`Date.UTC`, sem bug de fuso. Depois da data inicial, o mouse mostra a prévia do período no mesmo cinza do Figma |
 | **Selo "Transitou em julgado" também no card da lista** (o Figma só o tem no processo) | Pedido de produto: o advogado vê a situação sem abrir o processo. É a situação **do processo** (campo `lawsuitFinalJudgment`, mesma regra do selo do processo), não só do texto do card; uma consulta por página |
 | Filtros na **URL** | Link compartilhável e navegação do navegador funcionando |
+| `<ScrollRestoration>` + `preventScrollReset` nos filtros | Abrir um processo começa no topo e "voltar" devolve a lista ao mesmo card (importante no celular); trocar filtro não pula para o topo |
 | Retry só em 5xx/rede | Repetir um 4xx não muda o resultado |
 | **Code splitting por rota** | Bundle inicial ~112 KB gzip; ilustração do login em WebP com `srcset` (2,9 MB → 7–46 KB) |
 | `<dialog>` nativo no modal | Foco preso, Esc e backdrop sem biblioteca |
